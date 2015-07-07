@@ -1,0 +1,15 @@
+jdbc.driverClassNamePostgres= org.postgresql.Driver
+jdbc.dialectPostgres=org.hibernate.dialect.PostgreSQLDialect
+jdbc.databaseurlPostgres=jdbc:postgresql://localhost:5432/ivf
+jdbc.hbmddlPostgres=update
+jdbc.defaultshemaPostgres=site
+jdbc.usernamePostgres=postgres
+jdbc.passwordPostgres=swat
+
+jdbc.driverClassNameMssql=com.microsoft.sqlserver.jdbc.SQLServerDriver
+jdbc.dialectMssql=org.hibernate.dialect.SQLServerDialect
+jdbc.databaseurlMssql=jdbc:sqlserver://192.168.112.1:1433;databaseName=Embrio_670
+jdbc.hbmddlMssql=readonly
+jdbc.defaultshemaMssql=dbo
+jdbc.usernameMssql=sa
+jdbc.passwordMssql=550ff42826

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  <persistence-unit name="iponyPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>domain.OrderItemsEvents</class>
+    <class>domain.OrderEvents</class>
+    <class>domain.Event</class>
+    <class>domain.OrderAction</class>
+    <class>domain.OrderChanges</class>
+    <class>domain.TypeTarif</class>
+    <class>domain.Tarif</class>
+    <class>domain.CityOrder</class>
+    <class>domain.Puser</class>
+    <class>domain.MedPlsubjLimited</class>
+    <class>domain.Metafield</class>
+    <class>domain.Medivals</class>
+    <class>domain.IdValues</class>
+    <class>domain.Medecins</class>
+    <class>domain.MotconsuEventTypes</class>
+    <class>domain.Imgtypes</class>
+    <class>domain.MedmodelDenied</class>
+    <class>domain.Medrubr</class>
+    <class>domain.Metatable</class>
+    <class>domain.MotconsuFldrs</class>
+    <class>domain.ImgInfo</class>
+    <class>domain.MedGroupView</class>
+    <class>domain.Motconsu</class>
+    <class>domain.Dosage</class>
+    <class>domain.Meddep</class>
+    <class>domain.ImgSchemes</class>
+    <class>domain.MotconsuFldrRecords</class>
+    <class>domain.MedPlsubj</class>
+    <class>domain.MetaMacro</class>
+    <class>domain.MedExtguids</class>
+    <class>domain.MedPlparam</class>
+    <class>domain.Medtrait</class>
+    <class>domain.Medmodel</class>
+    <class>domain.Images</class>
+    <class>domain.ModelTemplates</class>
+    <class>domain.Patients</class>
+    <class>domain.Models</class>
+    <class>domain.MedAssistants</class>
+    <class>domain.Medexam</class>
+    <class>domain.MotconsuFldrTypes</class>
+    <class>domain.MotconsuEventTypesDet</class>
+    <class>domain.Impdata</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/ipony"/>
+      <property name="javax.persistence.jdbc.password" value="572481"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.user" value="postgres"/>
+    </properties>
+  </persistence-unit>
+</persistence>

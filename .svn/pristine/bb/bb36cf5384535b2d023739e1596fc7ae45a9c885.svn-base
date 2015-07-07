@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <mapping class="domain.Menu"/>
+        <mapping class="domain.Puser"/>
+        <mapping class="domain.Roles"/>
+        <mapping class="domain.Category"/>
+        <mapping class="domain.Citys"/>
+        <mapping class="domain.CountryCity"/>
+        <mapping class="domain.Countrys"/>
+        <mapping class="domain.ScholasticDegree"/>
+        <mapping class="domain.Specialization"/>
+        <mapping class="domain.Patients"/>
+    </session-factory>
+</hibernate-configuration>

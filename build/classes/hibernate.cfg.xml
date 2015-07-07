@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <mapping class="domain.Menu"/>
+        <mapping class="domain.DeliveryMethods"/>
+        <mapping class="domain.Puser"/>
+        <mapping class="domain.Warehouse"/>
+        <mapping class="domain.City"/>
+        <mapping class="domain.Codes"/>
+        <mapping class="domain.EventsCode"/>
+        <mapping class="domain.Orders"/>
+        <mapping class="domain.OrderItem"/>
+        <mapping class="domain.PaymentMethods"/>
+        <mapping class="domain.ShopDescr"/> 
+        <mapping class="domain.StreetType"/> 
+        <mapping class="domain.Region"/>
+        <mapping class="domain.OrdersHistory"/>
+    </session-factory>
+</hibernate-configuration>

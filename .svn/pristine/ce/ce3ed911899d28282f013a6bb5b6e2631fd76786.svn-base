@@ -1,0 +1,20 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+     
+        
+<div class="container text-center">
+  <hr>
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="nav nav-pills nav-justified">
+                <li><a href="/">© 2015 Личный кабинет.</a></li>
+                <li><a href="#">ИРМ Алматы</a></li>
+                <li><a href="#">Все права защищены.</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<%-- 
+    Document   : video
+    Created on : 02.03.2015, 12:05:22
+    Author     : Kimboo
+--%>
+
+
+
+
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+
+
+<jsp:include page="/WEB-INF/views/admin/header.jsp" />  
+
+
+
+
+<script type='text/javascript' src='jwplayer.js'></script>
+<div class="col-md-9 column">
+    <script type='text/javascript' src='${pageContext.request.contextPath}/resources/player/jwplayer.js'></script>
+    <div id='mediaspace'>Онлайн видео трансляция</div>
+    <script type='text/javascript'>
+        jwplayer('mediaspace').setup({
+            'flashplayer': '${pageContext.request.contextPath}/resources/player/player.swf',
+            'file': 'ib1',
+            'streamer': 'rtmp://192.168.112.201/live/ivf/',
+            'controlbar': 'bottom',
+                'bufferlength': '1',
+            'width': '800',
+            'height': '500'
+        });
+    </script>
+</div>
+            
+  
+<c:if test="${!empty RightPanel}">
+            <c:if test="${RightPanel == 1}">
+                <jsp:include page="/WEB-INF/views/admin/right_bar.jsp" /> 
+            </c:if>
+        </c:if>            
+            
+<jsp:include page="/WEB-INF/views/admin/footer.jsp" />   

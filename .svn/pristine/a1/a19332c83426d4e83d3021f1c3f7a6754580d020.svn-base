@@ -1,0 +1,42 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package service;
+
+import dao.PatientsDAO;
+import dao.UsersDAO;
+import domain.Patients;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+/**
+ *
+ * @author KVO
+ */
+@Service("patientsService")
+@Transactional("mssqlT")
+public class PatientsServiceImpl implements PatientsService {
+
+    @Autowired
+    PatientsDAO patientsDAO;
+    
+    @Override
+    public Patients getPatient(Integer id) {
+        return this.patientsDAO.getPatient(id);
+    }
+
+    @Override
+    public List<Patients> getListOfPatients() {
+        return this.patientsDAO.getListOfPatients();
+    }
+
+    @Override
+    public Patients getPatientsByIIN(String IIN) {
+        return this.patientsDAO.getPatientsByIIN(IIN);
+    }
+    
+}

@@ -1,0 +1,31 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package dao;
+
+import domain.Puser;
+import domain.Roles;
+import java.util.List;
+
+/**
+ *
+ * @author Andrey
+ */
+public interface UsersDAO {
+    
+    public void addOrUpdateUser(Puser user);
+    
+    public Puser getUser(Integer id);
+
+    public List<Puser> listUser();
+    
+    public Puser getUserbyLogin(String login);
+    
+    public Puser getUserByUUID(String uuid);
+    
+    public List<Puser> getUserByUserCode(String userCode);
+    
+    public Roles getRoles(Integer id);
+            
+}

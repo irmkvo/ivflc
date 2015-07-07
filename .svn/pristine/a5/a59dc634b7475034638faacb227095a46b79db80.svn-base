@@ -1,0 +1,9 @@
+DELEGATES_PREFERENCE=delegateValidatorList
+USER_BUILD_PREFERENCE=enabledBuildValidatorListorg.eclipse.jst.j2ee.internal.classpathdep.ClasspathDependencyValidator;org.jboss.tools.common.validation.ValidatorManager;org.eclipse.wst.wsi.ui.internal.WSIMessageValidator;
+USER_MANUAL_PREFERENCE=enabledManualValidatorListorg.eclipse.jst.j2ee.internal.classpathdep.ClasspathDependencyValidator;org.jboss.tools.common.validation.ValidatorManager;org.eclipse.wst.wsi.ui.internal.WSIMessageValidator;
+USER_PREFERENCE=overrideGlobalPreferencestruedisableAllValidationfalseversion1.2.303.v201202090300
+eclipse.preferences.version=1
+override=true
+suspend=false
+vals/org.eclipse.jst.jsp.core.JSPContentValidator/groups=0107include110111contentType134org.eclipse.jst.jsp.core.jspsourceT111contentType142org.eclipse.jst.jsp.core.jspfragmentsourceT07fileext03jspF07fileext04jspfF07fileext03jsfF07fileext03tagF07fileext04tagfF07fileext03jsvF07fileext04jtplF04file119jquery-1.7.2.min.jsF010107exclude0104file130WebContent/resources/js/jqueryF02
+vf.version=3

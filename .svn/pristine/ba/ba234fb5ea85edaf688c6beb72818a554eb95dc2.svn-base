@@ -1,0 +1,77 @@
+package domain;
+
+import java.io.Serializable;
+import javax.persistence.*;
+
+
+
+
+
+/**
+ *
+ * @author Администратор
+ */
+@Entity
+@Table(name = "s_menu")
+public class Menu implements Serializable{
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    
+    @Basic(optional = false)
+    private String menuName;
+    
+
+    private String menuValue;
+    
+
+    private String menuCss;
+    
+
+    private String menuAction;
+
+
+    // get set :::::::::::::::::::::::::::::::::::
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getMenuAction() {
+        return menuAction;
+    }
+
+    public void setMenuAction(String menuAction) {
+        this.menuAction = menuAction;
+    }
+
+    public String getMenuCss() {
+        return menuCss;
+    }
+
+    public void setMenuCss(String menuCss) {
+        this.menuCss = menuCss;
+    }
+
+    public String getMenuName() {
+        return menuName;
+    }
+
+    public void setMenuName(String menuName) {
+        this.menuName = menuName;
+    }
+
+    public String getMenuValue() {
+        return menuValue;
+    }
+
+    public void setMenuValue(String menuValue) {
+        this.menuValue = menuValue;
+    }
+
+}

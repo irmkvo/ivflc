@@ -1,0 +1,208 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package domain;
+
+import java.io.Serializable;
+import java.util.UUID;
+import javax.persistence.*;
+
+/**
+ *
+ * @author Администратор
+ */
+@Entity
+@Table(name = "p_user")
+public class Puser implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    
+    @Basic(optional = false)
+    @Column(unique = true, nullable = false)
+    private String userLogin;
+    
+    @Basic(optional = false)
+    private String userPassword;
+    
+    @Basic(optional = false)
+    private String userFname;
+    
+    @Basic(optional = false)
+    private String userLname;
+    
+    @Basic(optional = false)
+    private String userMname;
+    
+    @Basic(optional = false)
+    private String userMail;
+    
+    @Basic(optional = false)
+    private String userPhone;
+    
+    @Basic(optional = true)
+    private Integer userRole;
+    
+    @Basic(optional = true)
+    private String userCode;
+    
+    @Basic(optional = true)
+    private String IIN;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "role_id")
+    private Roles role;
+
+    private Boolean accountNonExpired = true;
+    private Boolean accountNonLocked = true;
+    private Boolean credentialsNonExpired = true;
+    private Boolean enabled = true;
+
+    public Puser() {
+        super();
+        UUID uid = UUID.randomUUID();
+    }
+
+    public Puser(Integer id) {
+        this.id = id;
+    }
+
+    public Roles getRole() {
+        return role;
+    }
+
+    public void setRole(Roles role) {
+        this.role = role;
+    }
+    public String getUserPhone() {
+        return userPhone;
+    }
+
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
+    }
+
+    public String getUserCode() {
+        return userCode;
+    }
+
+    public void setUserCode(String userCode) {
+        this.userCode = userCode;
+    }
+
+    public String getUserMail() {
+        return userMail;
+    }
+
+    public void setUserMail(String userMail) {
+        this.userMail = userMail;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(Integer userRole) {
+        this.userRole = userRole;
+    }
+
+    public String getUserFname() {
+        return userFname;
+    }
+
+    public void setUserFname(String userFname) {
+        this.userFname = userFname;
+    }
+
+    public String getUserLname() {
+        return userLname;
+    }
+
+    public void setUserLname(String userLname) {
+        this.userLname = userLname;
+    }
+
+    public String getUserLogin() {
+        return userLogin;
+    }
+
+    public void setUserLogin(String userLogin) {
+        this.userLogin = userLogin;
+    }
+
+    public String getUserMname() {
+        return userMname;
+    }
+
+    public void setUserMname(String userMname) {
+        this.userMname = userMname;
+    }
+
+    public String getUserPassword() {
+        return userPassword;
+    }
+
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
+    }
+
+    public String getPassword() {
+        return userPassword;
+    }
+  
+    public void setIIN(String IIN) {
+        this.IIN = IIN;
+    }
+
+    public String getIIN() {
+        return IIN;
+    }
+    
+    public String getUsername() {
+        return userLogin;
+    }
+
+    public boolean isAccountNonExpired() {
+        return accountNonExpired;
+    }
+
+    public boolean isAccountNonLocked() {
+        return accountNonLocked;
+    }
+
+    public boolean isCredentialsNonExpired() {
+        return credentialsNonExpired;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setAccountNonExpired(Boolean accountNonExpired) {
+        this.accountNonExpired = true;
+    }
+
+    public void setAccountNonLocked(Boolean accountNonLocked) {
+        this.accountNonLocked = true;
+    }
+
+    public void setCredentialsNonExpired(Boolean credentialsNonExpired) {
+        this.credentialsNonExpired = true;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = true;
+    }
+}
+
