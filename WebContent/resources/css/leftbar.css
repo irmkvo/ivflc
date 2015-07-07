@@ -26,12 +26,12 @@ img {
     border: medium none;
 }
 .left-block-content {
-    background-image: url("../images/left-block-bg-1.jpg");
+    background-image: url("../images/left-block-bg-2.jpg");
     min-height: 100%;
     position: fixed;
     width: 240px;
     z-index: 100;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    box-shadow: 0 0 17px rgba(0,0,0,0.5);
 }
 .left-block-content-logo {
     background-color: #ffffff;
@@ -187,7 +187,7 @@ img {
     width: 200px;
 }
 .left-block-content-line-2 {
-    background-color: #666666;
+    background-color: #9199CF;
     border-bottom: 1px solid #000;
     height: 1px;
     position: relative;
@@ -1074,7 +1074,7 @@ img {
     text-align: center;
 }
 .content-block-center-item {
-    background-color: #f0f0f0;
+    background-color: #B2B0E8;
     margin: auto auto 15px;
     padding-bottom: 10px;
     padding-left: 10px;
