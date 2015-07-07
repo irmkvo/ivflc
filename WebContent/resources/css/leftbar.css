@@ -34,8 +34,8 @@ img {
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 .left-block-content-logo {
-    background-color: #f99bad;
-    height: 75px;
+    background-color: #ffffff;
+    height: 95px;
     padding-left: 20px;
     padding-right: 20px;
     position: relative;
@@ -63,7 +63,7 @@ img {
     width: 80px;
 }
 .left-block-content-profile-item-left-photo-bg {
-    background-image: url("../images/left-block-content-profile-item-left-photo-bg-1.png");
+    background-image: url("http://irm.kz/wp-content/themes/irm-template/assets/images/bg_photo.png");
     background-position: 0 0;
     background-repeat: no-repeat;
     height: 77px;
@@ -1089,14 +1089,14 @@ img {
     width: 480px;
 }
 .content-block-center-item-head-photo-bg {
-    background-image: url("../images/content-block-center-item-head-photo-bg-1.png");
+    background-image: url("http://irm.kz/wp-content/themes/irm-template/assets/images/bg_photo.png");
     background-position: 0 0;
     background-repeat: no-repeat;
-    height: 71px;
-    left: -18px;
+    height: 75px;
+    left: 8px;
     position: absolute;
-    top: -8px;
-    width: 71px;
+    top: 8px;
+    width: 75px;
     z-index: 1;
 }
 .content-block-center-item-head-photo {

@@ -28,13 +28,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "MenuAcces")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "MenuAcces.findAll", query = "SELECT m FROM MenuAcces m"),
-    @NamedQuery(name = "MenuAcces.findByMenuAccesid", query = "SELECT m FROM MenuAcces m WHERE m.menuAccesid = :menuAccesid"),
-    @NamedQuery(name = "MenuAcces.findByMenuAccesmenuid", query = "SELECT m FROM MenuAcces m WHERE m.menuAccesmenuid = :menuAccesmenuid"),
-    @NamedQuery(name = "MenuAcces.findByMenuAccesroleid", query = "SELECT m FROM MenuAcces m WHERE m.menuAccesroleid = :menuAccesroleid"),
-    @NamedQuery(name = "MenuAcces.findByMenuAccesdescription", query = "SELECT m FROM MenuAcces m WHERE m.menuAccesdescription = :menuAccesdescription"),
-    @NamedQuery(name = "MenuAcces.findByMenuAccestitle", query = "SELECT m FROM MenuAcces m WHERE m.menuAccestitle = :menuAccestitle")})
 public class MenuAcces implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

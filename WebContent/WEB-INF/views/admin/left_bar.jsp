@@ -13,7 +13,8 @@
             <!-- LOGO START -->
             <div class="left-block-content-logo" style="padding-left:10px;width:240px;padding-right:10px;">
                 <a title="На главную" href="#">
-                    <img alt="Врачи Вместе" src="/resources/images/logo.png" width="190px" height="71px" />
+                    <img alt="Врачи Вместе" src="http://irm.kz/wp-content/themes/irm-template/assets/images/logo2.png"   height="90px" />
+                  
                 </a>
             </div>
             <!-- LOGO END -->
