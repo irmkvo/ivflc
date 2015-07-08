@@ -31,7 +31,7 @@
                     <section class="login-form">
                         <form method="post" action="<c:url value="/j_spring_security_check" />" role="login">
                             <a href="http://www.ivf.kz">
-                                <img src="http://irm.kz/wp-content/themes/irm-template/assets/images/logo.png" class="img-responsive" alt="" />
+                                <img src="http://irm.kz/wp-content/themes/irm-template/assets/images/logo2.png" class="img-responsive" alt="" />
                             </a>
                             <input type="email" name="j_username" id="j_username" placeholder="Email" required class="form-control input-lg" value="" />
 

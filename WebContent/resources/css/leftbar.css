@@ -181,14 +181,14 @@ img {
 }
 .left-block-content-line-1 {
     background-color: #666666;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #00a499;
     height: 1px;
     position: relative;
     width: 200px;
 }
 .left-block-content-line-2 {
     background-color: #9199CF;
-    border-bottom: 1px solid #000;
+    border-bottom: 2px solid #00a499;
     height: 1px;
     position: relative;
     width: 240px;
@@ -1053,6 +1053,13 @@ img {
     width: 517px;
     border-right: 1px dotted;
     margin-top: 13px;
+}
+
+.col-md-9 .content-block-center-admin {
+    padding: 7px 18px;
+    width: 517px;
+    border-right: 0px dotted;
+    margin-top: 44px;
 }
 .content-block-center {
     float: left;

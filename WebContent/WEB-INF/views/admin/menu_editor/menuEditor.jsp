@@ -9,14 +9,13 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Menu editor</title>
-    </head>
-    <body>
-        <form:form method="post" action="${pageContext.request.contextPath}/admin/menu_editor/menu_edit/save" commandName="menuEdit">
+<jsp:include page="/WEB-INF/views/admin/header.jsp" />  
+<jsp:include page="/WEB-INF/views/admin/left_bar.jsp" />
+
+<div class="col-md-9 column">
+<div class="content-block-center-admin">      
+   
+    <form:form method="post" action="${pageContext.request.contextPath}/admin/menu_editor/menu_edit/save" commandName="menuEdit">
             <table border="0" cellpadding="0" cellspacing="0"  id="id-form">
                 <tr>
                     <td>
@@ -46,5 +45,5 @@
                 </tr>
                 </table>
         </form:form>
-    </body>
-</html>
+</div>
+    </div>

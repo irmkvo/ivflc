@@ -4,7 +4,7 @@
  * @author Alexey Krupsky <benzus@mail.ru>
  */
 $(function() {
-	$( '.left-block-content ul:not(.groups)' ).inji_inversion_menu({bg:'#f9bac6',font:'#fff'});
+	$( '.left-block-content ul:not(.groups)' ).inji_inversion_menu({bg:'#B2B0E8',font:'#fff'});
 });
 jQuery.fn.inji_inversion_menu = function(options) {
     // настройки по умолчанию

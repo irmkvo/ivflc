@@ -8,12 +8,10 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Menu list</title>
-    </head>
+<jsp:include page="/WEB-INF/views/admin/header.jsp" />  
+<jsp:include page="/WEB-INF/views/admin/left_bar.jsp" />
+<div class="col-md-9 column">
+<div class="content-block-center-admin">    
     <body>        
         <table>
             <input type="button" value="Добавить" id="" name="" onClick="window.location='${pageContext.request.contextPath}/admin/menu_editor/menu_edit/654654'" />
@@ -31,4 +29,5 @@
             </c:forEach>
         </table>
     </body>
-</html>
+</div>
+</div>
