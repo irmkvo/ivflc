@@ -5,20 +5,20 @@
  */
 package web;
 
-import domain.Menu;
-import domain.MenuItem;
-import domain.Pages;
-import domain.Puser;
-import domain.Roles;
+import domain.postgres.Menu;
+import domain.postgres.MenuItem;
+import domain.postgres.Pages;
+import domain.postgres.Puser;
+import domain.postgres.Roles;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import service.MenuService;
-import service.PagesService;
-import service.UsersService;
+import service.postgres.MenuService;
+import service.postgres.PagesService;
+import service.postgres.UsersService;
 
 /**
  *
@@ -321,6 +321,6 @@ public class LoadMainData {
                         
         }
         
-        return "redirect:../panel";
+        return "redirect:../admin/index";
     }
 }

@@ -55,18 +55,18 @@
         <property name="dataSource" ref="dataSourcePostgres" />
         <property name="annotatedClasses">
            <list>
-                <value>domain.Puser</value>                
-                <value>domain.Roles</value>
-                <value>domain.Category</value>
-                <value>domain.Citys</value>
-                <value>domain.CountryCity</value>
-                <value>domain.Countrys</value>
-                <value>domain.ScholasticDegree</value>
-                <value>domain.Specialization</value>
-                <value>domain.Menu</value>
-                <value>domain.MenuAcces</value>
-                <value>domain.MenuItem</value>
-                <value>domain.Pages</value>
+                <value>domain.postgres.Puser</value>                
+                <value>domain.postgres.Roles</value>
+                <value>domain.postgres.Category</value>
+                <value>domain.postgres.Citys</value>
+                <value>domain.postgres.CountryCity</value>
+                <value>domain.postgres.Countrys</value>
+                <value>domain.postgres.ScholasticDegree</value>
+                <value>domain.postgres.Specialization</value>
+                <value>domain.postgres.Menu</value>
+                <value>domain.postgres.MenuAcces</value>
+                <value>domain.postgres.MenuItem</value>
+                <value>domain.postgres.Pages</value>
            </list>
         </property>
 <!--        <property name="packagesToScan" value="domain"/>-->
@@ -94,6 +94,10 @@
         <property name="dataSource" ref="dataSourceMssql" />
         <property name="annotatedClasses">
             <list>
+                 <value>domain.medialog.Motconsu</value>                
+                <value>domain.medialog.Patients</value>
+                <value>domain.medialog.Models</value>
+                <value>domain.medialog.Medecins</value>
            </list>
         </property>
 <!--        <property name="packagesToScan" value="domain"/>-->

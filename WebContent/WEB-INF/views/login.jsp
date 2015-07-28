@@ -43,7 +43,7 @@
 
                             <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Войти</button>
                             <div>
-                                <a href="${pageContext.request.contextPath}/login/register">Регистрация</a> или <a href="#">Восстановление пароля</a>
+                                <a href="${pageContext.request.contextPath}/registration">Регистрация</a> или <a href="#">Восстановление пароля</a>
                             </div>
 
                         </form>

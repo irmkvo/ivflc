@@ -17,8 +17,10 @@
     <!-- Включаем опцию использования конфигурационных аннотаций (@Annotation-based configuration)-->
     <context:annotation-config />
     <!-- Определяем папки, в которых будем автоматически искать бины-компоненты (@Component, @Service)  -->
-    <context:component-scan base-package="dao" />
-    <context:component-scan base-package="service" />
+    <context:component-scan base-package="dao.postgres" />
+    <context:component-scan base-package="dao.medialog" />
+    <context:component-scan base-package="service.postgres" />
+    <context:component-scan base-package="service.medialog" />
     
     <!-- Файл с настройками ресурсов для работы с данными (Data Access Resources) -->
     <import resource="data.xml" />

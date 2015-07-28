@@ -1,10 +1,6 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package web;
 
-import domain.Puser;
+import domain.postgres.Puser;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -12,7 +8,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import service.UsersService;
+import service.postgres.UsersService;
 
 /**
  *
@@ -24,17 +20,27 @@ public class VideoController {
     @Autowired
     UsersService userService;
     
+    // GET ONLINE TRANSLATION
     @RequestMapping("/video")
     public String getVideoPage(Map<String, Object> map) {        
                 
         Puser CurrentUser = GetCurrentUser();
         
         map.put("UserData", CurrentUser);
-        map.put("LeftPanel", 0);
-        map.put("RightPanel", 1);
-        
+        map.put("LeftPanel", 1);        
         
         return "/video/admin/video";        
+    }
+    // GET ARCHIV TRANSLATION
+    @RequestMapping("/video/archive")
+    public String getVideoArchivePage(Map<String, Object> map) {        
+                
+        Puser CurrentUser = GetCurrentUser();
+        
+        map.put("UserData", CurrentUser);
+        map.put("LeftPanel", 1);
+        
+        return "/video/admin/videoarchive";        
     }
     
     // GET CURRENT USER FOR INDEX PAGE INFO

@@ -10,7 +10,6 @@
     <class>domain.TypeTarif</class>
     <class>domain.Tarif</class>
     <class>domain.CityOrder</class>
-    <class>domain.Puser</class>
     <class>domain.MedPlsubjLimited</class>
     <class>domain.Metafield</class>
     <class>domain.Medivals</class>
@@ -37,23 +36,27 @@
     <class>domain.Medmodel</class>
     <class>domain.Images</class>
     <class>domain.ModelTemplates</class>
-    <class>domain.Patients</class>
     <class>domain.Models</class>
     <class>domain.MedAssistants</class>
     <class>domain.Medexam</class>
     <class>domain.MotconsuFldrTypes</class>
     <class>domain.MotconsuEventTypesDet</class>
     <class>domain.Impdata</class>
-    <class>domain.Specialization</class>
-    <class>domain.ScholasticDegree</class>
-    <class>domain.Category</class>
-    <class>domain.Countrys</class>
-    <class>domain.Citys</class>
-    <class>domain.CountryCity</class>
-    <class>domain.Pages</class>
-    <class>domain.MenuAcces</class>
-    <class>domain.MenuItem</class>
-    <class>domain.Menu</class>
+    <class>domain.postgres.Menu</class>
+    <class>domain.postgres.Pages</class>
+    <class>domain.postgres.MenuItem</class>
+    <class>domain.postgres.MenuAcces</class>
+    <class>domain.postgres.Puser</class>
+    <class>domain.postgres.Citys</class>
+    <class>domain.postgres.Countrys</class>
+    <class>domain.postgres.Specialization</class>
+    <class>domain.postgres.Category</class>
+    <class>domain.postgres.CountryCity</class>
+    <class>domain.postgres.ScholasticDegree</class>
+    <class>domain.medialog.Patients</class>
+    <class>domain.medialog.Motconsu</class>
+    <class>domain.medialog.Models</class>
+    <class>domain.medialog.Medecins</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/ipony"/>

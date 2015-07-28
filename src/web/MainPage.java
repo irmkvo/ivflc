@@ -1,11 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package web;
 
-import domain.Menu;
-import domain.Puser;
+import domain.postgres.Menu;
+import domain.postgres.MenuItem;
+import domain.postgres.Puser;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +10,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import service.MenuService;
-import service.PagesService;
-import service.UsersService;
+import service.postgres.MenuService;
+import service.postgres.PagesService;
+import service.postgres.UsersService;
 
 @Controller
 public class MainPage {
@@ -63,7 +58,7 @@ public class MainPage {
     // GET ADMIN MAIN PAGE
     @RequestMapping("/admin/index")
     public String getAdministrativPanel(Map<String, Object> map) {
-
+                        
         Puser CurrentUser = GetCurrentUser();
 
         map.put("UserData", CurrentUser);
@@ -74,7 +69,6 @@ public class MainPage {
     }
 
     // GET CURRENT USER FOR INDEX PAGE INFO
-
     private Puser GetCurrentUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
@@ -93,37 +87,5 @@ public class MainPage {
         }
 
         return userService.getUserbyLogin(username);
-    }
-    
-    // ADMINISTRATOR METHODS
-    @RequestMapping("/admin/menu_editor/menu_list")
-    public String getMenuList(Map<String, Object> map) {
-        
-        List<Menu> menuList = this.menuService.GetMenuList();
-        
-        map.put("menuList", menuList);
-        
-        return "/admin/menu_editor/menu_list";
-        
-    }
-    
-    @RequestMapping("/admin/menu_editor/menu_edit/{id}")
-    public String getEditMenu(Map<String, Object> map, @PathVariable("id") Integer id) {
-        
-        Menu menuEdit = menuService.GetMenuByID(id);
-        if (menuEdit == null) {
-            menuEdit = new Menu();
-        }
-        map.put("menuEdit", menuEdit);
-        
-        return "/admin/menu_editor/menuEditor";
-    }
-    
-    @RequestMapping("/admin/menu_editor/menu_edit/save")
-    public String getEditMenuSave(@ModelAttribute(value = "menuEdit") Menu menuEdit) {
-        
-        menuService.AddMenu(menuEdit);
-        
-        return "redirect:../menu_list";
-    }
+    }    
 }

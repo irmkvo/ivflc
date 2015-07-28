@@ -4,7 +4,7 @@
  */
 package web;
 
-import domain.Puser;
+import domain.postgres.Puser;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import service.UsersService;
+import service.postgres.UsersService;
 
 
 @Controller

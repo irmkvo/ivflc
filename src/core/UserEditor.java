@@ -4,9 +4,9 @@
  */
 package core;
 
-import domain.Puser;
+import domain.postgres.Puser;
 import java.beans.PropertyEditorSupport;
-import service.UsersService;
+import service.postgres.UsersService;
 
 /**
  *
