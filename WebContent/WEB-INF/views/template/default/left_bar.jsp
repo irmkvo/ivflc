@@ -4,6 +4,8 @@
     Author     : Kimboo
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
@@ -46,7 +48,7 @@
                         </a>
                         Студент
                         <div class="left-block-content-profile-item-right-exit">
-                            <a title="Выход" target="_parent" href="#" style='color: #e1523d;text-decoration: underline;'>
+                            <a title="Выход" target="_parent" href='<c:url value="j_spring_security_logout" />' style='color: #e1523d;text-decoration: underline;'>
                                 выход
                             </a>
                         </div>

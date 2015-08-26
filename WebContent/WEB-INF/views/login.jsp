@@ -16,13 +16,13 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" />        
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/2.css" type="text/css" media="screen" title="default" />
 
-        <title>Институт репродуктивной медицины!</title>
+        <title><spring:message code="label.ivf" text="IVF" /></title>
     </head>
     <body>
         <div class="container">
             <c:if test="${not empty login_error}">
                 <font color="red">
-                Логин или пароль не верны.<br/><br/>
+                    <spring:message code="label.loginerror" text="login error" /><br/><br/>
                 </font>
             </c:if>
             <div class="row" id="pwd-container">
@@ -37,13 +37,13 @@
 
                             <input type="password" class="form-control input-lg" name="j_password" id="j_password" placeholder="Пароль" required="" />
 
-
                             <div class="pwstrength_viewport_progress"></div>
 
-
-                            <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Войти</button>
+                            <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">
+                                <spring:message code="label.logining" />
+                            </button>
                             <div>
-                                <a href="${pageContext.request.contextPath}/registration">Регистрация</a> или <a href="#">Восстановление пароля</a>
+                                <a href="${pageContext.request.contextPath}/registration"><spring:message code="label.registration" /></a> или <a href="#">Восстановление пароля</a>
                             </div>
 
                         </form>
