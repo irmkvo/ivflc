@@ -4,8 +4,7 @@
     Author     : Kim Vladimir
 --%>
 
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <% 
 	request.setCharacterEncoding("UTF-8"); 
 	response.setCharacterEncoding("UTF-8"); 
@@ -66,7 +65,6 @@
 </head>
 <body>
 
-    <%@ include file="api.jsp"%>
     <%@ page import="java.util.regex.*"%>
 
     <%
@@ -149,7 +147,7 @@
 
                     metadata.put("title", request.getParameter("meetingID"));
 
-                    String welcomeMsg = "<spring:message code="label.broadcastwelcome" />";
+                    String welcomeMsg = "%><spring:message code="label.broadcastwelcome" /><%";
                     String joinURL = getJoinURL(username, meetingID, "true", welcomeMsg, metadata, null);
                     if (joinURL.startsWith("http://")) {
     %>

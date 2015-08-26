@@ -125,21 +125,21 @@ public class API {
                 + checksum("join" + join_parameters + salt);
     }
 
-// 
-// Create a meeting and return a URL to join it as moderator.  This is used for the API demos.
-//
-// Passed
-//	- username
-//  - meetingID
-//  - record ["true", "false"]
-//  - welcome message (null causes BigBlueButton to use the default welcome message
-//  - metadata (passed through when record="true"
-//  - xml (used for pre-upload of slides)_
-//
-// Returned
-//  - valid join URL using the username
-//
-//  Note this meeting will use username for meetingID
+    // 
+    // Create a meeting and return a URL to join it as moderator.  This is used for the API demos.
+    //
+    // Passed
+    //	- username
+    //  - meetingID
+    //  - record ["true", "false"]
+    //  - welcome message (null causes BigBlueButton to use the default welcome message
+    //  - metadata (passed through when record="true"
+    //  - xml (used for pre-upload of slides)_
+    //
+    // Returned
+    //  - valid join URL using the username
+    //
+    //  Note this meeting will use username for meetingID
     public String getJoinURL(String username, String meetingID, String record, String welcome, Map<String, String> metadata, String xml) {
 
         String base_url_create = BigBlueButtonURL + "api/create?";
@@ -208,25 +208,25 @@ public class API {
                 .trim();
     }
 
-// 
-// Create a meeting and return a URL to join it as moderator.  This is used for the API demos.
-//
-// Passed
-//	- username
-//  - meetingID
-//  - record ["true", "false"]
-//  - welcome message (null causes BigBlueButton to use the default welcome message
-//  - metadata (passed through when record="true"
-//  - xml (used for pre-upload of slides)_
-//
-// Returned
-//  - valid join URL using the username
-//
-//  Note this meeting will use username for meetingID
-//
-// VERSION ADJUSTED TO THE NEEDS OF THE HTML5 CLIENT
-// -redirect=false //so that we get xml returned instead of being redirected to the meeting
-// -password=ap //at this stage the html5 client is viewer only (Feb 2015)
+    // 
+    // Create a meeting and return a URL to join it as moderator.  This is used for the API demos.
+    //
+    // Passed
+    //	- username
+    //  - meetingID
+    //  - record ["true", "false"]
+    //  - welcome message (null causes BigBlueButton to use the default welcome message
+    //  - metadata (passed through when record="true"
+    //  - xml (used for pre-upload of slides)_
+    //
+    // Returned
+    //  - valid join URL using the username
+    //
+    //  Note this meeting will use username for meetingID
+    //
+    // VERSION ADJUSTED TO THE NEEDS OF THE HTML5 CLIENT
+    // -redirect=false //so that we get xml returned instead of being redirected to the meeting
+    // -password=ap //at this stage the html5 client is viewer only (Feb 2015)
     public String getJoinURLHTML5(String username, String meetingID, String record, String welcome, Map<String, String> metadata, String xml) {
 
         String base_url_create = BigBlueButtonURL + "api/create?";
@@ -295,10 +295,10 @@ public class API {
                 .trim();
     }
 
-/////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////
     public String getJoinURLwithDynamicConfigXML(String username, String meetingID, String configXML) {
 
         String base_url_create = BigBlueButtonURL + "api/create?";
@@ -309,7 +309,8 @@ public class API {
         String voiceBridge_param = "&voiceBridge=" + (70000 + random.nextInt(9999));
 
         String url;
-    //
+        
+        //
         // When creating a meeting, the 'name' parameter is the name of the meeting (not to be confused with
         // the username).  For example, the name could be "Fred's meeting" and the meetingID could be "ID-1234312".
         //
@@ -340,7 +341,7 @@ public class API {
         }
 
         if (!doc.getElementsByTagName("returncode").item(0).getTextContent().trim().equals("SUCCESS")) {
-        //
+            //
             // Someting went wrong, return the error 
             //  
             return " " + url + "<br>" + doc.getElementsByTagName("messageKey").item(0).getTextContent()
@@ -350,7 +351,7 @@ public class API {
                     .trim();
         }
 
-    //
+        //
         // Looks good, now Attempt to send the ConfigXML file and get the token 
         //  
         String xml_param = "";
@@ -379,7 +380,7 @@ public class API {
 
         String configToken = "";
         if (!doc.getElementsByTagName("returncode").item(0).getTextContent().trim().equals("SUCCESS")) {
-        //
+            //
             // Someting went wrong, return the error 
             //  
             return " " + base_url_setConfigXML + "<br>" + doc.getElementsByTagName("messageKey").item(0).getTextContent().trim()
@@ -389,7 +390,7 @@ public class API {
             configToken = doc.getElementsByTagName("configToken").item(0).getTextContent().trim();
         }
 
-    //
+        //
         // And finally return a URL to join that meeting using the specific config.xml
         //  
         String join_parameters = "meetingID=" + urlEncode(meetingID) + "&fullName=" + urlEncode(username) + "&password=mp&configToken=" + configToken;
@@ -398,8 +399,8 @@ public class API {
 
     }
 
-// From the list of parameters we want to pass. Creates a base string with parameters
-// sorted in alphabetical order for us to sign.
+    // From the list of parameters we want to pass. Creates a base string with parameters
+    // sorted in alphabetical order for us to sign.
     public String createBaseString(Map<String, String[]> params) {
         StringBuffer csbuf = new StringBuffer();
         SortedSet<String> keys = new TreeSet<String>(params.keySet());
@@ -422,9 +423,9 @@ public class API {
         return csbuf.toString();
     }
 
-//
-// Create a meeting and return a URL to join it as moderator
-//
+    //
+    // Create a meeting and return a URL to join it as moderator
+    //
     public String getJoinURLXML(String username, String meetingID, String welcome, String xml) {
         String base_url_create = BigBlueButtonURL + "api/create?";
         String base_url_join = BigBlueButtonURL + "api/join?";
@@ -476,9 +477,9 @@ public class API {
                 .trim();
     }
 
-//
-// getJoinURLViewer() -- Get the URL to join a meeting as viewer
-//
+    //
+    // getJoinURLViewer() -- Get the URL to join a meeting as viewer
+    //
     public String getJoinURLViewer(String username, String meetingID) {
         String base_url_join = BigBlueButtonURL + "api/join?";
         String join_parameters = "meetingID=" + urlEncode(meetingID)
@@ -488,9 +489,9 @@ public class API {
                 + checksum("join" + join_parameters + salt);
     }
 
-//
-// getURLisMeetingRunning() -- return a URL that the client can use to poll for whether the given meeting is running
-//
+    //
+    // getURLisMeetingRunning() -- return a URL that the client can use to poll for whether the given meeting is running
+    //
     public String getURLisMeetingRunning(String meetingID) {
         String meetingParameters = "meetingID=" + urlEncode(meetingID);
         return BigBlueButtonURL + "api/isMeetingRunning?" + meetingParameters
@@ -498,9 +499,9 @@ public class API {
                 + checksum("isMeetingRunning" + meetingParameters + salt);
     }
 
-//
-// isMeetingRunning() -- check the BigBlueButton server to see if the meeting is running (i.e. there is someone in the meeting)
-//
+    //
+    // isMeetingRunning() -- check the BigBlueButton server to see if the meeting is running (i.e. there is someone in the meeting)
+    //
     public String isMeetingRunning(String meetingID) {
         Document doc = null;
         try {
@@ -563,10 +564,10 @@ public class API {
                 + checksum("getMeetings" + meetingParameters + salt);
     }
 
-//
-// Calls getMeetings to obtain the list of meetings, then calls getMeetingInfo for each meeting
-// and concatenates the result.
-//
+    //
+    // Calls getMeetings to obtain the list of meetings, then calls getMeetingInfo for each meeting
+    // and concatenates the result.
+    //
     public String getMeetings() {
         try {
             Document doc = parseXml(getURL(getMeetingsURL()));
@@ -633,11 +634,11 @@ public class API {
                 .trim();
     }
 
-//////////////////////////////////////////////////////////////////////////////
-//
-// Added for BigBlueButton 0.8
-//
-//////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////
+    //
+    // Added for BigBlueButton 0.8
+    //
+    //////////////////////////////////////////////////////////////////////////////
     public String getRecordingsURL(String meetingID) {
         String record_parameters = "meetingID=" + urlEncode(meetingID);
         return BigBlueButtonURL + "api/getRecordings?" + record_parameters + "&checksum="
@@ -753,11 +754,11 @@ public class API {
         }
     }
 
-//////////////////////////////////////////////////////////////////////////////
-//
-// Helper Routines
-//
-//////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////
+    //
+    // Helper Routines
+    //
+    //////////////////////////////////////////////////////////////////////////////
     public String getMetaData(Map<String, String> metadata) {
         String metadata_params = "";
 
@@ -770,9 +771,9 @@ public class API {
         return metadata_params;
     }
 
-//
-// checksum() -- Return a checksum based on SHA-1 digest
-//
+    //
+    // checksum() -- Return a checksum based on SHA-1 digest
+    //
     public static String checksum(String s) {
         String checksum = "";
         try {
@@ -783,9 +784,9 @@ public class API {
         return checksum;
     }
 
-//
-// getURL() -- fetch a URL and return its contents as a String
-//
+    //
+    // getURL() -- fetch a URL and return its contents as a String
+    //
     public static String getURL(String url) {
         StringBuffer response = null;
 
@@ -883,9 +884,9 @@ public class API {
         }
     }
 
-//
-// parseXml() -- return a DOM of the XML
-//
+    //
+    // parseXml() -- return a DOM of the XML
+    //
     public static Document parseXml(String xml)
             throws ParserConfigurationException, IOException, SAXException {
         DocumentBuilderFactory docFactory = DocumentBuilderFactory
@@ -895,9 +896,9 @@ public class API {
         return doc;
     }
 
-//
-// urlEncode() -- URL encode the string
-//
+    //
+    // urlEncode() -- URL encode the string
+    //
     public static String urlEncode(String s) {
         try {
             return URLEncoder.encode(s, "UTF-8");
@@ -907,9 +908,9 @@ public class API {
         return "";
     }
 
-//
-//encodeURIComponent() -- Java encoding similiar to JavaScript encodeURIComponent
-//
+    //
+    //encodeURIComponent() -- Java encoding similiar to JavaScript encodeURIComponent
+    //
     public static String encodeURIComponent(String component) {
         String result = null;
 
