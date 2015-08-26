@@ -43,6 +43,18 @@ public class VideoController {
         return "/video/admin/videoarchive";        
     }
     
+    // GET BROADCAST LOGIN PAGE
+    @RequestMapping("/video/login")
+    public String getVideoBroadcastLoginPage(Map<String, Object> map) {        
+                
+        Puser CurrentUser = GetCurrentUser();
+        
+        map.put("UserData", CurrentUser);
+        map.put("LeftPanel", 1);
+        
+        return "/video/login";        
+    }
+    
     // GET CURRENT USER FOR INDEX PAGE INFO
     private Puser GetCurrentUser()
     {
