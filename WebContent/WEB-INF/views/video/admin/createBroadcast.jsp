@@ -14,12 +14,15 @@
 
 <jsp:include page="/WEB-INF/views/template/default/header.jsp" /> 
 
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery.datetimepicker.css" type="text/css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.datetimepicker.js"></script> 
+
 <div class="col-md-9 column">
     <jsp:include page="/WEB-INF/views/template/default/top_bar.jsp" />
 
     <div class="content-block-center">
         <div id="page_title" class="content-block-center-head">
-            <span>Онлайн трансляция</span>
+            <span><spring:message code="label.broadcast" /></span>
         </div>
         <div class="content-block-center-item">
             <div class="content-block-center-item-head">
@@ -27,38 +30,45 @@
                     
                 </div>
                 <div class="content-block-center-item-head-theme">
-                    <span>Трансляция</span>
+                    <span><spring:message code="label.broadcast" /></span>
                 </div>
             </div>
             <div class="content-block-center-item-content">
-                <div id='mediaspace1'>Онлайн видео трансляция</div>
-                <form:form method="post" action="${pageContext.request.contextPath}/admin/menu_editor/menu_edit/save" commandName="broadcast" role="form">
+               <form:form method="post" action="${pageContext.request.contextPath}/admin/broadcast/create/save" commandName="broadcast" role="form">
                     <div class="form-group">
                         <form:hidden path="id" class="inp-form" />
                         <label for="image"> <spring:message code="label.image" />:</label>
-                        <form:input path="image" class="form-control"></form:input>
-                        <label for="author"> <spring:message code="label.image" />:</label>
+                        <div class="input-group">
+                            <form:input path="image" class="form-control"></form:input>
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button"><spring:message code="label.upload" /></button>
+                            </span>
+                        </div>
+                        <label for="author"> <spring:message code="label.author" />:</label>
                         <form:input path="author" class="form-control"></form:input>
-                        <label for="title"> <spring:message code="label.image" />:</label>
+                        <label for="title"> <spring:message code="label.title" />:</label>
                         <form:input path="title" class="form-control"></form:input>
-                        <label for="meetingID"> <spring:message code="label.image" />:</label>
+                        <label for="meetingID"> <spring:message code="label.meetingID" />:</label>
                         <form:input path="meetingID" class="form-control"></form:input>
                         <label for="description"> <spring:message code="label.description" />:</label>
                         <form:textarea id="editor1" path="description" class="form-control"/>
-                        <label for="creationDate"> <spring:message code="label.image" />:</label>
-                        <form:input path="creationDate" class="form-control"></form:input>
-                        <form:hidden path="startDate" class="inp-form" />
+                        <label for="creationDate"> <spring:message code="label.date" />:</label>
+                        <form:input id="datetime" path="creationDate" class="form-control"></form:input>
+                        <label for="startDate"> <spring:message code="label.startdate" />:</label>
+                        <form:input id="datetime2" path="startDate" class="form-control"></form:input>
                         <form:hidden path="endDate" class="inp-form" />
                         <form:hidden path="startURL" class="inp-form" />
                         <form:hidden path="joinURL" class="inp-form" />                        
                     </div>
+                        <input type="submit"  value="Сохранить" class="btn btn-success" />                  
                 </form:form>
                 <ckeditor:replace replace="editor1" basePath="${pageContext.request.contextPath}/resources/ckeditor/" />
-                
             </div>
         </div>
     </div>
-
+<script type="text/javascript">
+    $(function() {jQuery('#datetime').datetimepicker();jQuery('#datetime2').datetimepicker();});
+</script>
 
 </div>
 

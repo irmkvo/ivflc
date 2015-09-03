@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/leftbar.css" type="text/css" title="default" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery.mCustomScrollbar.css" type="text/css" title="default" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css" type="text/css" title="default" />
-         
+        
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/inji_inversion_menu.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.mCustomScrollbar.js"></script>

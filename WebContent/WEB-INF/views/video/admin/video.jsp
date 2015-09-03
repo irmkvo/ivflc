@@ -36,23 +36,21 @@
                 </div>
             </div>
             <div class="content-block-center-item-content">
-                <script type='text/javascript' src='jwplayer.js'></script>    
-
-                <script type='text/javascript' src='${pageContext.request.contextPath}/resources/player/jwplayer.js'></script>
-
-                <div id='mediaspace1'>Онлайн видео трансляция</div>
-
-                <script type='text/javascript'>
-                    jwplayer('mediaspace1').setup({
-                        'flashplayer': '${pageContext.request.contextPath}/resources/player/player.swf',
-                        'file': 'ib1',
-                        'streamer': 'rtmp://192.168.112.60/live/',
-                        'controlbar': 'bottom',
-                        'bufferlength': '1',
-                        'width': '435',
-                        'height': '400'
-                    });
-                </script>
+                <input type="button" class="btn btn-primary btn-lg btn-block" value="Добавить" id="" name="" onClick="window.location='${pageContext.request.contextPath}/admin/broadcast/create/654654'" />
+                <table class="table table-striped table-hover" cellspasing="0" cellpadding="0" border="0">
+                    <c:forEach items="${Broadcasts}" var="brdc" >
+                        <tr>
+                            <td>
+                                <a href="${brdc.getJoinURL()}" >
+                                    <c:out value="${brdc.getDescription()}" />
+                                </a>
+                            </td>
+                            <td>
+                                <c:out value="${brdc.getTitle()}" />
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </table>
             </div>
         </div>
     </div>

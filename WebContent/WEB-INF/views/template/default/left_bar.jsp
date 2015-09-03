@@ -28,7 +28,7 @@
                     <div class="left-block-content-profile-item-left">
                         <div class="left-block-content-profile-item-left-photo-bg">
                             <a href="#" style='color: #e1523d;text-decoration: underline;'>
-                                <div class="left-block-content-profile-item-left-photo" style='background-image: url("/media/profile_images/"), url("");'>
+                                <div class="left-block-content-profile-item-left-photo" style='background-image: url("${pageContext.request.contextPath}/resources/media/profile_images/"), url("");'>
                                     
                                 </div>
                             </a>
