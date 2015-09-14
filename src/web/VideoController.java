@@ -56,7 +56,7 @@ public class VideoController {
             brdcTemp.setJoinURL(broadcastAPI.getJoinURLViewer(CurrentUser.getUserLogin(), brdcTemp.getMeetingID()));
         }
 
-        map.put("Broadcasts", brdc);
+        map.put("brdcList", brdc);
         map.put("UserData", CurrentUser);
         map.put("LeftPanel", 1);
 
@@ -146,7 +146,7 @@ public class VideoController {
 
         API broadcastAPI = new API();
 
-        broadcast.setMeetingID(UUID.randomUUID().toString());
+        //broadcast.setMeetingID(UUID.randomUUID().toString());
 
         Map<String, String> metadata = new HashMap<String, String>();
 
@@ -154,8 +154,8 @@ public class VideoController {
         metadata.put("email", broadcast.getAuthor());
         metadata.put("title", broadcast.getMeetingID());
 
-        broadcast.setJoinURL(broadcastAPI.getJoinURL(broadcast.getAuthor(), broadcast.getMeetingID(), "true", broadcast.getDescription(), metadata, null));
-        broadcast.setStartURL(broadcastAPI.getJoinURL(broadcast.getAuthor(), broadcast.getMeetingID(), "true", broadcast.getDescription(), metadata, null));
+        broadcast.setJoinURL("");
+        broadcast.setStartURL(broadcastAPI.getJoinURL(broadcast.getAuthor(), broadcast.getMeetingID(), "true", broadcast.getDescription(), null, null));
 
         broadcast.setCreationDate(new Date());
         broadcast.setStartDate(new Date());
@@ -163,9 +163,19 @@ public class VideoController {
 
         broadcastService.addBroadcast(broadcast);
 
+        Puser CurrentUser = GetCurrentUser();
+
+        List<Broadcasts> brdc = broadcastService.getBroadcasts();
+
+        for (Broadcasts brdcTemp : brdc) {
+            brdcTemp.setJoinURL(broadcastAPI.getJoinURLViewer(CurrentUser.getUserLogin(), brdcTemp.getMeetingID()));
+        }
+
+        map.put("brdcList", brdc);
+        map.put("UserData", CurrentUser);
         map.put("LeftPanel", 1);
 
-        return "/video";
+        return "/video/admin/video";
     }
 
     // GET CURRENT USER FOR INDEX PAGE INFO

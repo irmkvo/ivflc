@@ -10,19 +10,12 @@ package video.api;
  * @author kvo
  */
 import java.text.SimpleDateFormat;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.Transformer;
 import org.w3c.dom.Element;
-import com.sun.org.apache.xerces.internal.dom.ChildNode;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import java.util.*;
 import java.io.*;
 import java.net.*;
-import javax.crypto.*;
 import javax.xml.parsers.*;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.w3c.dom.Document;
@@ -32,7 +25,7 @@ public class API {
 
     String salt = "a199ca24d828e53026122d306f873674";
 
-    String BigBlueButtonURL = "http://192.168.112.60/bigbluebutton/";
+    String BigBlueButtonURL = "http://188.0.133.52/bigbluebutton/";
 
     public String createMeeting(String meetingID, String welcome, String moderatorPassword, String moderatorWelcomeMsg, String viewerPassword, Integer voiceBridge, String logoutURL) {
         String base_url_create = BigBlueButtonURL + "api/create?";
@@ -158,25 +151,11 @@ public class API {
         Random random = new Random();
         String voiceBridge_param = "&voiceBridge=" + (70000 + random.nextInt(9999));
 
-	//
-        // When creating a meeting, the 'name' parameter is the name of the meeting (not to be confused with
-        // the username).  For example, the name could be "Fred's meeting" and the meetingID could be "ID-1234312".
-        //
-        // While name and meetingID should be different, we'll keep them the same.  Why?  Because calling api/create? 
-        // with a previously used meetingID will return same meetingToken (regardless if the meeting is running or not).
-        //
-        // This means the first person to call getJoinURL with meetingID="Demo Meeting" will actually create the
-        // meeting.  Subsequent calls will return the same meetingToken and thus subsequent users will join the same
-        // meeting.
-        //
-        // Note: We're hard-coding the password for moderator and attendee (viewer) for purposes of demo.
-        //
-        String create_parameters = "name=" + urlEncode(meetingID)
+	String create_parameters = "name=" + urlEncode(meetingID)
                 + "&meetingID=" + urlEncode(meetingID) + welcome_param + voiceBridge_param
                 + "&attendeePW=ap&moderatorPW=mp"
                 + "&record=" + record + getMetaData(metadata);
 
-        // Attempt to create a meeting using meetingID
         Document doc = null;
         try {
             String url = base_url_create + create_parameters
@@ -191,9 +170,6 @@ public class API {
         if (doc.getElementsByTagName("returncode").item(0).getTextContent()
                 .trim().equals("SUCCESS")) {
 
-		//
-            // Looks good, now return a URL to join that meeting
-            //  
             String join_parameters = "meetingID=" + urlEncode(meetingID)
                     + "&fullName=" + urlEncode(username) + "&password=mp";
 
