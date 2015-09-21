@@ -8,11 +8,8 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
-<jsp:include page="/WEB-INF/header_admin.jsp" />
-<center>
-<div class="main" id="main-two-columns">
-    <h2 >Список пользователей</h2>
-        <c:if test="${!empty listUsers}">
+
+        <c:if test="${!empty userList}">
             <table class="table">
                 <tr>
                     <th><a href="">ID</a></th>
@@ -27,7 +24,7 @@
                     <th><a href="">Телефон</a></th>
                     <th ><a href="">Options</a></th>
                 </tr>
-                <c:forEach items="${listUsers}" var="users">
+                <c:forEach items="${userList}" var="users">
                     <tr class="even">
                         <td >${users.id}</td>
                         <td >${users.userFname}</td>
@@ -48,5 +45,3 @@
             </table>
         </c:if>
     <a href="${pageContext.request.contextPath}/admin/usershow/add" title="Создать"><input class="btn" align="left" type="submit" value="Создать" /></a>
-</div>
-</center>

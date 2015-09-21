@@ -63,7 +63,7 @@
                         <div style="position:relative">
                             <ul>
                                 <li>
-                                    <a title="Моя страница" target="_parent" href="#" style="color: #fff;display: block;font-size: 12px;line-height: 24px;padding-left: 5px;text-align: left;text-decoration: none;">
+                                    <a title="Моя страница" target="_parent" href="${pageContext.request.contextPath}/admin/administrator" style="color: #fff;display: block;font-size: 12px;line-height: 24px;padding-left: 5px;text-align: left;text-decoration: none;">
                                         Моя страница
                                     </a>
                                 </li>

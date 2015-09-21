@@ -13,7 +13,9 @@
     
 <div class="col-md-9 column">
     <jsp:include page="/WEB-INF/views/template/default/top_bar.jsp" />
-    <jsp:include page="/WEB-INF/views/template/default/content.jsp" />
+    
+    <jsp:include page="${loadContent}" />
+    
     <c:if test="${!empty RightPanel}">
         <c:if test="${RightPanel == 1}">
             <jsp:include page="/WEB-INF/views/template/default/right_bar.jsp" />

@@ -51,7 +51,7 @@ public class BroadcastDAOImpl implements BroadcastDAO {
 
     @Override
     public void deleteBroadcastByID(Broadcasts brdc) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        sessionFactory.getCurrentSession().delete(brdc);
     }
     
 }

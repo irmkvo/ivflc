@@ -30,6 +30,9 @@ public class MainPage {
         Puser CurrentUser = GetCurrentUser();
 
         map.put("UserData", CurrentUser);
+        
+        map.put("loadContent", "/WEB-INF/views/template/default/content.jsp");
+        
         map.put("LeftPanel", 1);
         map.put("RightPanel", 0);
 
@@ -59,6 +62,9 @@ public class MainPage {
         Puser CurrentUser = GetCurrentUser();
 
         map.put("UserData", CurrentUser);
+        
+        map.put("loadContent", "/WEB-INF/views/template/default/content.jsp");
+        
         map.put("LeftPanel", 1);
         map.put("RightPanel", 0);
 

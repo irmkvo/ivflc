@@ -9,11 +9,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<jsp:include page="/WEB-INF/views/template/default/header.jsp" />  
 
-<div class="col-md-9 column">
-
-    <jsp:include page="/WEB-INF/views/template/default/top_bar.jsp" />
 
     <div class="content-block-center">
         <div id="page_title" class="content-block-center-head">
@@ -55,14 +51,4 @@
             </div>
         </div>
     </div>
-
-    <c:if test="${!empty RightPanel}">
-        <c:if test="${RightPanel == 1}">
-            <jsp:include page="/WEB-INF/views/template/default/right_bar.jsp" />
-        </c:if>
-    </c:if>
-</div>
-
-<jsp:include page="/WEB-INF/views/template/default/footer.jsp" /> 
-
-</div>
+   

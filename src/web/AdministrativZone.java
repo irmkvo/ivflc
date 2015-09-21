@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,7 @@ import service.postgres.UsersService;
  *
  * @author kvo
  */
+@Controller
 public class AdministrativZone {
     
     @Autowired
@@ -36,6 +38,24 @@ public class AdministrativZone {
     PagesService pagesService;
     
     // ADMINISTRATOR METHODS
+    // ADMINISTRATOR METHODS
+    // ADMIN PANEL
+    @RequestMapping("/admin/administrator")
+    public String getAdministrator(Map<String, Object> map) {        
+        
+        Puser CurrentUser = GetCurrentUser();
+
+        map.put("UserData", CurrentUser);
+        
+        map.put("loadContent", "/WEB-INF/views/admin/admin_panel/administrator.jsp");
+        
+        map.put("LeftPanel", 1);
+        map.put("RightPanel", 0);
+        
+        return "/admin/index";
+        
+    }
+    
     // MENU LIST
     @RequestMapping("/admin/menu_editor/menu_list")
     public String getMenuList(Map<String, Object> map) {
@@ -47,10 +67,13 @@ public class AdministrativZone {
         Puser CurrentUser = GetCurrentUser();
 
         map.put("UserData", CurrentUser);
+        
+        map.put("loadContent", "/WEB-INF/views/admin/menu_editor/menu_list.jsp");
+        
         map.put("LeftPanel", 1);
         map.put("RightPanel", 0);
         
-        return "/admin/menu_editor/menu_list";
+        return "/admin/index";
         
     }
     // MENU EDITOR
@@ -66,10 +89,13 @@ public class AdministrativZone {
         Puser CurrentUser = GetCurrentUser();
 
         map.put("UserData", CurrentUser);
+        
+        map.put("loadContent", "/WEB-INF/views/admin/menu_editor/menuEditor.jsp");
+        
         map.put("LeftPanel", 1);
         map.put("RightPanel", 0);
         
-        return "/admin/menu_editor/menuEditor";
+        return "/admin/index";
     }
     // SAVE MENU CHANGES
     @RequestMapping("/admin/menu_editor/menu_edit/save")
@@ -84,10 +110,35 @@ public class AdministrativZone {
         Puser CurrentUser = GetCurrentUser();
 
         map.put("UserData", CurrentUser);
+        
+        map.put("loadContent", "/WEB-INF/views/admin/menu_editor/menu_list.jsp");
+        
         map.put("LeftPanel", 1);
         map.put("RightPanel", 0);
         
-        return "redirect:../menu_list";
+        return "redirect:../index";
+    }
+    
+    // USERS EDITOR ============================================================
+    // USERS LIST
+    @RequestMapping("/admin/user_list")
+    public String getUsersList(Map<String, Object> map) {
+        
+        List<Puser> userList = this.userService.listUser();
+        
+        map.put("userList", userList);
+        
+        Puser CurrentUser = GetCurrentUser();
+
+        map.put("UserData", CurrentUser);
+        
+        map.put("loadContent", "/WEB-INF/views/admin/user_editor/userlist.jsp");
+        
+        map.put("LeftPanel", 1);
+        map.put("RightPanel", 0);
+        
+        return "/admin/index";
+        
     }
     
     // GET CURRENT USER FOR INDEX PAGE INFO
