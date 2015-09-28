@@ -8,6 +8,7 @@ package dao.postgres;
 import domain.postgres.MenuAcces;
 import domain.postgres.MenuItem;
 import domain.postgres.Menu;
+import domain.postgres.Roles;
 import java.util.List;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,6 +82,16 @@ public class MenuDAOImpl implements MenuDAO{
     } // Получить список пунктов меню по сопоставлению ID Меню
 
     @Override
+    public List<MenuItem> GetMenuItemListByRole(Roles role) {
+        return sessionFactory.getCurrentSession().createQuery("from MenuItem where role = :role").setParameter("role", role).list();
+    } // Получить список пунктов меню по сопоставлению Роли Меню
+    
+    @Override
+    public List<MenuItem> GetMenuItemListByRoleAndMenu(Menu menu, Roles role) {
+        return sessionFactory.getCurrentSession().createQuery("from MenuItem where menu = :menu AND role = :role").setParameter("menu", menu).setParameter("role", role).list();
+    } // Получить список пунктов меню по сопоставлению Роли Меню
+    
+    @Override
     public List<MenuAcces> GetMenuAccesList() {
         return sessionFactory.getCurrentSession().createQuery("from MenuAcces").list();
     }// Получить список Контролей Доступа
@@ -108,7 +119,6 @@ public class MenuDAOImpl implements MenuDAO{
     @Override
     public List<MenuAcces> GetMenuAccesListByMenuID(int ID) {
         return sessionFactory.getCurrentSession().createQuery("from MenuAcces where MenuAcces_menu_id = :id").setParameter("id", ID).list();
-    }// Получить список Контролей Доступа по Меню ID
-    
+    }// Получить список Контролей Доступа по Меню ID      
     
 }

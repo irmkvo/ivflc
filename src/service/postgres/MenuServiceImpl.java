@@ -10,6 +10,7 @@ import dao.postgres.UsersDAO;
 import domain.postgres.MenuAcces;
 import domain.postgres.MenuItem;
 import domain.postgres.Menu;
+import domain.postgres.Roles;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -87,6 +88,16 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
+    public List<MenuItem> GetMenuItemListByRole(Roles role) {
+        return menuDAO.GetMenuItemListByRole(role);
+    }
+    
+    @Override
+    public List<MenuItem> GetMenuItemListByRoleAndMenu(Menu menu, Roles role) {
+        return menuDAO.GetMenuItemListByRoleAndMenu(menu, role);
+    }
+    
+    @Override
     public List<MenuAcces> GetMenuAccesList() {
         return menuDAO.GetMenuAccesList();
     }
@@ -114,6 +125,5 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public List<MenuAcces> GetMenuAccesListByMenuID(int ID) {
        return menuDAO.GetMenuAccesListByMenuID(ID);
-    }
-    
+    }    
 }

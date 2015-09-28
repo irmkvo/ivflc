@@ -8,6 +8,7 @@ package dao.postgres;
 import domain.postgres.MenuAcces;
 import domain.postgres.MenuItem;
 import domain.postgres.Menu;
+import domain.postgres.Roles;
 import java.util.List;
 
 /**
@@ -41,6 +42,9 @@ public interface MenuDAO {
 
     public List<MenuItem> GetMenuItemListByMenuID(int ID); // Получить Пукты Меню
     
+    public List<MenuItem> GetMenuItemListByRole(Roles role); // Получить Пукты Меню
+    
+    public List<MenuItem> GetMenuItemListByRoleAndMenu(Menu menu, Roles role); // Получить Пукты Меню
     
     public List<MenuAcces> GetMenuAccesList(); // Получить список Контролей Доступа
     

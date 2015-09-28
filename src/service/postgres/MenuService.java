@@ -8,6 +8,7 @@ package service.postgres;
 import domain.postgres.MenuAcces;
 import domain.postgres.MenuItem;
 import domain.postgres.Menu;
+import domain.postgres.Roles;
 import java.util.List;
 
 /**
@@ -39,6 +40,9 @@ public interface MenuService {
 
     public List<MenuItem> GetMenuItemListByMenuID(int ID);
     
+    public List<MenuItem> GetMenuItemListByRole(Roles role); // Получить Пукты Меню
+    
+    public List<MenuItem> GetMenuItemListByRoleAndMenu(Menu menu, Roles role); // Получить Пукты Меню
     
     public List<MenuAcces> GetMenuAccesList();
     

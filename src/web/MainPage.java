@@ -28,8 +28,6 @@ public class MainPage {
     public String getPageOnRole(Map<String, Object> map) {
 
         Puser CurrentUser = GetCurrentUser();
-
-        map.put("UserData", CurrentUser);
         
         map.put("loadContent", "/WEB-INF/views/template/default/content.jsp");
         
@@ -57,11 +55,7 @@ public class MainPage {
 
     // GET ADMIN MAIN PAGE
     @RequestMapping("/admin/index")
-    public String getAdministrativPanel(Map<String, Object> map) {
-                        
-        Puser CurrentUser = GetCurrentUser();
-
-        map.put("UserData", CurrentUser);
+    public String getAdministrativPanel(Map<String, Object> map) {                        
         
         map.put("loadContent", "/WEB-INF/views/template/default/content.jsp");
         

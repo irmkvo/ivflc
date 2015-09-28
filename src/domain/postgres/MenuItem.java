@@ -15,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -45,7 +46,10 @@ public class MenuItem implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "menuitem_page_id")
     private Pages page;
-    
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "menuitem_role_id")
+    private Roles role;
+
     public MenuItem() {
     }
 
@@ -91,6 +95,14 @@ public class MenuItem implements Serializable {
 
     public void setPage(Pages page) {
         this.page = page;
+    }
+    
+    public Roles getRole() {
+        return role;
+    }
+
+    public void setRole(Roles role) {
+        this.role = role;
     }
     
     @Override
