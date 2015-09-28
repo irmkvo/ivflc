@@ -63,6 +63,7 @@
                                         <button type="button" class="btn btn-primary btn-xs btn-block" value="<spring:message code="label.brdcstart" />" onClick="window.location = '${brdc.startURL}'" ><spring:message code="label.brdcstart" /></button>
                                         <button type="button" class="btn btn-danger btn-xs btn-block" value="<spring:message code="label.delete" />" onClick="window.location = '${pageContext.request.contextPath}/admin/broadcast/delete/${brdc.id}'" ><spring:message code="label.delete" /></button>
                                     </sec:authorize>
+                                    <button type="button" class="btn btn-primary btn-xs btn-block" value="<spring:message code="label.brdcstart" />" onClick="window.location = '${brdc.loginURL}'" ><spring:message code="label.logining" /></button>
                                 </td>
                             </tr>
                         </c:forEach>   

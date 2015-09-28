@@ -58,6 +58,7 @@
                         <form:input id="datetime2" path="startDate" class="form-control"></form:input>
                         <form:hidden path="endDate" class="inp-form" />
                         <form:hidden path="startURL" class="inp-form" />
+                        <form:hidden path="loginURL" class="inp-form" />
                         <form:hidden path="joinURL" class="inp-form" />                        
                     </div>
                         <input type="submit"  value="Сохранить" class="btn btn-success" />                  

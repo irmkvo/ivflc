@@ -47,13 +47,15 @@ public class Broadcasts implements Serializable{
     private String startURL;
     @Column(name = "joinURL")
     private String joinURL;
+    @Column(name = "loginURL")
+    private String loginURL;
     @Column(name = "meetingID")
     private String meetingID;
     
     public Broadcasts() {
     }
 
-    public Broadcasts(Integer id, String image, String author, String title, String description, Date creationDate, Date startDate, Date endDate, String startURL, String joinURL, String meetingID) {
+    public Broadcasts(Integer id, String image, String author, String title, String description, Date creationDate, Date startDate, Date endDate, String startURL, String joinURL, String loginURL, String meetingID) {
         this.id = id;
         this.image = image;
         this.author = author;
@@ -64,6 +66,7 @@ public class Broadcasts implements Serializable{
         this.endDate = endDate;
         this.startURL = startURL;
         this.joinURL = joinURL;
+        this.loginURL = loginURL;
         this.meetingID = meetingID;
     }
 
@@ -147,6 +150,14 @@ public class Broadcasts implements Serializable{
         this.joinURL = joinURL;
     }
 
+    public String getLoginURL() {
+        return loginURL;
+    }
+
+    public void setLoginURL(String loginURL) {
+        this.loginURL = loginURL;
+    }
+    
     public String getMeetingID() {
         return meetingID;
     }

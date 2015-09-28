@@ -134,7 +134,7 @@
                 </div>
                 <div class="left-block-content-links-item">
                     <span>
-                        <a title="Календарь мероприятий" target="_parent" href="#">Календарь мероприятий</a>
+                        <a title="Календарь мероприятий" target="_parent" href="${pageContext.request.contextPath}/schedule">Календарь мероприятий</a>
                     </span>
                     <div class="left-block-content-links-item-count">
                         <span>1</span>

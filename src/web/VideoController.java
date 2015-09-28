@@ -13,6 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,8 +21,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
+import pojo.VideoArchive;
 import service.postgres.BroadcastService;
 import service.postgres.UsersService;
 import video.api.API;
@@ -67,7 +67,7 @@ public class VideoController {
     public String getVideoLoginPageLogin(@RequestParam("meetingId") String meetingId
             , @RequestParam("login") String login
             , @RequestParam("pass") String pass
-            , Map<String, Object> map) {
+            , Map<String, Object> map, Model model) {
         
         API broadcastAPI = new API();
         
@@ -78,7 +78,7 @@ public class VideoController {
             String status = broadcastAPI.isMeetingRunning(brdc.getMeetingID());
 
             if (status.equalsIgnoreCase("true")) {
-                map.clear();
+                model.asMap().clear();
                 return "redirect:" + brdc.getJoinURL();
                 //return new ModelAndView(new RedirectView(brdc.getJoinURL(), true, true, false));
             } else {
@@ -116,18 +116,41 @@ public class VideoController {
     }
 
     // GET ARCHIV TRANSLATION
-
     @RequestMapping("/video/archive")
     public String getVideoArchivePage(Map<String, Object> map) {
 
         Puser CurrentUser = GetCurrentUser();
+        
+        List<Broadcasts> brdc = broadcastService.getBroadcasts();
 
+        map.put("loadContent", "/WEB-INF/views/video/admin/videoarchive.jsp");
+
+        map.put("brdcList", brdc);
         map.put("UserData", CurrentUser);
         map.put("LeftPanel", 1);
 
-        return "/video/admin/videoarchive";
+        return "/admin/index";
     }
 
+    // GET ARCHIV RECORD LIST
+    @RequestMapping("/video/archive/list/meetingId")
+    public String getVideoArchiveRecordsPage(@PathVariable("meetingId") String meetingId, Map<String, Object> map) {
+
+        Puser CurrentUser = GetCurrentUser();
+        
+        API broadcastAPI = new API();
+         
+        List<VideoArchive> records = broadcastAPI.getRecordingsObj(meetingId);
+        
+        map.put("loadContent", "/WEB-INF/views/video/admin/videoarchivelist.jsp");
+        
+        map.put("brdcRecordsList", records);
+        map.put("UserData", CurrentUser);
+        map.put("LeftPanel", 1);
+
+        return "/admin/index";
+    }
+    
     // VIDEO API PAGES
     // BROADCAST COMMAND
 
@@ -146,7 +169,7 @@ public class VideoController {
         if (command.equals("isRunning")) {
             status = broadcastAPI.isMeetingRunning(meetingID);
         } else if (command.equals("getRecords")) {
-            recordings = broadcastAPI.getRecordings("English 101,English 102,English 103,English 104,English 105,English 106,English 107,English 108,English 109,English 110");
+            recordings = broadcastAPI.getRecordings(meetingID);
         } else if (command.equals("publish") || command.equals("unpublish")) {
             recordingsURL = broadcastAPI.setPublishRecordings((command.equals("publish")) ? true : false, recordID);
         } else if (command.equals("delete")) {
@@ -195,7 +218,9 @@ public class VideoController {
         metadata.put("title", broadcast.getMeetingID());
 
         broadcast.setJoinURL("");
-        broadcast.setStartURL(broadcastAPI.getJoinURL(broadcast.getAuthor(), broadcast.getMeetingID(), "true", broadcast.getDescription(), null, null));
+        broadcast.setLoginURL("http://my.ivf.kz/video/login/" + broadcast.getMeetingID());
+        broadcast.setStartURL("");
+        // broadcastAPI.getJoinURL(broadcast.getAuthor(), broadcast.getMeetingID(), "true", broadcast.getDescription(), null, null)
 
         broadcast.setCreationDate(new Date());
         broadcast.setStartDate(new Date());
@@ -219,7 +244,7 @@ public class VideoController {
         return "/video/admin/video";
     }
 
-    // CREATE BROADCAST
+    // DELETE BROADCAST
     @RequestMapping("/admin/broadcast/delete/{ID}")
     public String deleteBroadcast(Map<String, Object> map,
             @PathVariable("ID") Integer ID) {
@@ -243,7 +268,35 @@ public class VideoController {
 
         return "/video/admin/video";
     }
-    
+    // START BROADCAST 
+    @RequestMapping(value = "/video/start/meetingId", method = RequestMethod.GET)
+    public String startBroadcast(@PathVariable("meetingId") String meetingId
+            , Model model) {
+        
+        API broadcastAPI = new API();
+        
+        Broadcasts brdc = broadcastService.getBroadcastByMeetingID(meetingId);
+        if (brdc != null) {
+            
+            String status = broadcastAPI.isMeetingRunning(brdc.getMeetingID());
+            
+            brdc.setStartURL(broadcastAPI.getJoinURL(brdc.getAuthor(), brdc.getMeetingID(), "true", brdc.getDescription(), null, null));
+            
+            if (status.equalsIgnoreCase("true")) {
+                model.asMap().clear();
+                return "redirect:" + brdc.getStartURL();
+                //return new ModelAndView(new RedirectView(brdc.getJoinURL(), true, true, false));
+            } else {
+                return "/video";
+                
+                //return model;
+            }
+        } else {
+            return "/video";
+            //return model;
+        }
+        
+    }
     // GET CURRENT USER FOR INDEX PAGE INFO
     private Puser GetCurrentUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();

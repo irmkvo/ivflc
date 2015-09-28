@@ -16,20 +16,20 @@
 <table class="table table-hover">
     <thead></thead>
     <tbody>
-        <c:forEach items="${brdcList}" var="brdc" >
+        <c:forEach items="${brdcRecordsList}" var="brdc" >
             <tr>
                 <td>          
                     <img src="${pageContext.request.contextPath}/resources/images/logo.png" class="img-thumbnail" width="100" height="100"/>                            
                 </td>
                 <td>
-                    <c:out value="${brdc.title}" />
+                    <c:out value="${brdc.name}" />
 
                     <a href="#" >
                         ${brdc.description}
                     </a>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-success btn-xs btn-block" value="<spring:message code="label.logining" />" onClick="window.location = '${pageContext.request.contextPath}/video/archive/list/${brdc.meetingId}'" ><spring:message code="label.logining" /></button>
+                    <button type="button" class="btn btn-success btn-xs btn-block" value="<spring:message code="label.logining" />" onClick="window.location = '${brdc.playback}'" ><spring:message code="label.logining" /></button>
                 </td>
             </tr>
         </c:forEach>   
