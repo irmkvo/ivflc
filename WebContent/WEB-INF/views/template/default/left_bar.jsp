@@ -5,6 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -36,6 +37,7 @@
                     </div>
                     <!-- PERSONAL INFORMATION PHOTO END -->
                     <!-- PERSONAL INFORMATION F.L. NAME AND ROLE START -->
+                    <tiles:importAttribute name="UserData" />
                     <div class="left-block-content-profile-item-right">
                         <a style="text-decoration: none;" href="#">
                             <p>
@@ -46,13 +48,14 @@
                                 ${UserData.userMname}
                             </p>
                         </a>
-                        Студент
+                        ${UserData.role.roleTitle}
                         <div class="left-block-content-profile-item-right-exit">
                             <a title="Выход" target="_parent" href='<c:url value="j_spring_security_logout" />' style='color: #e1523d;text-decoration: underline;'>
                                 выход
                             </a>
                         </div>
                     </div>
+                    
                     <!-- PERSONAL INFORMATION F.L. NAME AND ROLE END -->
                 </div>
                 <!-- PERSONAL INFORMATION END -->
@@ -61,27 +64,17 @@
                 <div class="left-block-content-profile-links">
                     <div class="left-block-content-profile-links-item">
                         <div style="position:relative">
+                            <tiles:importAttribute name="UserMenu" />
                             <ul>
-                                <li>
-                                    <a title="Моя страница" target="_parent" href="${pageContext.request.contextPath}/admin/administrator" style="color: #fff;display: block;font-size: 12px;line-height: 24px;padding-left: 5px;text-align: left;text-decoration: none;">
-                                        Моя страница
-                                    </a>
-                                </li>
-                                <li>
-                                    <a title="Все врачи" target="_parent" href="#" style="color: #fff;display: block;font-size: 12px;line-height: 24px;padding-left: 5px;text-align: left;text-decoration: none;">
-                                        Анализы                                            
-                                    </a>
-                                </li>
-                                <li>
-                                    <a title="Личные сообщения" target="_parent" href="#" style="color: #fff;display: block;font-size: 12px;line-height: 24px;padding-left: 5px;text-align: left;text-decoration: none;">
-                                        Личные сообщения                                            
-                                    </a>
-                                </li>
-                                <li>
-                                    <a title="Интересное" target="_parent" href="#" style="color: #fff;display: block;font-size: 12px;line-height: 24px;padding-left: 5px;text-align: left;text-decoration: none;">
-                                        Интересное
-                                    </a>
-                                </li>
+                                <c:forEach items="${UserMenu}" var="userMenuItem">
+                                    <c:if test="${userMenuItem.menuItemEnabled}">
+                                        <li>
+                                            <a title="${userMenuItem.menuItemtitle}" target="_parent" href="${pageContext.request.contextPath}${userMenuItem.page.pageurl}" style="color: #fff;display: block;font-size: 12px;line-height: 24px;padding-left: 5px;text-align: left;text-decoration: none;">
+                                                ${userMenuItem.menuItemtitle}
+                                            </a>
+                                        </li> 
+                                    </c:if>
+                                </c:forEach>
                             </ul>
                         </div>
                     </div>
@@ -127,64 +120,18 @@
             <div class="left-block-content-line-2"></div>
             <!-- MAIN MENU START -->
             <div class="left-block-content-links">
-                <div class="left-block-content-links-item">
-                    <span>
-                        <a title="Главная лента" target="_parent" href="#">Главная лента</a>
-                    </span>
-                </div>
-                <div class="left-block-content-links-item">
-                    <span>
-                        <a title="Календарь мероприятий" target="_parent" href="${pageContext.request.contextPath}/schedule">Календарь мероприятий</a>
-                    </span>
-                    <div class="left-block-content-links-item-count">
-                        <span>1</span>
-                    </div>
-                </div>
-                <div class="left-block-content-links-item">
-                    <span>
-                        <a title="Он-лайн трансляция" target="_parent" href="${pageContext.request.contextPath}/video">Онлайн трансляция</a>
-                    </span>
-                </div>
-                <div class="left-block-content-links-item">
-                    <span>
-                        <a title="Видеоматериалы" target="_parent" href="${pageContext.request.contextPath}/video/archive">Видеоматериалы</a>
-                    </span>
-                </div>
-                <div class="left-block-content-links-item">
-                    <span>
-                        <a title="Фотогалерея" target="_parent" href="#">Фотогалерея</a>
-                    </span>
-                </div>
-                <div class="left-block-content-links-item break" style="">
-                    <span>
-                        <a title="Группы" target="_parent" href="#">Группы</a>
-                    </span>
-                </div>
-                <div class="left-block-content-links-item">
-                    <span>
-                        <a title="Новое в моих группах" target="_parent" href="#">Новое в моих группах</a>
-                    </span>
-                </div>
-                <div class="left-block-content-links-item break">
-                    <span>
-                        <a title="Резюме и вакансии" target="_parent" href="#">Резюме и вакансии</a>
-                    </span>
-                </div>
-                <div class="left-block-content-links-item">
-                    <span>
-                        <a title="Опросы и исследования" target="_parent" href="#">Опросы и исследования</a>
-                    </span>
-                </div>
-                <div class="left-block-content-links-item">
-                    <span>
-                        <a title="Книги и журналы" target="_parent" href="#">Книги и журналы</a>
-                    </span>
-                </div>
-                <div class="left-block-content-links-item break">
-                    <span>
-                        <a title="Наши партнеры" target="_parent" href="#">Наши партнеры</a>
-                    </span>
-                </div>
+                <tiles:importAttribute name="MainMenu" />
+                <c:forEach items="${MainMenu}" var="mainMenuItem">
+                    <c:if test="${mainMenuItem.menuItemEnabled}">
+                        <div class="left-block-content-links-item <c:if test="${mainMenuItem.menuItemBreak}">break</c:if>">
+                                <span>
+                                    <a title="${mainMenuItem.menuItemtitle}" target="_parent" href="${pageContext.request.contextPath}${mainMenuItem.page.pageurl}">
+                                    ${mainMenuItem.menuItemtitle}
+                                </a>
+                            </span>
+                        </div>
+                    </c:if>
+                </c:forEach>
             </div>
             <!-- MAIN MENU END -->
         </div> 

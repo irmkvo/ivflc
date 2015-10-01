@@ -40,7 +40,7 @@ public class ScheduleController {
         map.put("LeftPanel", 1);
         map.put("RightPanel", 0);
         
-        return "/admin/index";
+        return "index";
     }
     
     // GET CURRENT USER FOR INDEX PAGE INFO

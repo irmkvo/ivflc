@@ -7,6 +7,7 @@ package web;
 
 import domain.postgres.Menu;
 import domain.postgres.MenuItem;
+import domain.postgres.Pages;
 import domain.postgres.Puser;
 import java.util.List;
 import java.util.Map;
@@ -46,7 +47,7 @@ public class AdministrativZone {
         map.put("LeftPanel", 1);
         map.put("RightPanel", 0);
         
-        return "/admin/index";
+        return "index";
         
     }
     
@@ -63,7 +64,7 @@ public class AdministrativZone {
         map.put("LeftPanel", 1);
         map.put("RightPanel", 0);
         
-        return "/admin/index";
+        return "index";
         
     }
     // MENU EDITOR
@@ -83,7 +84,7 @@ public class AdministrativZone {
         map.put("LeftPanel", 1);
         map.put("RightPanel", 0);
         
-        return "/admin/index";
+        return "index";
     }
     // SAVE MENU CHANGES
     @RequestMapping("/admin/menu_editor/menu_edit/save")
@@ -119,7 +120,7 @@ public class AdministrativZone {
         map.put("LeftPanel", 1);
         map.put("RightPanel", 0);
         
-        return "/admin/index";
+        return "index";
         
     }
     
@@ -137,7 +138,25 @@ public class AdministrativZone {
         map.put("LeftPanel", 1);
         map.put("RightPanel", 0);
         
-        return "/admin/index";
+        return "index";
         
     }    
+    
+    // PAGES EDITOR ============================================================
+    // PAGES LIST
+    @RequestMapping("/admin/pages_list")
+    public String getPagesList(Map<String, Object> map) {
+        
+        List<Pages> pagesList = this.pagesService.getPagesList();
+        
+        map.put("pagesList", pagesList);
+        
+        map.put("loadContent", "/WEB-INF/views/admin/pages_editor/pages_list.jsp");
+        
+        map.put("LeftPanel", 1);
+        map.put("RightPanel", 0);
+        
+        return "index";
+        
+    }
 }

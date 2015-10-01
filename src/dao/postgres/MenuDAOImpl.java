@@ -88,7 +88,7 @@ public class MenuDAOImpl implements MenuDAO{
     
     @Override
     public List<MenuItem> GetMenuItemListByRoleAndMenu(Menu menu, Roles role) {
-        return sessionFactory.getCurrentSession().createQuery("from MenuItem where menu = :menu AND role = :role").setParameter("menu", menu).setParameter("role", role).list();
+        return sessionFactory.getCurrentSession().createQuery("from MenuItem where menu = :menu AND role = :role ORDER BY menuItemPosition").setParameter("menu", menu).setParameter("role", role).list();
     } // Получить список пунктов меню по сопоставлению Роли Меню
     
     @Override

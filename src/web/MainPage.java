@@ -36,11 +36,11 @@ public class MainPage {
 
         if (CurrentUser != null) {
             if ("ROLE_ADMIN".equals(CurrentUser.getRole().getRoleName())) {
-                return "/admin/index";
+                return "index";
             } else if ("ROLE_ADMIN".equals(CurrentUser.getRole().getRoleName())) {
-                return "/admin/index";
+                return "index";
             } else {
-                return "/employers/index";
+                return "index";
             }
         } else {
             // ЕСЛИ НЕ АВТОРИЗОВАН ПЕРЕНАПРАВИТЬ НА СТРАНИЦУ АВТОРИЗАЦИИ
@@ -49,8 +49,11 @@ public class MainPage {
     }
 
     @RequestMapping("/")
-    public String home() {
-        return "/login";
+    public String home(Map<String, Object> map) {
+        
+        map.put("loadContent", "/WEB-INF/views/login.jsp");
+        
+        return "login";
     }
 
     // GET ADMIN MAIN PAGE
@@ -62,7 +65,7 @@ public class MainPage {
         map.put("LeftPanel", 1);
         map.put("RightPanel", 0);
 
-        return "/admin/index";
+        return "index";
     }
 
     // GET CURRENT USER FOR INDEX PAGE INFO

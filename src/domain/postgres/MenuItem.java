@@ -43,6 +43,14 @@ public class MenuItem implements Serializable {
     @Size(max = 255)
     @Column(name = "MenuItem_description")
     private String menuItemdescription;
+    
+    @Column(name = "MenuItem_enabled")
+    private boolean menuItemEnabled;
+    @Column(name = "MenuItem_break")
+    private boolean menuItemBreak;
+    @Column(name = "MenuItem_position")
+    private int menuItemPosition;
+    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "menuitem_page_id")
     private Pages page;
@@ -87,6 +95,30 @@ public class MenuItem implements Serializable {
 
     public void setMenuItemdescription(String menuItemdescription) {
         this.menuItemdescription = menuItemdescription;
+    }
+
+    public boolean isMenuItemEnabled() {
+        return menuItemEnabled;
+    }
+
+    public void setMenuItemEnabled(boolean menuItemEnabled) {
+        this.menuItemEnabled = menuItemEnabled;
+    }
+
+    public boolean isMenuItemBreak() {
+        return menuItemBreak;
+    }
+
+    public void setMenuItemBreak(boolean menuItemBreak) {
+        this.menuItemBreak = menuItemBreak;
+    }
+
+    public int getMenuItemPosition() {
+        return menuItemPosition;
+    }
+
+    public void setMenuItemPosition(int menuItemPosition) {
+        this.menuItemPosition = menuItemPosition;
     }
 
     public Pages getPage() {

@@ -31,7 +31,9 @@ img {
     position: fixed;
     width: 240px;
     z-index: 100;
-    box-shadow: 0 0 17px rgba(0,0,0,0.5);
+    -moz-box-shadow: 10px 10px 5px #888;
+    -webkit-box-shadow: 10px 10px 5px #888;
+    box-shadow: 10px 10px 5px #888;
 }
 .left-block-content-logo {
     background-color: #ffffff;
@@ -1083,6 +1085,9 @@ img {
 .content-block-center-item {
     background-color: #B2B0E8;
     margin: auto auto 15px;
+    -moz-box-shadow: 10px 10px 5px #888;
+    -webkit-box-shadow: 10px 10px 5px #888;
+    box-shadow: 10px 10px 5px #888;
     padding-bottom: 10px;
     padding-left: 10px;
     padding-right: 10px;
@@ -1164,7 +1169,10 @@ img {
 }
 
 .content-block-center-head span {
-    background-color: #fcfcfc;
+    background-color: #C8EAF2;
+    -moz-box-shadow: 10px 10px 5px #888;
+    -webkit-box-shadow: 10px 10px 5px #888;
+    box-shadow: 10px 10px 5px #888;
     padding-left: 10px;
     padding-right: 10px;
 }

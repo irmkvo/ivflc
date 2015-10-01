@@ -2,6 +2,8 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ include file="/WEB-INF/included.jsp" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,6 +13,19 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery.mCustomScrollbar.css" type="text/css" title="default" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css" type="text/css" title="default" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/calendar.css">
+        
+        <style type="text/css">
+            html { 
+                background: url(${pageContext.request.contextPath}/resources/images/bgmain.png) no-repeat center center fixed; 
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+              }
+            body {
+                background-color: transparent !important;
+            }
+        </style>
         
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/inji_inversion_menu.js"></script>
@@ -44,9 +59,4 @@
         <title>Личный кабинет</title>
     </head>
     <body>        
-        <div class="container">
-            <c:if test="${!empty LeftPanel}">
-                <c:if test="${LeftPanel == 1}">
-                    <jsp:include page="/WEB-INF/views/template/default/left_bar.jsp" />
-                </c:if>
-            </c:if>
+        <div class="container">            

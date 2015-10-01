@@ -49,18 +49,29 @@ public class VideoController {
     @RequestMapping("/video/login/{mettingId}")
     public String getVideoLoginPage(@PathVariable("mettingId") String meetingId, Map<String, Object> map) {
 
-        API broadcastAPI = new API();
-                        
-        String status = broadcastAPI.isMeetingRunning(meetingId);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         
-        if (status.equalsIgnoreCase("true")){
-            map.put("status", 1);
-            map.put("meetingId", meetingId);
+    
+        API broadcastAPI = new API();
+        
+        Broadcasts brdc = this.broadcastService.getBroadcastByMeetingID(meetingId);
+        
+        if (brdc != null) {
+            String status = broadcastAPI.isMeetingRunning(meetingId);
+
+            if (status.equalsIgnoreCase("true")) {
+                map.put("status", 1);
+                map.put("meetingId", meetingId);
+            } else {
+                map.put("status", 0);
+                String strDate = sdf.format(brdc.getStartDate());
+                map.put("brdcDate", strDate);
+            }
         } else {
-            map.put("status", 0);
+            map.put("status", 3);
         }
 
-        return "/video/broadcast/login";
+        return "meeting/login";
     }
     // GET BROADCAST LOGIN PAGE LOGIN
     @RequestMapping(value = "/video/login/login", method = RequestMethod.GET)
@@ -108,11 +119,13 @@ public class VideoController {
             brdcTemp.setJoinURL(broadcastAPI.getJoinURLViewer(CurrentUser.getUserLogin(), brdcTemp.getMeetingID()));
         }
 
+        map.put("loadContent", "/WEB-INF/views/video/broadcast/broadcast_list.jsp");
+             
         map.put("brdcList", brdc);
         map.put("UserData", CurrentUser);
         map.put("LeftPanel", 1);
 
-        return "/video/admin/video";
+        return "index";
     }
 
     // GET ARCHIV TRANSLATION

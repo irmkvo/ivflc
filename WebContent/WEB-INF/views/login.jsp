@@ -16,6 +16,16 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" />        
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/2.css" type="text/css" media="screen" title="default" />
 
+        <style type="text/css">
+            html { 
+                background: url(${pageContext.request.contextPath}/resources/images/family.jpg) no-repeat center center fixed; 
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+              }
+        </style>
+        
         <title><spring:message code="label.ivf" text="IVF" /></title>
     </head>
     <body>

@@ -46,7 +46,7 @@ body {
 
 form[role=login] {
 	color: #5d5d5d;
-        background: #dedcdf;
+        background: #fff;
 	padding: 26px;
 	border-radius: 10px;
 	-moz-border-radius: 10px;
