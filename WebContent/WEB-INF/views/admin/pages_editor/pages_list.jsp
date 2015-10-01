@@ -28,21 +28,21 @@
                     </span>
                 </div>
                 <div class="content-block-center-item-head-theme">
-                    <span>Список меню</span>
+                    <span>Список страниц</span>
                 </div>
             </div>
             <div class="content-block-center-item-content">
-                <input type="button" class="btn btn-primary btn-lg btn-block" value="Добавить" id="" name="" onClick="window.location='${pageContext.request.contextPath}/admin/menu_editor/menu_edit/654654'" />
+                <input type="button" class="btn btn-primary btn-lg btn-block" value="Добавить" id="" name="" onClick="window.location='${pageContext.request.contextPath}/admin/pages_editor/page_edit/654654'" />
                 <table class="table table-striped table-hover" cellspasing="0" cellpadding="0" border="0">
-                    <c:forEach items="${menuList}" var="menu" >
+                    <c:forEach items="${pagesList}" var="page" >
                         <tr>
                             <td>
-                                <a href="${pageContext.request.contextPath}/admin/menu_editor/menu_edit/${menu.menuid}" >
-                                    <c:out value="${menu.menuid}" />
+                                <a href="${pageContext.request.contextPath}/admin/pages_editor/page_edit/${page.pageid}" >
+                                    <c:out value="${page.pageid}" />
                                 </a>
                             </td>
                             <td>
-                                <c:out value="${menu.menutitle}" />
+                                <c:out value="${page.pagetitle}" />
                             </td>
                         </tr>
                     </c:forEach>

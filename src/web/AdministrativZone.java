@@ -159,4 +159,44 @@ public class AdministrativZone {
         return "index";
         
     }
+    
+    // MENU EDITOR
+    @RequestMapping("/admin/pages_editor/page_edit/{id}")
+    public String getEditPage(Map<String, Object> map, @PathVariable("id") Integer id) {
+        
+        Pages pageEdit = this.pagesService.getPagesByID(id);
+        if (pageEdit == null) {
+            pageEdit = new Pages();
+        }
+        map.put("pageEdit", pageEdit);
+        
+        map.put("loadContent", "/WEB-INF/views/admin/pages_editor/page_edit.jsp");
+        
+        map.put("LeftPanel", 1);
+        map.put("RightPanel", 0);
+        
+        return "index";
+    }
+    
+    // SAVE ЗФПУ CHANGES
+    @RequestMapping("/admin/pages_editor/page_edit/save")
+    public String getEditPageSave(@ModelAttribute(value = "pageEdit") Pages pageEdit, Map<String, Object> map) {
+        
+        if (pageEdit.getPageid() > 0) {
+            this.pagesService.updatePages(pageEdit);
+        } else {
+            this.pagesService.addPages(pageEdit);
+        }
+        
+        List<Pages> pagesList = this.pagesService.getPagesList();
+        
+        map.put("pagesList", pagesList);
+        
+        map.put("loadContent", "/WEB-INF/views/admin/pages_editor/pages_list.jsp");
+        
+        map.put("LeftPanel", 1);
+        map.put("RightPanel", 0);
+        
+        return "index";
+    }
 }

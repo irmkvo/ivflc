@@ -26,17 +26,19 @@ public class PagesDAOImpl implements PagesDAO {
     
     @Override
     public List<Pages> getPagesList() {
-       return sessionFactory.getCurrentSession().createQuery("from Pages").list(); 
+       return sessionFactory.getCurrentSession().createQuery("from Pages ORDER BY pageid").list(); 
     } // Получить список Страниц
   
     @Override
     public void addPages(Pages page) {
-      sessionFactory.getCurrentSession().saveOrUpdate(page);  
+        if (page != null) {
+            sessionFactory.getCurrentSession().save(page);
+        }
     } //Добавить Страницу
  
     @Override
     public void updatePages(Pages page) {
-        sessionFactory.getCurrentSession().saveOrUpdate(page);
+        sessionFactory.getCurrentSession().update(page);
     }//Обновить Страницы
 
     @Override

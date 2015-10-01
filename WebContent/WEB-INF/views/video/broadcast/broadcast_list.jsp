@@ -45,7 +45,7 @@
                             <td>
                                 <c:out value="${brdc.title}" />
 
-                                <a href="${brdc.joinURL}" >
+                                <a href="${pageContext.request.contextPath}/admin/broadcast/create/${brdc.id}" >
                                     ${brdc.description}
                                 </a>
                             </td>

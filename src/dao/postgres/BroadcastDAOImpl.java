@@ -6,7 +6,6 @@
 package dao.postgres;
 
 import domain.postgres.Broadcasts;
-import domain.postgres.Menu;
 import java.util.List;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,12 +30,12 @@ public class BroadcastDAOImpl implements BroadcastDAO {
 
     @Override
     public void addBroadcast(Broadcasts brdc) {
-         sessionFactory.getCurrentSession().saveOrUpdate(brdc);
+         sessionFactory.getCurrentSession().save(brdc);
     }
 
     @Override
     public void updateBroadcast(Broadcasts brdc) {
-        sessionFactory.getCurrentSession().saveOrUpdate(brdc);
+        sessionFactory.getCurrentSession().update(brdc);
     }
 
     @Override

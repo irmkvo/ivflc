@@ -53,6 +53,19 @@
                             </button>
                         </td>
                     </tr>
+                    <tr>
+                        <td>
+                            <button type="button" class="btn btn-primary btn-xs btn-block" onClick="window.location = '${pageContext.request.contextPath}/admin/pages_list'" >
+                                Редактор страниц
+                            </button>
+                        </td>
+                        <td>
+                            
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>

@@ -94,13 +94,13 @@ public class VideoController {
                 //return new ModelAndView(new RedirectView(brdc.getJoinURL(), true, true, false));
             } else {
                 map.put("status", 0);
-                return "/video/broadcast/login";
+                return "meeting/login";
                 
                 //return model;
             }
         } else {
             map.put("status", 2);
-            return "/video/broadcast/login";
+            return "meeting/login";
             //return model;
         }
         
@@ -210,9 +210,11 @@ public class VideoController {
             map.put("broadcast", brdc);
         }
 
+        map.put("loadContent", "/WEB-INF/views/video/admin/createBroadcast.jsp");
+        
         map.put("LeftPanel", 1);
 
-        return "/video/admin/createBroadcast";
+        return "index";
     }
 
     // SAVE/UPDATE BROADCAST
@@ -235,13 +237,17 @@ public class VideoController {
         broadcast.setStartURL("");
         // broadcastAPI.getJoinURL(broadcast.getAuthor(), broadcast.getMeetingID(), "true", broadcast.getDescription(), null, null)
 
-        broadcast.setCreationDate(new Date());
-        broadcast.setStartDate(new Date());
-        broadcast.setEndDate(new Date());
+//        broadcast.setCreationDate(new Date());
+//        broadcast.setStartDate(new Date());
+//        broadcast.setEndDate(new Date());
+        if (broadcast.getId() != null) {
+            if (broadcast.getId() > 0) {
+                broadcastService.updateBroadcast(broadcast);
+            } else {
+                broadcastService.addBroadcast(broadcast);
+            }
+        }   
         
-        if (!broadcast.getMeetingID().isEmpty()) {
-            broadcastService.addBroadcast(broadcast);
-        }
         Puser CurrentUser = GetCurrentUser();
 
         List<Broadcasts> brdc = broadcastService.getBroadcasts();
@@ -250,11 +256,13 @@ public class VideoController {
             brdcTemp.setJoinURL(broadcastAPI.getJoinURLViewer(CurrentUser.getUserLogin(), brdcTemp.getMeetingID()));
         }
 
+        map.put("loadContent", "/WEB-INF/views/video/broadcast/broadcast_list.jsp");
+        
         map.put("brdcList", brdc);
         map.put("UserData", CurrentUser);
         map.put("LeftPanel", 1);
 
-        return "/video/admin/video";
+        return "index";
     }
 
     // DELETE BROADCAST
@@ -275,11 +283,13 @@ public class VideoController {
             brdcTemp.setJoinURL(broadcastAPI.getJoinURLViewer(CurrentUser.getUserLogin(), brdcTemp.getMeetingID()));
         }
 
+        map.put("loadContent", "/WEB-INF/views/video/broadcast/broadcast_list.jsp");
+        
         map.put("brdcList", brdc);
         map.put("UserData", CurrentUser);
         map.put("LeftPanel", 1);
 
-        return "/video/admin/video";
+        return "index";
     }
     // START BROADCAST 
     @RequestMapping(value = "/video/start/meetingId", method = RequestMethod.GET)
@@ -300,12 +310,14 @@ public class VideoController {
                 return "redirect:" + brdc.getStartURL();
                 //return new ModelAndView(new RedirectView(brdc.getJoinURL(), true, true, false));
             } else {
-                return "/video";
+                model.addAttribute("loadContent", "/WEB-INF/views/video/broadcast/broadcast_list.jsp");
+                return "index";
                 
                 //return model;
             }
         } else {
-            return "/video";
+            model.addAttribute("loadContent", "/WEB-INF/views/video/broadcast/broadcast_list.jsp");
+            return "index";
             //return model;
         }
         
