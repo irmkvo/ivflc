@@ -159,7 +159,7 @@ public class MenuItem implements Serializable {
 
     @Override
     public String toString() {
-        return "domain.MenuItem[ menuItemid=" + menuItemid + " ]";
+        return this.menuItemtitle;
     }
     
 }

@@ -143,7 +143,7 @@ public class Pages implements Serializable {
 
     @Override
     public String toString() {
-        return "domain.Pages[ pageid=" + pageid + " ]";
+        return this.pagetitle;
     }
     
 }

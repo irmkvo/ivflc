@@ -218,7 +218,6 @@ public class VideoController {
     }
 
     // SAVE/UPDATE BROADCAST
-
     @RequestMapping("/admin/broadcast/create/save")
     public String setBroadcast(@ModelAttribute(value = "broadcast") Broadcasts broadcast, Map<String, Object> map) {
 
@@ -291,6 +290,7 @@ public class VideoController {
 
         return "index";
     }
+    
     // START BROADCAST 
     @RequestMapping(value = "/video/start/meetingId", method = RequestMethod.GET)
     public String startBroadcast(@PathVariable("meetingId") String meetingId
@@ -322,6 +322,7 @@ public class VideoController {
         }
         
     }
+    
     // GET CURRENT USER FOR INDEX PAGE INFO
     private Puser GetCurrentUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();

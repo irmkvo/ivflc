@@ -125,7 +125,7 @@ public class Menu implements Serializable {
 
     @Override
     public String toString() {
-        return "domain.Menu[ menuid=" + menuid + " ]";
+        return this.menutitle;
     }
     
 }

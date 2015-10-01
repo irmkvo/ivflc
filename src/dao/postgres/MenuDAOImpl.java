@@ -33,12 +33,12 @@ public class MenuDAOImpl implements MenuDAO{
 
     @Override
     public void AddMenu(Menu menu) {
-         sessionFactory.getCurrentSession().saveOrUpdate(menu);
+         sessionFactory.getCurrentSession().save(menu);
     }// Добавить Меню
 
     @Override
     public void UpdateMenu(Menu menu) {
-        sessionFactory.getCurrentSession().saveOrUpdate(menu);
+        sessionFactory.getCurrentSession().update(menu);
     }// Обновить Меню
 
     @Override
@@ -58,12 +58,12 @@ public class MenuDAOImpl implements MenuDAO{
 
     @Override
     public void AddMenuItem(MenuItem menuItem) {
-        sessionFactory.getCurrentSession().saveOrUpdate(menuItem);
+        sessionFactory.getCurrentSession().save(menuItem);
     }// Добавить пункт Меню
 
     @Override
     public void UpdateMenuItem(MenuItem menuItem) {
-        sessionFactory.getCurrentSession().saveOrUpdate(menuItem);
+        sessionFactory.getCurrentSession().update(menuItem);
     } // Обновить пункты Меню
 
     @Override
