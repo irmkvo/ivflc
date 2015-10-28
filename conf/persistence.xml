@@ -58,6 +58,21 @@
     <class>domain.medialog.Models</class>
     <class>domain.medialog.Medecins</class>
     <class>domain.medialog.Data328</class>
+    <class>domain.medialog.Data335</class>
+    <class>domain.medialog.Data331</class>
+    <class>domain.medialog.Data146</class>
+    <class>domain.medialog.Data329</class>
+    <class>domain.medialog.Data334</class>
+    <class>domain.medialog.Data364</class>
+    <class>domain.medialog.Data269</class>
+    <class>domain.medialog.Data330</class>
+    <class>domain.medialog.Data333</class>
+    <class>domain.medialog.Data262</class>
+    <class>domain.medialog.Data327</class>
+    <class>domain.medialog.Data144</class>
+    <class>domain.medialog.Data436</class>
+    <class>domain.medialog.Data143</class>
+    <class>domain.medialog.Data372</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/ipony"/>

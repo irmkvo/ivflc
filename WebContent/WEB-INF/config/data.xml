@@ -95,11 +95,26 @@
         <property name="dataSource" ref="dataSourceMssql" />
         <property name="annotatedClasses">
             <list>
-                 <value>domain.medialog.Motconsu</value>                
-                 <value>domain.medialog.Data328</value>
+                <value>domain.medialog.Motconsu</value>                
+                <value>domain.medialog.Data328</value>
                 <value>domain.medialog.Patients</value>
                 <value>domain.medialog.Models</value>
                 <value>domain.medialog.Medecins</value>
+                <value>domain.medialog.Data143</value>
+                <value>domain.medialog.Data144</value>
+                <value>domain.medialog.Data146</value>
+                <value>domain.medialog.Data262</value>
+                <value>domain.medialog.Data269</value>
+                <value>domain.medialog.Data327</value>
+                <value>domain.medialog.Data329</value>
+                <value>domain.medialog.Data330</value>
+                <value>domain.medialog.Data331</value>
+                <value>domain.medialog.Data333</value>
+                <value>domain.medialog.Data334</value>
+                <value>domain.medialog.Data335</value>
+                <value>domain.medialog.Data364</value>
+                <value>domain.medialog.Data372</value>
+                <value>domain.medialog.Data436</value>
            </list>
         </property>
 <!--        <property name="packagesToScan" value="domain"/>-->
