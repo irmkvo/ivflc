@@ -6,6 +6,7 @@
 package service.medialog;
 
 import dao.medialog.MotconsuDAO;
+import domain.medialog.Models;
 import domain.medialog.Motconsu;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,11 @@ public class MotconsuServiceImpl implements MotconsuService {
     @Override
     public List<Motconsu> getMotconsuListByPatientId(Integer ID) {
         return motconsuDAO.getMotconsuListByPatientId(ID);
+    }
+
+    @Override
+    public List<Motconsu> getMotconsuListByPatientIdAndModel(Integer ID, Models model) {
+        return this.motconsuDAO.getMotconsuListByPatientIdAndModel(ID, model);
     }
     
 }

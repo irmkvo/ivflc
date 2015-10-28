@@ -96,6 +96,7 @@
         <property name="annotatedClasses">
             <list>
                  <value>domain.medialog.Motconsu</value>                
+                 <value>domain.medialog.Data328</value>
                 <value>domain.medialog.Patients</value>
                 <value>domain.medialog.Models</value>
                 <value>domain.medialog.Medecins</value>

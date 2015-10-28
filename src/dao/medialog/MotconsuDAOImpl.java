@@ -5,8 +5,8 @@
  */
 package dao.medialog;
 
+import domain.medialog.Models;
 import domain.medialog.Motconsu;
-import domain.medialog.Patients;
 import java.util.List;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +38,9 @@ public class MotconsuDAOImpl implements MotconsuDAO {
     public List<Motconsu> getMotconsuListByPatientId(Integer ID) {
         return sessionFactory.getCurrentSession().createQuery("from Motconsu where patientsId = :ID").setParameter("ID", ID).list();
     }
-    
+
+    @Override
+    public List<Motconsu> getMotconsuListByPatientIdAndModel(Integer ID, Models model) {
+        return sessionFactory.getCurrentSession().createQuery("from Motconsu where patientsId = :ID AND modelsId = :modelId ").setParameter("ID", ID).setParameter("modelId", model).list();
+    }     
 }

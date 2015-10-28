@@ -31,7 +31,7 @@ public class MedecinsDAOImpl implements MedecinsDAO {
 
     @Override
     public Medecins getMedecinById(Integer ID) {
-        return (Medecins) sessionFactory.getCurrentSession().createQuery("from Motconsu where medecinsId = :ID").setParameter("ID", ID).uniqueResult();
+        return (Medecins) sessionFactory.getCurrentSession().createQuery("from Medecins where medecinsId = :ID").setParameter("ID", ID).uniqueResult();
     }
     
 }

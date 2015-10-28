@@ -6,6 +6,7 @@
 package domain.postgres;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
@@ -44,6 +46,9 @@ public class MenuItem implements Serializable {
     @Column(name = "MenuItem_description")
     private String menuItemdescription;
     
+    @Column(name = "icon")
+    private String icon;
+    
     @Column(name = "MenuItem_enabled")
     private boolean menuItemEnabled;
     @Column(name = "MenuItem_break")
@@ -58,6 +63,13 @@ public class MenuItem implements Serializable {
     @JoinColumn(name = "menuitem_role_id")
     private Roles role;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parrent_id")
+    private MenuItem parrent;
+    
+    @OneToMany(mappedBy = "parrent", fetch = FetchType.LAZY)
+    private List<MenuItem> menuItems;
+    
     public MenuItem() {
     }
 
@@ -135,6 +147,30 @@ public class MenuItem implements Serializable {
 
     public void setRole(Roles role) {
         this.role = role;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    public MenuItem getParrent() {
+        return parrent;
+    }
+
+    public void setParrent(MenuItem parrent) {
+        this.parrent = parrent;
+    }
+
+    public List<MenuItem> getMenuItems() {
+        return menuItems;
+    }
+
+    public void setMenuItems(List<MenuItem> menuItems) {
+        this.menuItems = menuItems;
     }
     
     @Override

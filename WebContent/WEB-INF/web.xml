@@ -14,6 +14,9 @@
         <filter-name>springSecurityFilterChain</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+<!--    <listener>
+        <listener-class>org.apache.tiles.web.startup.simple.SimpleTilesListener</listener-class>
+    </listener>-->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
@@ -50,6 +53,27 @@
         <servlet-name>ivflc</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+    
+    <servlet>  
+        <servlet-name>ConnectorServlet</servlet-name>  
+        <servlet-class>com.ckfinder.connector.ConnectorServlet</servlet-class>  
+        <init-param>  
+            <param-name>XMLConfig</param-name>  
+            <param-value>/WEB-INF/config/finder/config.xml</param-value>  
+        </init-param>  
+        <init-param>  
+            <param-name>debug</param-name>  
+            <param-value>false</param-value>  
+        </init-param>  
+        <load-on-startup>1</load-on-startup>  
+    </servlet>  
+    <servlet-mapping>  
+        <servlet-name>ConnectorServlet</servlet-name>  
+        <url-pattern>  
+        /resources/ckfinder/core/connector/java/connector.java  
+        </url-pattern>  
+    </servlet-mapping> 
+    
     <session-config>
         <session-timeout>
             30
@@ -59,13 +83,4 @@
         <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>
     
-<!--    <error-page>
-        <error-code>500</error-code>
-        <location>/error/500.jsp</location>
-    </error-page>
-
-    <error-page>
-        <error-code>404</error-code>
-        <location>/error/404.jsp</location>
-    </error-page>-->
 </web-app>

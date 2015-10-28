@@ -6,88 +6,86 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<link href="${pageContext.request.contextPath}/resources/template/default/dist/css/fullcalendar/fullcalendar.css" rel="stylesheet">
 
-<div class="content-block-center">
-    <div id="page_title" class="content-block-center-head">
-        <span>Календарь</span>
+<script src="${pageContext.request.contextPath}/resources/template/default/js/fullcalendar/moment.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/template/default/js/fullcalendar/fullcalendar.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/template/default/js/fullcalendar/lang-all.js"></script>
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Расписание</h1>
     </div>
-    <div class="content-block-center-item">
-        <div class="content-block-center-item-head">
-            <div class="content-block-center-item-head-autor">
-                <span>
-                    <strong>
-                        <a title="На страницу автора" target="_parent" href="/lichnie/lichnie2/33096">
-
-                            <br>
-
-                        </a>
-                    </strong>
-                    <br>
-
-                </span>
-            </div>
-            <div class="content-block-center-item-head-theme">
-                <span>Календарь</span>
-            </div>
-        </div>
-        <div class="content-block-center-item-content">
-<!--            <div class="row-fluid">
-                <select id="first_day" class="span12">
-                    <option value="" selected="selected">First day of week language-dependant</option>
-                    <option value="2">First day of week is Sunday</option>
-                    <option value="1">First day of week is Monday</option>
-                </select>
-                <select id="language" class="span12">
-                    <option value="">Select Language (default: en-US)</option>
-                    <option value="bg-BG">Bulgarian</option>
-                    <option value="nl-NL">Dutch</option>
-                    <option value="fr-FR">French</option>
-                    <option value="de-DE">German</option>
-                    <option value="el-GR">Greek</option>
-                    <option value="hu-HU">Hungarian</option>
-                    <option value="id-ID">Bahasa Indonesia</option>
-                    <option value="it-IT">Italian</option>
-                    <option value="pl-PL">Polish</option>
-                    <option value="pt-BR">Portuguese (Brazil)</option>
-                    <option value="ro-RO">Romania</option>
-                    <option value="es-CO">Spanish (Colombia)</option>
-                    <option value="es-MX">Spanish (Mexico)</option>
-                    <option value="es-ES">Spanish (Spain)</option>
-                    <option value="ru-RU">Russian</option>
-                    <option value="sk-SR">Slovak</option>
-                    <option value="sv-SE">Swedish</option>
-                    <option value="zh-CN">简体中文</option>
-                    <option value="zh-TW">繁體中文</option>
-                    <option value="ko-KR">한국어</option>
-                    <option value="th-TH">Thai (Thailand)</option>
-                </select>
-                <label class="checkbox">
-                    <input type="checkbox" value="#events-modal" id="events-in-modal"> Open events in modal window
-                </label>
-                <label class="checkbox">
-                    <input type="checkbox" id="format-12-hours"> 12 Hour format
-                </label>
-                <label class="checkbox">
-                    <input type="checkbox" id="show_wb" checked> Show week box
-                </label>
-                <label class="checkbox">
-                    <input type="checkbox" id="show_wbn" checked> Show week box number
-                </label>
-            </div>-->
-            
-            <div class="span9">
-                <div id="calendar"></div>
-            </div>
-            <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/components/underscore/underscore-min.js"></script>
-            <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/calendar.js"></script>
-            <script type="text/javascript">
-                var calendar = $("#calendar").calendar(
-                    {
-                        tmpl_path: "${pageContext.request.contextPath}/resources/tmpls/",
-                        events_source: function () { return []; },
-                        language: 'ru-RU'
-                    });            
-            </script>           
-        </div>
-    </div>
+    <!-- /.col-lg-12 -->
 </div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Расписание
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="dataTable_wrapper">
+                    <div id="dataTables_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                        <div id='calendar'></div>
+                    </div>
+                    <script type="text/javascript">
+                    $(document).ready(function () {
+                        var date = new Date();
+                        var d = date.getDate();
+                        var m = date.getMonth();
+                        var y = date.getFullYear();
+
+                        $('#calendar').fullCalendar({
+                            header: {
+                            left: 'prev,next today',
+                            center: 'title',
+                            right: 'month,agendaWeek,agendaDay'
+                            },
+                            lang:"ru",
+                            editable: true,
+                            events: [
+				{
+					title: 'Полумисков В.В.',
+					start: '2015-10-10'
+				},
+				{
+					title: 'Анализ крови',
+					start: '2015-10-18',
+					end: '2015-10-19'
+				},
+				{
+					title: 'Анализ',
+					start: '2015-10-29T16:10:00'
+				},
+				{
+					title: 'Анализ',
+					start: '2015-10-16T16:20:00'
+				},
+				{
+					title: 'Школа ЛАМАС',
+					start: '2015-10-01',
+					end: '2015-10-05'
+				},
+				{
+					title: 'Школа ЭКО',
+					start: '2015-10-22T10:30:00',
+					end: '2015-10-22T12:30:00'
+				}
+			]
+                        });
+                    });
+                    </script>
+                </div>
+                <!-- /.table-responsive -->                
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->

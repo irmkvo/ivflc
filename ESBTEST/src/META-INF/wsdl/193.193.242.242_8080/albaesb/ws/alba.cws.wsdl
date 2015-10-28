@@ -1,0 +1,1085 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+		xmlns:soap12bind="http://schemas.xmlsoap.org/wsdl/soap12/"
+		xmlns:soapbind="http://schemas.xmlsoap.org/wsdl/soap/"
+		xmlns:tns="http://www.alba-foods.kz"
+		xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		xmlns:xsd1="http://www.alba-foods.kz"
+		name="AlbaESB"
+		targetNamespace="http://www.alba-foods.kz">
+	<types>
+		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+				xmlns:xs1="http://www.alba-foods.kz"
+				targetNamespace="http://www.alba-foods.kz"
+				attributeFormDefault="unqualified"
+				elementFormDefault="qualified">
+			<xs:complexType name="Balance">
+				<xs:sequence>
+					<xs:element name="code"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="name"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="warehousecode"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="count"
+							type="xs:integer"
+							nillable="true"/>
+					<xs:element name="unit"
+							type="xs:string"
+							nillable="true"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Balances">
+				<xs:sequence>
+					<xs:element name="Balance"
+							type="tns:Balance"
+							nillable="true"
+							maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Client">
+				<xs:sequence>
+					<xs:element name="code"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="name"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="contacts"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="description"
+							type="xs:string"
+							nillable="true"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Clients">
+				<xs:sequence>
+					<xs:element name="Client"
+							type="tns:Client"
+							nillable="true"
+							maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Organization">
+				<xs:sequence>
+					<xs:element name="code"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="name"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="description"
+							type="xs:string"
+							nillable="true"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Organizations">
+				<xs:sequence>
+					<xs:element name="Organization"
+							type="tns:Organization"
+							nillable="true"
+							maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Personal">
+				<xs:sequence>
+					<xs:element name="code"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="name"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="postcode"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="description"
+							type="xs:string"
+							nillable="true"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Personals">
+				<xs:sequence>
+					<xs:element name="Personal"
+							type="tns:Personal"
+							nillable="true"
+							maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Post">
+				<xs:sequence>
+					<xs:element name="code"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="name"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="orgcode"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="description"
+							type="xs:string"
+							nillable="true"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Posts">
+				<xs:sequence>
+					<xs:element name="Post"
+							type="tns:Post"
+							nillable="true"
+							maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Product">
+				<xs:sequence>
+					<xs:element name="code"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="name"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="description"
+							type="xs:string"
+							nillable="true"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Products">
+				<xs:sequence>
+					<xs:element name="Product"
+							type="tns:Product"
+							nillable="true"
+							maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Warehouse">
+				<xs:sequence>
+					<xs:element name="code"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="name"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="orgcode"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="description"
+							type="xs:string"
+							nillable="true"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Warehouses">
+				<xs:sequence>
+					<xs:element name="Warehouse"
+							type="tns:Warehouse"
+							nillable="true"
+							maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="GetAllProducts">
+				<xs:complexType>
+					<xs:sequence/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetAllProductsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="xs:string"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GeNewProducts">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="productCodes"
+								type="xs:string"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GeNewProductsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:Products"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetProductByCode">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ProductCode"
+								type="xs:string"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetProductByCodeResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:Product"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetAllClients">
+				<xs:complexType>
+					<xs:sequence/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetAllClientsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:Clients"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetNewClients">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ClientCodes"
+								type="xs:string"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetNewClientsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:Clients"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetClientByCode">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ClientCode"
+								type="xs:string"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetClientByCodeResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:Client"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetAllOrganizations">
+				<xs:complexType>
+					<xs:sequence/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetAllOrganizationsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:Organizations"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetNewOrganizations">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="OrganizationCodes"
+								type="xs:string"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetNewOrganizationsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:Organizations"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetOrganizationByCode">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="OrganizationCode"
+								type="xs:string"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetOrganizationByCodeResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:Organization"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetAllDepartments">
+				<xs:complexType>
+					<xs:sequence/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetAllDepartmentsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:Posts"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetNewDepartments">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="DepartmentCodes"
+								type="xs:string"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetNewDepartmentsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:Posts"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetDepartmentByCode">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="DepartmentCode"
+								type="xs:string"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetDepartmentByCodeResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:Post"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetAllPersonal">
+				<xs:complexType>
+					<xs:sequence/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetAllPersonalResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:Personals"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetNewPersonals">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="PersonalsCodes"
+								type="xs:string"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetNewPersonalsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:Personals"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetPersonalByCode">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="PersonalCode"
+								type="xs:string"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetPersonalByCodeResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:Personal"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetAllWarehouse">
+				<xs:complexType>
+					<xs:sequence/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetAllWarehouseResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:Warehouses"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetNewWarehouse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="WarehouseCodes"
+								type="xs:string"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetNewWarehouseResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:Warehouses"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetWarehouseByCode">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="WarehouseCode"
+								type="xs:string"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GetWarehouseByCodeResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:Warehouse"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:schema>
+	</types>
+	<message name="GetAllProductsRequestMessage">
+		<part name="parameters"
+				element="tns:GetAllProducts"/>
+	</message>
+	<message name="GetAllProductsResponseMessage">
+		<part name="parameters"
+				element="tns:GetAllProductsResponse"/>
+	</message>
+	<message name="GeNewProductsRequestMessage">
+		<part name="parameters"
+				element="tns:GeNewProducts"/>
+	</message>
+	<message name="GeNewProductsResponseMessage">
+		<part name="parameters"
+				element="tns:GeNewProductsResponse"/>
+	</message>
+	<message name="GetProductByCodeRequestMessage">
+		<part name="parameters"
+				element="tns:GetProductByCode"/>
+	</message>
+	<message name="GetProductByCodeResponseMessage">
+		<part name="parameters"
+				element="tns:GetProductByCodeResponse"/>
+	</message>
+	<message name="GetAllClientsRequestMessage">
+		<part name="parameters"
+				element="tns:GetAllClients"/>
+	</message>
+	<message name="GetAllClientsResponseMessage">
+		<part name="parameters"
+				element="tns:GetAllClientsResponse"/>
+	</message>
+	<message name="GetNewClientsRequestMessage">
+		<part name="parameters"
+				element="tns:GetNewClients"/>
+	</message>
+	<message name="GetNewClientsResponseMessage">
+		<part name="parameters"
+				element="tns:GetNewClientsResponse"/>
+	</message>
+	<message name="GetClientByCodeRequestMessage">
+		<part name="parameters"
+				element="tns:GetClientByCode"/>
+	</message>
+	<message name="GetClientByCodeResponseMessage">
+		<part name="parameters"
+				element="tns:GetClientByCodeResponse"/>
+	</message>
+	<message name="GetAllOrganizationsRequestMessage">
+		<part name="parameters"
+				element="tns:GetAllOrganizations"/>
+	</message>
+	<message name="GetAllOrganizationsResponseMessage">
+		<part name="parameters"
+				element="tns:GetAllOrganizationsResponse"/>
+	</message>
+	<message name="GetNewOrganizationsRequestMessage">
+		<part name="parameters"
+				element="tns:GetNewOrganizations"/>
+	</message>
+	<message name="GetNewOrganizationsResponseMessage">
+		<part name="parameters"
+				element="tns:GetNewOrganizationsResponse"/>
+	</message>
+	<message name="GetOrganizationByCodeRequestMessage">
+		<part name="parameters"
+				element="tns:GetOrganizationByCode"/>
+	</message>
+	<message name="GetOrganizationByCodeResponseMessage">
+		<part name="parameters"
+				element="tns:GetOrganizationByCodeResponse"/>
+	</message>
+	<message name="GetAllDepartmentsRequestMessage">
+		<part name="parameters"
+				element="tns:GetAllDepartments"/>
+	</message>
+	<message name="GetAllDepartmentsResponseMessage">
+		<part name="parameters"
+				element="tns:GetAllDepartmentsResponse"/>
+	</message>
+	<message name="GetNewDepartmentsRequestMessage">
+		<part name="parameters"
+				element="tns:GetNewDepartments"/>
+	</message>
+	<message name="GetNewDepartmentsResponseMessage">
+		<part name="parameters"
+				element="tns:GetNewDepartmentsResponse"/>
+	</message>
+	<message name="GetDepartmentByCodeRequestMessage">
+		<part name="parameters"
+				element="tns:GetDepartmentByCode"/>
+	</message>
+	<message name="GetDepartmentByCodeResponseMessage">
+		<part name="parameters"
+				element="tns:GetDepartmentByCodeResponse"/>
+	</message>
+	<message name="GetAllPersonalRequestMessage">
+		<part name="parameters"
+				element="tns:GetAllPersonal"/>
+	</message>
+	<message name="GetAllPersonalResponseMessage">
+		<part name="parameters"
+				element="tns:GetAllPersonalResponse"/>
+	</message>
+	<message name="GetNewPersonalsRequestMessage">
+		<part name="parameters"
+				element="tns:GetNewPersonals"/>
+	</message>
+	<message name="GetNewPersonalsResponseMessage">
+		<part name="parameters"
+				element="tns:GetNewPersonalsResponse"/>
+	</message>
+	<message name="GetPersonalByCodeRequestMessage">
+		<part name="parameters"
+				element="tns:GetPersonalByCode"/>
+	</message>
+	<message name="GetPersonalByCodeResponseMessage">
+		<part name="parameters"
+				element="tns:GetPersonalByCodeResponse"/>
+	</message>
+	<message name="GetAllWarehouseRequestMessage">
+		<part name="parameters"
+				element="tns:GetAllWarehouse"/>
+	</message>
+	<message name="GetAllWarehouseResponseMessage">
+		<part name="parameters"
+				element="tns:GetAllWarehouseResponse"/>
+	</message>
+	<message name="GetNewWarehouseRequestMessage">
+		<part name="parameters"
+				element="tns:GetNewWarehouse"/>
+	</message>
+	<message name="GetNewWarehouseResponseMessage">
+		<part name="parameters"
+				element="tns:GetNewWarehouseResponse"/>
+	</message>
+	<message name="GetWarehouseByCodeRequestMessage">
+		<part name="parameters"
+				element="tns:GetWarehouseByCode"/>
+	</message>
+	<message name="GetWarehouseByCodeResponseMessage">
+		<part name="parameters"
+				element="tns:GetWarehouseByCodeResponse"/>
+	</message>
+	<portType name="AlbaESBPortType">
+		<operation name="GetAllProducts">
+			<input message="tns:GetAllProductsRequestMessage"/>
+			<output message="tns:GetAllProductsResponseMessage"/>
+		</operation>
+		<operation name="GeNewProducts">
+			<input message="tns:GeNewProductsRequestMessage"/>
+			<output message="tns:GeNewProductsResponseMessage"/>
+		</operation>
+		<operation name="GetProductByCode">
+			<input message="tns:GetProductByCodeRequestMessage"/>
+			<output message="tns:GetProductByCodeResponseMessage"/>
+		</operation>
+		<operation name="GetAllClients">
+			<input message="tns:GetAllClientsRequestMessage"/>
+			<output message="tns:GetAllClientsResponseMessage"/>
+		</operation>
+		<operation name="GetNewClients">
+			<input message="tns:GetNewClientsRequestMessage"/>
+			<output message="tns:GetNewClientsResponseMessage"/>
+		</operation>
+		<operation name="GetClientByCode">
+			<input message="tns:GetClientByCodeRequestMessage"/>
+			<output message="tns:GetClientByCodeResponseMessage"/>
+		</operation>
+		<operation name="GetAllOrganizations">
+			<input message="tns:GetAllOrganizationsRequestMessage"/>
+			<output message="tns:GetAllOrganizationsResponseMessage"/>
+		</operation>
+		<operation name="GetNewOrganizations">
+			<input message="tns:GetNewOrganizationsRequestMessage"/>
+			<output message="tns:GetNewOrganizationsResponseMessage"/>
+		</operation>
+		<operation name="GetOrganizationByCode">
+			<input message="tns:GetOrganizationByCodeRequestMessage"/>
+			<output message="tns:GetOrganizationByCodeResponseMessage"/>
+		</operation>
+		<operation name="GetAllDepartments">
+			<input message="tns:GetAllDepartmentsRequestMessage"/>
+			<output message="tns:GetAllDepartmentsResponseMessage"/>
+		</operation>
+		<operation name="GetNewDepartments">
+			<input message="tns:GetNewDepartmentsRequestMessage"/>
+			<output message="tns:GetNewDepartmentsResponseMessage"/>
+		</operation>
+		<operation name="GetDepartmentByCode">
+			<input message="tns:GetDepartmentByCodeRequestMessage"/>
+			<output message="tns:GetDepartmentByCodeResponseMessage"/>
+		</operation>
+		<operation name="GetAllPersonal">
+			<input message="tns:GetAllPersonalRequestMessage"/>
+			<output message="tns:GetAllPersonalResponseMessage"/>
+		</operation>
+		<operation name="GetNewPersonals">
+			<input message="tns:GetNewPersonalsRequestMessage"/>
+			<output message="tns:GetNewPersonalsResponseMessage"/>
+		</operation>
+		<operation name="GetPersonalByCode">
+			<input message="tns:GetPersonalByCodeRequestMessage"/>
+			<output message="tns:GetPersonalByCodeResponseMessage"/>
+		</operation>
+		<operation name="GetAllWarehouse">
+			<input message="tns:GetAllWarehouseRequestMessage"/>
+			<output message="tns:GetAllWarehouseResponseMessage"/>
+		</operation>
+		<operation name="GetNewWarehouse">
+			<input message="tns:GetNewWarehouseRequestMessage"/>
+			<output message="tns:GetNewWarehouseResponseMessage"/>
+		</operation>
+		<operation name="GetWarehouseByCode">
+			<input message="tns:GetWarehouseByCodeRequestMessage"/>
+			<output message="tns:GetWarehouseByCodeResponseMessage"/>
+		</operation>
+	</portType>
+	<binding name="AlbaESBSoapBinding"
+			type="tns:AlbaESBPortType">
+		<soapbind:binding style="document"
+				transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="GetAllProducts">
+			<soapbind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetAllProducts"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GeNewProducts">
+			<soapbind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GeNewProducts"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetProductByCode">
+			<soapbind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetProductByCode"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetAllClients">
+			<soapbind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetAllClients"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetNewClients">
+			<soapbind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetNewClients"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetClientByCode">
+			<soapbind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetClientByCode"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetAllOrganizations">
+			<soapbind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetAllOrganizations"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetNewOrganizations">
+			<soapbind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetNewOrganizations"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetOrganizationByCode">
+			<soapbind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetOrganizationByCode"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetAllDepartments">
+			<soapbind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetAllDepartments"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetNewDepartments">
+			<soapbind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetNewDepartments"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetDepartmentByCode">
+			<soapbind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetDepartmentByCode"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetAllPersonal">
+			<soapbind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetAllPersonal"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetNewPersonals">
+			<soapbind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetNewPersonals"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetPersonalByCode">
+			<soapbind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetPersonalByCode"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetAllWarehouse">
+			<soapbind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetAllWarehouse"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetNewWarehouse">
+			<soapbind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetNewWarehouse"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetWarehouseByCode">
+			<soapbind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetWarehouseByCode"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<binding name="AlbaESBSoap12Binding"
+			type="tns:AlbaESBPortType">
+		<soap12bind:binding style="document"
+				transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="GetAllProducts">
+			<soap12bind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetAllProducts"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GeNewProducts">
+			<soap12bind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GeNewProducts"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetProductByCode">
+			<soap12bind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetProductByCode"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetAllClients">
+			<soap12bind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetAllClients"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetNewClients">
+			<soap12bind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetNewClients"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetClientByCode">
+			<soap12bind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetClientByCode"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetAllOrganizations">
+			<soap12bind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetAllOrganizations"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetNewOrganizations">
+			<soap12bind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetNewOrganizations"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetOrganizationByCode">
+			<soap12bind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetOrganizationByCode"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetAllDepartments">
+			<soap12bind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetAllDepartments"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetNewDepartments">
+			<soap12bind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetNewDepartments"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetDepartmentByCode">
+			<soap12bind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetDepartmentByCode"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetAllPersonal">
+			<soap12bind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetAllPersonal"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetNewPersonals">
+			<soap12bind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetNewPersonals"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetPersonalByCode">
+			<soap12bind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetPersonalByCode"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetAllWarehouse">
+			<soap12bind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetAllWarehouse"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetNewWarehouse">
+			<soap12bind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetNewWarehouse"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetWarehouseByCode">
+			<soap12bind:operation style="document"
+					soapAction="http://www.alba-foods.kz#AlbaESB:GetWarehouseByCode"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="AlbaESB">
+		<port name="AlbaESBSoap"
+				binding="tns:AlbaESBSoapBinding">
+			<documentation> 
+				<wsi:Claim xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/"
+						conformsTo="http://ws-i.org/profiles/basic/1.1"/>
+			</documentation>
+			<soapbind:address location="http://193.193.242.242/albaesb/ws/alba.cws"/>
+		</port>
+		<port name="AlbaESBSoap12"
+				binding="tns:AlbaESBSoap12Binding">
+			<soap12bind:address location="http://193.193.242.242/albaesb/ws/alba.cws"/>
+		</port>
+	</service>
+</definitions>

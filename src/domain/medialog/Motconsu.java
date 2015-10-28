@@ -5,16 +5,22 @@
  */
 package domain.medialog;
 
+import domain.postgres.Menu;
+import domain.postgres.MenuAcces;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -79,8 +85,11 @@ public class Motconsu implements Serializable {
     @Column(name = "MODIFY_DATE_TIME")
     @Temporal(TemporalType.TIMESTAMP)
     private Date modifyDateTime;
-    @Column(name = "MODELS_ID")
-    private Integer modelsId;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MODELS_ID")
+    private Models modelsId;
+    
     @Column(name = "MOTCONSU_EV_ID")
     private Integer motconsuEvId;
     @Column(name = "MEDECINS_MODIFY_ID")
@@ -152,8 +161,11 @@ public class Motconsu implements Serializable {
     @Size(max = 2147483647)
     @Column(name = "PATIENT_ALERTES")
     private String patientAlertes;
-    @Column(name = "MEDECINS_ID")
-    private Integer medecinsId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MEDECINS_ID")
+    private Medecins medecinsId;
+    
     @Column(name = "NUM_MEDECINTR")
     private Integer numMedecintr;
     @Column(name = "KRN_CREATE_DATE")
@@ -167,6 +179,9 @@ public class Motconsu implements Serializable {
     @Column(name = "KRN_MODIFY_USER_ID")
     private Integer krnModifyUserId;
 
+    @OneToOne(mappedBy = "motconsuId", fetch = FetchType.LAZY)
+    private Data328 data328;
+    
     public Motconsu() {
     }
 
@@ -211,12 +226,8 @@ public class Motconsu implements Serializable {
         this.modifyDateTime = modifyDateTime;
     }
 
-    public Integer getModelsId() {
+    public Models getModelsId() {
         return modelsId;
-    }
-
-    public void setModelsId(Integer modelsId) {
-        this.modelsId = modelsId;
     }
 
     public Integer getMotconsuEvId() {
@@ -427,12 +438,8 @@ public class Motconsu implements Serializable {
         this.patientAlertes = patientAlertes;
     }
 
-    public Integer getMedecinsId() {
+    public Medecins getMedecinsId() {
         return medecinsId;
-    }
-
-    public void setMedecinsId(Integer medecinsId) {
-        this.medecinsId = medecinsId;
     }
 
     public Integer getNumMedecintr() {
@@ -475,6 +482,15 @@ public class Motconsu implements Serializable {
         this.krnModifyUserId = krnModifyUserId;
     }
 
+    public Data328 getData328() {
+        return data328;
+    }
+
+    public void setData328(Data328 data328) {
+        this.data328 = data328;
+    }
+
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -497,7 +513,7 @@ public class Motconsu implements Serializable {
 
     @Override
     public String toString() {
-        return "domain.medialog.Motconsu[ motconsuId=" + motconsuId + " ]";
+        return this.modelsId.getModeleName();
     }
     
 }

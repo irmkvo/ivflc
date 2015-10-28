@@ -8,31 +8,23 @@
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-    <div class="content-block-center">
-        <div id="page_title" class="content-block-center-head">
-            <span>Редактор меню</span>
-        </div>
-        <div class="content-block-center-item">
-            <div class="content-block-center-item-head">
-                <div class="content-block-center-item-head-autor">
-                    <span>
-                        <strong>
-                            <a title="На страницу автора" target="_parent" href="/lichnie/lichnie2/33096">
-
-                                <br>
-
-                            </a>
-                        </strong>
-                        <br>
-
-                    </span>
-                </div>
-                <div class="content-block-center-item-head-theme">
-                    <span>Список страниц</span>
-                </div>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Редактор страниц</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Список страниц
             </div>
-            <div class="content-block-center-item-content">
-                <input type="button" class="btn btn-primary btn-lg btn-block" value="Добавить" id="" name="" onClick="window.location='${pageContext.request.contextPath}/admin/pages_editor/page_edit/654654'" />
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="dataTable_wrapper">
+                    <input type="button" class="btn btn-primary btn-lg btn-block" value="Добавить" id="" name="" onClick="window.location = '${pageContext.request.contextPath}/admin/pages_editor/page_edit/654654'" />
                 <table class="table table-striped table-hover" cellspasing="0" cellpadding="0" border="0">
                     <c:forEach items="${pagesList}" var="page" >
                         <tr>
@@ -47,6 +39,8 @@
                         </tr>
                     </c:forEach>
                 </table>
+                </div>                    
             </div>
         </div>
     </div>
+    <!-- /.row -->    

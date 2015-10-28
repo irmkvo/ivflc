@@ -9,27 +9,24 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<!DOCTYPE html>
 
-<tiles:insertAttribute name="header" />    
+<html>
+    <head>
+        <tiles:insertAttribute name="header" />  
+        <tiles:insertAttribute name="scripts" />
+    </head>
+    <body> 
+        <div id="wrapper">
 
-<c:if test="${!empty LeftPanel}">
-    <c:if test="${LeftPanel == 1}">
-        <tiles:insertAttribute name="leftbar" />
-    </c:if>
-</c:if>
+            <tiles:insertAttribute name="navigation" />
 
-<div class="col-md-9 column">
-    <tiles:insertAttribute name="topbar" />
-    
-    <jsp:include page="${loadContent}" />
-    
-    <c:if test="${!empty RightPanel}">
-        <c:if test="${RightPanel == 1}">
-            <tiles:insertAttribute name="rightbar" />
-        </c:if>
-    </c:if>
-</div>
+            <div id="page-wrapper">
 
-    
-<jsp:include page="/WEB-INF/views/template/default/footer.jsp" />        
+                <jsp:include page="${loadContent}" />
 
+            </div>     
+
+        </div>        
+    </body>
+</html>

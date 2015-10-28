@@ -29,7 +29,7 @@ public class MainPage {
 
         Puser CurrentUser = GetCurrentUser();
         
-        map.put("loadContent", "/WEB-INF/views/template/default/content.jsp");
+        map.put("loadContent", "/WEB-INF/views/clients/index.jsp");
         
         map.put("LeftPanel", 1);
         map.put("RightPanel", 0);

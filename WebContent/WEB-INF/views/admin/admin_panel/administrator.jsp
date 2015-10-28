@@ -9,68 +9,104 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 
-<div class="content-block-center">
-    <div id="page_title" class="content-block-center-head">
-        <span>Администрирование</span>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Панель управления</h1>
     </div>
-    <div class="content-block-center-item">
-        <div class="content-block-center-item-head">
-            <div class="content-block-center-item-head-autor">
-                <span>
-                    <strong>
-                        <a title="На страницу автора" target="_parent" href="/lichnie/lichnie2/33096">
-
-                            <br>
-
-                        </a>
-                    </strong>
-                    <br>
-
-                </span>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-comments fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">26</div>
+                        <div>Загрузка стартовых данных</div>
+                    </div>
+                </div>
             </div>
-            <div class="content-block-center-item-head-theme">
-                <span>Панель администратора</span>
-            </div>
+            <a href="${pageContext.request.contextPath}/admin/load_main_data/load">
+                <div class="panel-footer">
+                    <span class="pull-left">Старт</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
         </div>
-        <div class="content-block-center-item-content">
-            <table class="table table-hover">
-                <thead></thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <button type="button" class="btn btn-danger btn-xs btn-block" onClick="window.location = '${pageContext.request.contextPath}/admin/load_main_data/load'" >
-                                Загрузка стартовых данных
-                            </button>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-success btn-xs btn-block" onClick="window.location = '${pageContext.request.contextPath}/admin/user_list'" >
-                                Пользователи
-                            </button>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-success btn-xs btn-block" onClick="window.location = '${pageContext.request.contextPath}/admin/menu_editor/menu_list'" >
-                                Редактор меню
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button type="button" class="btn btn-primary btn-xs btn-block" onClick="window.location = '${pageContext.request.contextPath}/admin/pages_list'" >
-                                Редактор страниц
-                            </button>
-                        </td>
-                        <td>
-                            
-                        </td>
-                        <td>
-                            
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-green">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-tasks fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">12</div>
+                        <div>Пользователи</div>
+                    </div>
+                </div>
+            </div>
+            <a href="${pageContext.request.contextPath}/admin/user_list">
+                <div class="panel-footer">
+                    <span class="pull-left">Список</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-yellow">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-shopping-cart fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">124</div>
+                        <div>Редактор меню</div>
+                    </div>
+                </div>
+            </div>
+            <a href="${pageContext.request.contextPath}/admin/menu_editor/menu_list">
+                <div class="panel-footer">
+                    <span class="pull-left">Список</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-red">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-support fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">13</div>
+                        <div>Редактор страниц</div>
+                    </div>
+                </div>
+            </div>
+            <a href="${pageContext.request.contextPath}/admin/pages_list">
+                <div class="panel-footer">
+                    <span class="pull-left">Список</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
         </div>
     </div>
 </div>
+<!-- /.row -->
 
 
 

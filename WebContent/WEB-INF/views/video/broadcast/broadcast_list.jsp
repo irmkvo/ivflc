@@ -9,66 +9,66 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 
-<div class="content-block-center">
-    <div id="page_title" class="content-block-center-head">
-        <span><spring:message code="label.broadcast" /></span>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Онлайн трансляции</h1>
     </div>
-    <div class="content-block-center-item">
-        <div class="content-block-center-item-head">
-            <div class="content-block-center-item-head-autor">
-                <span>
-                    <strong>
-                        <a title="На страницу автора" target="_parent" href="/lichnie/lichnie2/33096">
-
-                            <br>
-
-                        </a>
-                    </strong>
-                    <br>
-
-                </span>
-            </div>
-            <div class="content-block-center-item-head-theme">
-                <span><spring:message code="label.broadcast" /></span>
-            </div>
-        </div>
-        <div class="content-block-center-item-content">
-            <input type="button" class="btn btn-primary btn-lg btn-block" value="Добавить" id="" name="" onClick="window.location = '${pageContext.request.contextPath}/admin/menu_editor/menu_edit/654654'" />
-            <table class="table table-hover">
-                <thead></thead>
-                <tbody>
-                    <c:forEach items="${brdcList}" var="brdc" >
-                        <tr>
-                            <td>          
-                                <img src="${pageContext.request.contextPath}/resources/images/logo.png" class="img-thumbnail" width="100" height="100"/>                            
-                            </td>
-                            <td>
-                                <c:out value="${brdc.title}" />
-
-                                <a href="${pageContext.request.contextPath}/admin/broadcast/create/${brdc.id}" >
-                                    ${brdc.description}
-                                </a>
-                            </td>
-                            <td>
-                                <button type="button" class="btn btn-success btn-xs btn-block" onClick="window.location = '${brdc.joinURL}'" >
-                                    <spring:message code="label.logining" />
-                                </button>    
-                                <button type="button" class="btn btn-primary btn-xs btn-block" onClick="window.location = '${brdc.startURL}'" >
-                                    <spring:message code="label.brdcstart" />
-                                </button> 
-                                <button type="button" class="btn btn-info btn-xs btn-block" onClick="window.location = '${brdc.loginURL}'" >
-                                    <spring:message code="label.brdcjoinUrl" />
-                                </button> 
-                                <button type="button" class="btn btn-danger btn-xs btn-block" onClick="window.location = '${pageContext.request.contextPath}/admin/broadcast/delete/${brdc.id}'" >
-                                    <spring:message code="label.delete" />
-                                </button> 
-                            </td>
-                        </tr>
-                    </c:forEach>   
-                </tbody>
-            </table>
-        </div>
-    </div>
+    <!-- /.col-lg-12 -->
 </div>
+<!-- /.row -->
+<div class="row">   
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Список трансляций
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="table-responsive">
+
+                    <input type="button" class="btn btn-primary btn-lg btn-block" value="Добавить" id="" name="" onClick="window.location = '${pageContext.request.contextPath}/admin/broadcast/create/654654'" />
+                    <table class="table table-hover">
+                        <thead></thead>
+                        <tbody>
+                            <c:forEach items="${brdcList}" var="brdc" >
+                                <tr>
+                                    <td>          
+                                        <img src="${pageContext.request.contextPath}/resources/images/logo.png" class="img-thumbnail" width="100" height="100"/>                            
+                                    </td>
+                                    <td>
+                                        <c:out value="${brdc.title}" />
+
+                                        <a href="${pageContext.request.contextPath}/admin/broadcast/create/${brdc.id}" >
+                                            ${brdc.description}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-success btn-xs btn-block" onClick="window.location = '${brdc.joinURL}'" >
+                                            <spring:message code="label.logining" />
+                                        </button>    
+                                        <button type="button" class="btn btn-primary btn-xs btn-block" onClick="window.location = '${pageContext.request.contextPath}/video/start/${brdc.meetingID}'" >
+                                            <spring:message code="label.brdcstart" />
+                                        </button> 
+                                        <button type="button" class="btn btn-info btn-xs btn-block" onClick="window.location = '${brdc.loginURL}'" >
+                                            <spring:message code="label.brdcjoinUrl" />
+                                        </button> 
+                                        <button type="button" class="btn btn-danger btn-xs btn-block" onClick="window.location = '${pageContext.request.contextPath}/admin/broadcast/delete/${brdc.id}'" >
+                                            <spring:message code="label.delete" />
+                                        </button> 
+                                    </td>
+                                </tr>
+                            </c:forEach>   
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-6 -->
+</div>
+<!-- /.row -->
 
 

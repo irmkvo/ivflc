@@ -5,8 +5,6 @@
  */
 package web;
 
-import domain.postgres.Menu;
-import domain.postgres.MenuItem;
 import domain.postgres.Pages;
 import domain.postgres.Puser;
 import java.util.List;
@@ -34,9 +32,8 @@ public class AdministrativZone {
     MenuService menuService;
 
     @Autowired
-    PagesService pagesService;
-    
-    // ADMINISTRATOR METHODS
+    PagesService pagesService;   
+
     // ADMINISTRATOR METHODS
     // ADMIN PANEL
     @RequestMapping("/admin/administrator")
@@ -44,165 +41,9 @@ public class AdministrativZone {
         
         map.put("loadContent", "/WEB-INF/views/admin/admin_panel/administrator.jsp");
         
-        map.put("LeftPanel", 1);
-        map.put("RightPanel", 0);
-        
         return "index";
         
-    }
-    
-    // =========================================================================
-    // MENU EDITOR =============================================================
-    // MENU LIST
-    @RequestMapping("/admin/menu_editor/menu_list")
-    public String getMenuList(Map<String, Object> map) {
-        
-        List<Menu> menuList = this.menuService.GetMenuList();
-        
-        map.put("menuList", menuList);
-        
-        map.put("loadContent", "/WEB-INF/views/admin/menu_editor/menu_list.jsp");
-        
-        map.put("LeftPanel", 1);
-        map.put("RightPanel", 0);
-        
-        return "index";
-        
-    }
-    // MENU EDITOR
-    @RequestMapping("/admin/menu_editor/menu_edit/{id}")
-    public String getEditMenu(Map<String, Object> map, @PathVariable("id") Integer id) {
-        
-        Menu menuEdit = menuService.GetMenuByID(id);
-        if (menuEdit == null) {
-            menuEdit = new Menu();
-        }
-        map.put("menuEdit", menuEdit);
-        
-        map.put("userRoles", userService.getRoles());
-        
-        map.put("loadContent", "/WEB-INF/views/admin/menu_editor/menuEditor.jsp");
-        
-        map.put("LeftPanel", 1);
-        map.put("RightPanel", 0);
-        
-        return "index";
-    }
-    // SAVE MENU CHANGES
-    @RequestMapping("/admin/menu_editor/menu_edit/save")
-    public String getEditMenuSave(@ModelAttribute(value = "menuEdit") Menu menuEdit, Map<String, Object> map) {
-        
-        if (menuEdit != null) {
-            if (menuEdit.getMenuid() != null) {
-                if (menuEdit.getMenuid() > 0) {
-                    menuService.UpdateMenu(menuEdit);
-                } else {
-                    menuService.AddMenu(menuEdit);
-                }
-            }
-        }
-        
-        List<Menu> menuList = this.menuService.GetMenuList();
-        
-        map.put("menuList", menuList);
-        
-        map.put("loadContent", "/WEB-INF/views/admin/menu_editor/menu_list.jsp");
-        
-        map.put("LeftPanel", 1);
-        map.put("RightPanel", 0);
-        
-        return "redirect:../index";
-    }
-    
-    // =========================================================================
-    // MENU ITEM EDITOR ========================================================
-    // MENU ITEM LIST
-    @RequestMapping("/admin/menu_editor/menu_item_list/{menuId}/{roleId}")
-    public String getMenuItemList(@PathVariable("menuId") Integer menuId,
-            @PathVariable("roleId") Integer roleId,            
-            Map<String, Object> map) {
-        
-        List<MenuItem> menuItemList = this.menuService.GetMenuItemListByRoleAndMenu(this.menuService.GetMenuByID(menuId), 
-                this.userService.getRole(roleId));
-        
-        map.put("menuItemList", menuItemList);
-        
-        map.put("loadContent", "/WEB-INF/views/admin/menu_editor/menu_item_list.jsp");
-        
-        map.put("LeftPanel", 1);
-        map.put("RightPanel", 0);
-        
-        return "index";
-        
-    }
-    
-    // MENU ITEM EDITOR
-    @RequestMapping("/admin/menu_editor/menu_item_edit/{id}")
-    public String getEditMenuItem(Map<String, Object> map, @PathVariable("id") Integer id) {
-        
-        MenuItem menuItemEdit = menuService.GetMenuItemByID(id);
-        if (menuItemEdit == null) {
-            menuItemEdit = new MenuItem();
-        }
-        map.put("menuItemEdit", menuItemEdit);
-        
-        map.put("userRoles", userService.getRoles());
-        map.put("pages", this.pagesService.getPagesList());
-        map.put("menus", this.menuService.GetMenuList());
-        
-        map.put("loadContent", "/WEB-INF/views/admin/menu_editor/menu_item_editor.jsp");
-        
-        map.put("LeftPanel", 1);
-        map.put("RightPanel", 0);
-        
-        return "index";
-    }
-    
-    // MENU LIST
-    @RequestMapping("/admin/menu_editor/menu_item_edit/save")
-    public String getMenuItemEditSave(@ModelAttribute(value = "menuItemEdit") MenuItem menuItemEdit, Map<String, Object> map) {
-        
-        if (menuItemEdit != null) {
-            if (menuItemEdit.getMenuItemid() != null) {
-                if (menuItemEdit.getMenuItemid() > 0) {
-                    this.menuService.UpdateMenuItem(menuItemEdit);
-                } else {
-                    this.menuService.AddMenuItem(menuItemEdit);
-                }
-            }
-        }
-        
-        List<MenuItem> menuItemList = this.menuService.GetMenuItemListByRoleAndMenu(menuItemEdit.getMenu(), 
-                menuItemEdit.getRole());
-        
-        map.put("menuItemList", menuItemList);
-        
-        map.put("loadContent", "/WEB-INF/views/admin/menu_editor/menu_item_list.jsp");
-        
-        map.put("LeftPanel", 1);
-        map.put("RightPanel", 0);
-        
-        return "index";
-        
-    }
-    
-    // USERS EDITOR ============================================================
-    // USERS LIST
-    @RequestMapping("/admin/user_list")
-    public String getUsersList(Map<String, Object> map) {
-        
-        List<Puser> userList = this.userService.listUser();
-        
-        map.put("userList", userList);
-        
-        map.put("loadContent", "/WEB-INF/views/admin/user_editor/userlist.jsp");
-        
-        map.put("LeftPanel", 1);
-        map.put("RightPanel", 0);
-        
-        return "index";
-        
-    }    
+    }        
     
     // =========================================================================
     // PAGES EDITOR ============================================================
@@ -215,9 +56,6 @@ public class AdministrativZone {
         map.put("pagesList", pagesList);
         
         map.put("loadContent", "/WEB-INF/views/admin/pages_editor/pages_list.jsp");
-        
-        map.put("LeftPanel", 1);
-        map.put("RightPanel", 0);
         
         return "index";
         
@@ -234,9 +72,6 @@ public class AdministrativZone {
         map.put("pageEdit", pageEdit);
         
         map.put("loadContent", "/WEB-INF/views/admin/pages_editor/page_edit.jsp");
-        
-        map.put("LeftPanel", 1);
-        map.put("RightPanel", 0);
         
         return "index";
     }
@@ -260,9 +95,6 @@ public class AdministrativZone {
         map.put("pagesList", pagesList);
         
         map.put("loadContent", "/WEB-INF/views/admin/pages_editor/pages_list.jsp");
-        
-        map.put("LeftPanel", 1);
-        map.put("RightPanel", 0);
         
         return "index";
     }

@@ -5,6 +5,7 @@
  */
 package service.medialog;
 
+import domain.medialog.Models;
 import domain.medialog.Motconsu;
 import java.util.List;
 
@@ -18,4 +19,6 @@ public interface MotconsuService {
     public Motconsu getMotconsuById(Integer ID);
     
     public List<Motconsu> getMotconsuListByPatientId(Integer ID);
+    
+    public List<Motconsu> getMotconsuListByPatientIdAndModel(Integer ID, Models model);
 }

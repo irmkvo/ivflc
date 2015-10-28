@@ -5,6 +5,8 @@
  */
 package dao.medialog;
 
+import domain.medialog.Medecins;
+import domain.medialog.Models;
 import domain.medialog.Motconsu;
 import java.util.List;
 
@@ -18,4 +20,6 @@ public interface MotconsuDAO {
     public Motconsu getMotconsuById(Integer ID);
     
     public List<Motconsu> getMotconsuListByPatientId(Integer ID);
+    
+    public List<Motconsu> getMotconsuListByPatientIdAndModel(Integer ID, Models model);
 }

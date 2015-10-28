@@ -41,7 +41,7 @@ public class VideoController {
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {
-        CustomDateEditor editor = new CustomDateEditor(new SimpleDateFormat("MM/dd/yyyy HH:mm"), true);
+        CustomDateEditor editor = new CustomDateEditor(new SimpleDateFormat("yyyy/MM/dd HH:mm"), true);
         binder.registerCustomEditor(Date.class, editor);
     }
 
@@ -123,8 +123,7 @@ public class VideoController {
              
         map.put("brdcList", brdc);
         map.put("UserData", CurrentUser);
-        map.put("LeftPanel", 1);
-
+        
         return "index";
     }
 
@@ -140,7 +139,6 @@ public class VideoController {
 
         map.put("brdcList", brdc);
         map.put("UserData", CurrentUser);
-        map.put("LeftPanel", 1);
 
         return "/admin/index";
     }
@@ -159,7 +157,6 @@ public class VideoController {
         
         map.put("brdcRecordsList", records);
         map.put("UserData", CurrentUser);
-        map.put("LeftPanel", 1);
 
         return "/admin/index";
     }
@@ -212,8 +209,6 @@ public class VideoController {
 
         map.put("loadContent", "/WEB-INF/views/video/admin/createBroadcast.jsp");
         
-        map.put("LeftPanel", 1);
-
         return "index";
     }
 
@@ -236,16 +231,15 @@ public class VideoController {
         broadcast.setStartURL("");
         // broadcastAPI.getJoinURL(broadcast.getAuthor(), broadcast.getMeetingID(), "true", broadcast.getDescription(), null, null)
 
-//        broadcast.setCreationDate(new Date());
-//        broadcast.setStartDate(new Date());
-//        broadcast.setEndDate(new Date());
         if (broadcast.getId() != null) {
             if (broadcast.getId() > 0) {
                 broadcastService.updateBroadcast(broadcast);
             } else {
                 broadcastService.addBroadcast(broadcast);
             }
-        }   
+        } else {
+            broadcastService.addBroadcast(broadcast);
+        }  
         
         Puser CurrentUser = GetCurrentUser();
 
@@ -259,7 +253,6 @@ public class VideoController {
         
         map.put("brdcList", brdc);
         map.put("UserData", CurrentUser);
-        map.put("LeftPanel", 1);
 
         return "index";
     }
@@ -286,35 +279,34 @@ public class VideoController {
         
         map.put("brdcList", brdc);
         map.put("UserData", CurrentUser);
-        map.put("LeftPanel", 1);
 
         return "index";
     }
     
     // START BROADCAST 
-    @RequestMapping(value = "/video/start/meetingId", method = RequestMethod.GET)
+    @RequestMapping(value = "/video/start/{meetingId}", method = RequestMethod.GET)
     public String startBroadcast(@PathVariable("meetingId") String meetingId
             , Model model) {
         
         API broadcastAPI = new API();
         
-        Broadcasts brdc = broadcastService.getBroadcastByMeetingID(meetingId);
+        Broadcasts brdc = this.broadcastService.getBroadcastByMeetingID(meetingId);
         if (brdc != null) {
             
             String status = broadcastAPI.isMeetingRunning(brdc.getMeetingID());
             
             brdc.setStartURL(broadcastAPI.getJoinURL(brdc.getAuthor(), brdc.getMeetingID(), "true", brdc.getDescription(), null, null));
             
-            if (status.equalsIgnoreCase("true")) {
+//            if (status.equalsIgnoreCase("true")) {
                 model.asMap().clear();
                 return "redirect:" + brdc.getStartURL();
                 //return new ModelAndView(new RedirectView(brdc.getJoinURL(), true, true, false));
-            } else {
-                model.addAttribute("loadContent", "/WEB-INF/views/video/broadcast/broadcast_list.jsp");
-                return "index";
-                
-                //return model;
-            }
+//            } else {
+//                model.addAttribute("loadContent", "/WEB-INF/views/video/broadcast/broadcast_list.jsp");
+//                return "index";
+//                
+//                //return model;
+//            }
         } else {
             model.addAttribute("loadContent", "/WEB-INF/views/video/broadcast/broadcast_list.jsp");
             return "index";

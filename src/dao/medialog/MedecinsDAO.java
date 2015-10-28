@@ -17,4 +17,6 @@ public interface MedecinsDAO {
     public List<Medecins> getMedecinList();
 
     public Medecins getMedecinById(Integer ID);
+    
+   
 }

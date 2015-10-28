@@ -57,6 +57,7 @@
     <class>domain.medialog.Motconsu</class>
     <class>domain.medialog.Models</class>
     <class>domain.medialog.Medecins</class>
+    <class>domain.medialog.Data328</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/ipony"/>

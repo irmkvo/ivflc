@@ -6,30 +6,32 @@
     <!-- Templates -->
     <!--DEFAULT-->
     <definition name="default-template" template="/WEB-INF/views/template/default/index.jsp" >
-        <put-attribute name="title" value="IVF" />
         <put-attribute name="header" value="/WEB-INF/views/template/default/header.jsp" />
-        <put-attribute name="topbar" value="/WEB-INF/views/template/default/top_bar.jsp" />
-        <put-attribute name="leftbar" value="leftBar" />
-        <put-attribute name="rightbar" value="/WEB-INF/views/template/default/right_bar.jsp" />
+        <put-attribute name="navigation" value="navigation" />
         <put-attribute name="content" value="" />
-        <put-attribute name="footer" value="/WEB-INF/views/template/default/footer.jsp" />
-    </definition>   
+        <put-attribute name="scripts" value="/WEB-INF/views/template/default/scripts.jsp" />
+    </definition>
+    
     <!--BLANK-->
     <definition name="blank-template" template="/WEB-INF/views/template/blank/index.jsp" >        
         <put-attribute name="content" value="" />        
     </definition>
+    
     <!--PREPARATOR-->
-    <definition name="leftBar" template="/WEB-INF/views/template/default/left_bar.jsp" preparer="service.postgres.LeftBarController">
+    <definition name="navigation" template="/WEB-INF/views/template/default/navigation.jsp" preparer="service.postgres.LeftBarController">
         
     </definition>    
     <!--PAGES-->
     <definition name="index" extends="default-template">
-        <put-attribute name="title" value="IVF" />
         <put-attribute name="content" value="" />
     </definition>
     
     <definition name="login" extends="blank-template">
         <put-attribute name="content" value="/WEB-INF/views/login.jsp" />
+    </definition>
+    
+    <definition name="json" extends="blank-template">
+        <put-attribute name="content" value="/WEB-INF/views/json/body.jsp" />
     </definition>
     
     <definition name="meeting/login" extends="blank-template">
