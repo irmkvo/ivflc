@@ -22,7 +22,7 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
+ * БИО КУАГУЛОГРАММА
  * @author kvo
  */
 @Entity

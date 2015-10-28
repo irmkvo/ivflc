@@ -23,7 +23,7 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
+ * Гормон ХГЧ
  * @author kvo
  */
 @Entity
