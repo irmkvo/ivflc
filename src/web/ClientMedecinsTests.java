@@ -50,12 +50,12 @@ public class ClientMedecinsTests {
     public String getBloodAnalysis(@PathVariable("modelid") Integer modelId, Map<String, Object> map) {
         
         map.put("modelId", modelId);
-        map.put("loadContent", "/WEB-INF/views/clients/tests/blood/GeneralBloodAnalysis.jsp");
+        map.put("loadContent", "/WEB-INF/views/clients/tests/blood/list.jsp");
 
         return "index";
         
     }
-    
+    // АНАЛИЗ КРОВИ
     @RequestMapping("/generallbloodanalysis/print/{motconsuid}")
     public String getGenerallBloodAnalysis(@PathVariable("motconsuid") Integer motconsuId, Map<String, Object> map) {
         
@@ -67,7 +67,7 @@ public class ClientMedecinsTests {
         return "index";
         
     }
-    
+    // АНАЛИЗ КРОВИ JSON
     // JSON ESB
     @RequestMapping(method={RequestMethod.POST,RequestMethod.GET} , value="/generallbloodanalysis/json/{modelid}")
     public String getGenerallBlodAnalysis(@PathVariable("modelid") Integer modelId, Map<String, Object> map) {
@@ -114,7 +114,75 @@ public class ClientMedecinsTests {
             return "login";
         }
     }
-    
+    // АНАЛИЗ ПРОСТАТЫ
+    @RequestMapping("/analiz-sekreta/{modelid}")
+    public String getASL(@PathVariable("modelid") Integer modelId, Map<String, Object> map) {
+        
+        map.put("modelId", modelId);
+        map.put("loadContent", "/WEB-INF/views/clients/tests/analizsekreta/list.jsp");
+
+        return "index";
+        
+    }
+    // АНАЛИЗ ПРОСТАТЫ
+    @RequestMapping("/analiz-sekreta/print/{motconsuid}")
+    public String getAnalizSekreta(@PathVariable("motconsuid") Integer motconsuId, Map<String, Object> map) {
+        
+        Motconsu mtcs = this.motconsuService.getMotconsuById(motconsuId);
+        
+        map.put("GBA", mtcs.getData143());
+        map.put("loadContent", "/WEB-INF/views/clients/tests/analizsekreta/print.jsp");
+
+        return "index";
+        
+    }
+    // АНАЛИЗ ПРОСТАТЫ JSON
+    // JSON ESB
+    @RequestMapping(method={RequestMethod.POST,RequestMethod.GET} , value="/analiz-sekreta/json/{modelid}")
+    public String getAnalizSekretaJSON(@PathVariable("modelid") Integer modelId, Map<String, Object> map) {
+
+        Puser CurrentUser = GetCurrentUser();        
+
+        if (CurrentUser != null) {
+            List<Motconsu> mtcs = this.motconsuService.getMotconsuListByPatientIdAndModel(CurrentUser.getPatientId(), this.modelsService.getModeleById(modelId));          
+            
+            String mtcsDataJson = "";
+            if (mtcs != null) {
+                List<MotconsuPOJO> mtcsPojo = new ArrayList<MotconsuPOJO>();
+                Locale dLocale = new Locale.Builder().setLanguage("ru").setScript("Cyrl").build();
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MMMMM.dd", dLocale);
+                for(int i = 0; i < mtcs.size(); i++){
+                    String medecinsNPS = ((Motconsu)mtcs.get(i)).getMedecinsId().getSpecialisation() + " " + 
+                            ((Motconsu)mtcs.get(i)).getMedecinsId().getNom() + " " + 
+                            ((Motconsu)mtcs.get(i)).getMedecinsId().getPrenom();
+                    mtcsPojo.add(new MotconsuPOJO(
+                            ((Motconsu)mtcs.get(i)).getMotconsuId(), 
+                            ((Motconsu)mtcs.get(i)).getModelsId().getModeleName(), 
+                            formatter.format(((Motconsu)mtcs.get(i)).getDateConsultation()), 
+                            medecinsNPS));
+                }
+                ObjectMapper mapper = new ObjectMapper();
+                AaDataMotconsu aa = new AaDataMotconsu();
+                aa.setAaData(mtcsPojo);
+                try {                    
+                    mtcsDataJson = mapper.writeValueAsString(aa);
+                } catch (JsonGenerationException e) {
+                    e.printStackTrace();
+                } catch (JsonMappingException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            
+            map.put("body", mtcsDataJson);
+            
+            return "json";
+        } else {
+            // ЕСЛИ НЕ АВТОРИЗОВАН ПЕРЕНАПРАВИТЬ НА СТРАНИЦУ АВТОРИЗАЦИИ
+            return "login";
+        }
+    }
     // GET CURRENT USER FOR INDEX PAGE INFO
     private Puser GetCurrentUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();

@@ -11,9 +11,12 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,6 +25,7 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ * MODELS_ID = 222
  * БИО КУАГУЛОГРАММА
  * @author kvo
  */
@@ -75,10 +79,11 @@ public class Data334 implements Serializable {
     @Column(name = "DATE_CONSULTATION")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateConsultation;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "MOTCONSU_ID")
-    private int motconsuId;
+    
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MOTCONSU_ID")
+    private Motconsu motconsuId;
+    
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "RFMK")
     private BigDecimal rfmk;
@@ -144,11 +149,10 @@ public class Data334 implements Serializable {
         this.data334Id = data334Id;
     }
 
-    public Data334(Integer data334Id, int patientsId, Date dateConsultation, int motconsuId) {
+    public Data334(Integer data334Id, int patientsId, Date dateConsultation) {
         this.data334Id = data334Id;
         this.patientsId = patientsId;
         this.dateConsultation = dateConsultation;
-        this.motconsuId = motconsuId;
     }
 
     public Integer getData334Id() {
@@ -175,14 +179,15 @@ public class Data334 implements Serializable {
         this.dateConsultation = dateConsultation;
     }
 
-    public int getMotconsuId() {
+    public Motconsu getMotconsuId() {
         return motconsuId;
     }
 
-    public void setMotconsuId(int motconsuId) {
+    public void setMotconsuId(Motconsu motconsuId) {
         this.motconsuId = motconsuId;
     }
 
+    
     public BigDecimal getRfmk() {
         return rfmk;
     }

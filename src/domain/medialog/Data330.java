@@ -10,9 +10,12 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -21,6 +24,7 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ * MODELS_ID = 222 
  * БИО БХК
  * @author kvo
  */
@@ -93,9 +97,11 @@ public class Data330 implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateConsultation;
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "MOTCONSU_ID")
-    private int motconsuId;
+    
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MOTCONSU_ID")
+    private Motconsu motconsuId;
+    
     @Column(name = "BIO_IMIQ_8_POKAZATELEJ")
     private Boolean bioImiq8Pokazatelej;
     @Column(name = "MOHEVINA1")
@@ -213,11 +219,10 @@ public class Data330 implements Serializable {
         this.data330Id = data330Id;
     }
 
-    public Data330(Integer data330Id, int patientsId, Date dateConsultation, int motconsuId) {
+    public Data330(Integer data330Id, int patientsId, Date dateConsultation) {
         this.data330Id = data330Id;
         this.patientsId = patientsId;
         this.dateConsultation = dateConsultation;
-        this.motconsuId = motconsuId;
     }
 
     public Integer getData330Id() {
@@ -244,11 +249,11 @@ public class Data330 implements Serializable {
         this.dateConsultation = dateConsultation;
     }
 
-    public int getMotconsuId() {
+    public Motconsu getMotconsuId() {
         return motconsuId;
     }
 
-    public void setMotconsuId(int motconsuId) {
+    public void setMotconsuId(Motconsu motconsuId) {
         this.motconsuId = motconsuId;
     }
 

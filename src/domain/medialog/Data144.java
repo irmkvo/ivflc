@@ -10,10 +10,13 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,6 +25,7 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ *  MODELS_ID = 180
  * Мазки флоры
  * @author kvo
  */
@@ -89,8 +93,11 @@ public class Data144 implements Serializable {
     @Column(name = "DATE_CONSULTATION")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateConsultation;
-    @Column(name = "MOTCONSU_ID")
-    private Integer motconsuId;
+    
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MOTCONSU_ID")
+    private Motconsu motconsuId;
+    
     @Size(max = 19)
     @Column(name = "F_HEK")
     private String fHek;
@@ -252,14 +259,14 @@ public class Data144 implements Serializable {
         this.dateConsultation = dateConsultation;
     }
 
-    public Integer getMotconsuId() {
+    public Motconsu getMotconsuId() {
         return motconsuId;
     }
 
-    public void setMotconsuId(Integer motconsuId) {
+    public void setMotconsuId(Motconsu motconsuId) {
         this.motconsuId = motconsuId;
     }
-
+    
     public String getFHek() {
         return fHek;
     }

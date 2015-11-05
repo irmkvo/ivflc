@@ -10,10 +10,13 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,6 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Сперма секрет простаты
+ * MODELS_ID = 180
  * @author kvo
  */
 @Entity
@@ -68,8 +72,11 @@ public class Data143 implements Serializable {
     @Column(name = "DATE_CONSULTATION")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateConsultation;
-    @Column(name = "MOTCONSU_ID")
-    private Integer motconsuId;
+        
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MOTCONSU_ID")
+    private Motconsu motconsuId;
+    
     @Size(max = 14)
     @Column(name = "FLORA")
     private String flora;
@@ -169,13 +176,15 @@ public class Data143 implements Serializable {
         this.dateConsultation = dateConsultation;
     }
 
-    public Integer getMotconsuId() {
+    public Motconsu getMotconsuId() {
         return motconsuId;
     }
 
-    public void setMotconsuId(Integer motconsuId) {
+    public void setMotconsuId(Motconsu motconsuId) {
         this.motconsuId = motconsuId;
     }
+
+    
 
     public String getFlora() {
         return flora;

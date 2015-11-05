@@ -5,8 +5,6 @@
  */
 package domain.medialog;
 
-import domain.postgres.Menu;
-import domain.postgres.MenuAcces;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -181,6 +179,51 @@ public class Motconsu implements Serializable {
 
     @OneToOne(mappedBy = "motconsuId", fetch = FetchType.LAZY)
     private Data328 data328;
+    
+    @OneToOne(mappedBy = "motconsuId", fetch = FetchType.LAZY)
+    private Data143 data143;
+    
+    @OneToOne(mappedBy = "motconsuId", fetch = FetchType.LAZY)
+    private Data144 data144;
+    
+    @OneToOne(mappedBy = "motconsuId", fetch = FetchType.LAZY)
+    private Data146 data146;
+    
+    @OneToOne(mappedBy = "motconsuId", fetch = FetchType.LAZY)
+    private Data262 data262;
+    
+    @OneToOne(mappedBy = "motconsuId", fetch = FetchType.LAZY)
+    private Data269 data269;
+    
+    @OneToOne(mappedBy = "motconsuId", fetch = FetchType.LAZY)
+    private Data327 data327;
+    
+    @OneToOne(mappedBy = "motconsuId", fetch = FetchType.LAZY)
+    private Data329 data329;
+    
+    @OneToOne(mappedBy = "motconsuId", fetch = FetchType.LAZY)
+    private Data330 data330;
+    
+    @OneToOne(mappedBy = "motconsuId", fetch = FetchType.LAZY)
+    private Data331 data331;
+    
+    @OneToOne(mappedBy = "motconsuId", fetch = FetchType.LAZY)
+    private Data333 data333;
+    
+    @OneToOne(mappedBy = "motconsuId", fetch = FetchType.LAZY)
+    private Data334 data334;
+    
+    @OneToOne(mappedBy = "motconsuId", fetch = FetchType.LAZY)
+    private Data335 data335;
+    
+    @OneToOne(mappedBy = "motconsuId", fetch = FetchType.LAZY)
+    private Data364 data364;
+    
+    @OneToOne(mappedBy = "motconsuId", fetch = FetchType.LAZY)
+    private Data372 data372;
+    
+    @OneToOne(mappedBy = "motconsuId", fetch = FetchType.LAZY)
+    private Data436 data436;
     
     public Motconsu() {
     }
@@ -488,6 +531,126 @@ public class Motconsu implements Serializable {
 
     public void setData328(Data328 data328) {
         this.data328 = data328;
+    }
+
+    public Data143 getData143() {
+        return data143;
+    }
+
+    public void setData143(Data143 data143) {
+        this.data143 = data143;
+    }
+
+    public Data144 getData144() {
+        return data144;
+    }
+
+    public void setData144(Data144 data144) {
+        this.data144 = data144;
+    }
+
+    public Data146 getData146() {
+        return data146;
+    }
+
+    public void setData146(Data146 data146) {
+        this.data146 = data146;
+    }
+
+    public Data262 getData262() {
+        return data262;
+    }
+
+    public void setData262(Data262 data262) {
+        this.data262 = data262;
+    }
+
+    public Data269 getData269() {
+        return data269;
+    }
+
+    public void setData269(Data269 data269) {
+        this.data269 = data269;
+    }
+
+    public Data327 getData327() {
+        return data327;
+    }
+
+    public void setData327(Data327 data327) {
+        this.data327 = data327;
+    }
+
+    public Data329 getData329() {
+        return data329;
+    }
+
+    public void setData329(Data329 data329) {
+        this.data329 = data329;
+    }
+
+    public Data330 getData330() {
+        return data330;
+    }
+
+    public void setData330(Data330 data330) {
+        this.data330 = data330;
+    }
+
+    public Data331 getData331() {
+        return data331;
+    }
+
+    public void setData331(Data331 data331) {
+        this.data331 = data331;
+    }
+
+    public Data333 getData333() {
+        return data333;
+    }
+
+    public void setData333(Data333 data333) {
+        this.data333 = data333;
+    }
+
+    public Data334 getData334() {
+        return data334;
+    }
+
+    public void setData334(Data334 data334) {
+        this.data334 = data334;
+    }
+
+    public Data335 getData335() {
+        return data335;
+    }
+
+    public void setData335(Data335 data335) {
+        this.data335 = data335;
+    }
+
+    public Data364 getData364() {
+        return data364;
+    }
+
+    public void setData364(Data364 data364) {
+        this.data364 = data364;
+    }
+
+    public Data372 getData372() {
+        return data372;
+    }
+
+    public void setData372(Data372 data372) {
+        this.data372 = data372;
+    }
+
+    public Data436 getData436() {
+        return data436;
+    }
+
+    public void setData436(Data436 data436) {
+        this.data436 = data436;
     }
 
     

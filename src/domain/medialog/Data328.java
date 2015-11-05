@@ -25,6 +25,7 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ * MODELS_ID = 222
  * ОБЩИЙ АНАЛИЗ КРОВИ
  * @author kvo
  */

@@ -33,8 +33,6 @@ public class MedicinsTests {
         Puser CurrentUser = GetCurrentUser();
 
         map.put("UserData", CurrentUser);
-        map.put("LeftPanel", 1);
-        map.put("RightPanel", 0);
 
         return "/clients/testslist";
         

@@ -10,7 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
+import javax.persistence.Temporal;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -37,10 +37,13 @@ public class Broadcasts implements Serializable{
     @Column(name = "description")
     private String description;
     @Column(name = "creationDate")
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date creationDate;
     @Column(name = "startDate")
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date startDate;
     @Column(name = "endDate")
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date endDate;
 
     @Column(name = "startURL")

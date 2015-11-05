@@ -11,10 +11,13 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,6 +26,7 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ * MODELS_ID = 181
  * Гормон ХГЧ
  * @author kvo
  */
@@ -66,9 +70,12 @@ public class Data262 implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateConsultation;
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "MOTCONSU_ID")
-    private int motconsuId;
+    
+    
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MOTCONSU_ID")
+    private Motconsu motconsuId;
+    
     @Size(max = 19)
     @Column(name = "VEDENIE_BEREMENNOSTI2")
     private String vedenieBeremennosti2;
@@ -124,10 +131,9 @@ public class Data262 implements Serializable {
         this.data262Id = data262Id;
     }
 
-    public Data262(Integer data262Id, int patientsId, int motconsuId) {
+    public Data262(Integer data262Id, int patientsId) {
         this.data262Id = data262Id;
         this.patientsId = patientsId;
-        this.motconsuId = motconsuId;
     }
 
     public Integer getData262Id() {
@@ -154,14 +160,15 @@ public class Data262 implements Serializable {
         this.dateConsultation = dateConsultation;
     }
 
-    public int getMotconsuId() {
+    public Motconsu getMotconsuId() {
         return motconsuId;
     }
 
-    public void setMotconsuId(int motconsuId) {
+    public void setMotconsuId(Motconsu motconsuId) {
         this.motconsuId = motconsuId;
     }
 
+    
     public String getVedenieBeremennosti2() {
         return vedenieBeremennosti2;
     }

@@ -11,9 +11,12 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,6 +25,7 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ * MODELS_ID = 222
  * БИО ЭЛЕКРОЛИТЫ
  * @author kvo
  */
@@ -62,10 +66,11 @@ public class Data436 implements Serializable {
     @Column(name = "DATE_CONSULTATION")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateConsultation;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "MOTCONSU_ID")
-    private int motconsuId;
+   
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MOTCONSU_ID")
+    private Motconsu motconsuId;
+    
     @Size(max = 29)
     @Column(name = "LEHAHIJ_VRAH")
     private String lehahijVrah;
@@ -104,11 +109,10 @@ public class Data436 implements Serializable {
         this.data436Id = data436Id;
     }
 
-    public Data436(Integer data436Id, int patientsId, Date dateConsultation, int motconsuId) {
+    public Data436(Integer data436Id, int patientsId, Date dateConsultation) {
         this.data436Id = data436Id;
         this.patientsId = patientsId;
         this.dateConsultation = dateConsultation;
-        this.motconsuId = motconsuId;
     }
 
     public Integer getData436Id() {
@@ -135,13 +139,14 @@ public class Data436 implements Serializable {
         this.dateConsultation = dateConsultation;
     }
 
-    public int getMotconsuId() {
+    public Motconsu getMotconsuId() {
         return motconsuId;
     }
 
-    public void setMotconsuId(int motconsuId) {
+    public void setMotconsuId(Motconsu motconsuId) {
         this.motconsuId = motconsuId;
     }
+    
 
     public String getLehahijVrah() {
         return lehahijVrah;
