@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author kvo
  */
-@Service("broadcastService")
+@Service("broadcastRegistrationService")
 @Transactional("postgresT")
 public class BroadcastRegistrationServiceImpl implements BroadcastRegistrationService{
 

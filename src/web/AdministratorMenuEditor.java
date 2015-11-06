@@ -70,6 +70,8 @@ public class AdministratorMenuEditor {
                 } else {
                     menuService.AddMenu(menuEdit);
                 }
+            } else {
+                menuService.AddMenu(menuEdit);
             }
         }
         

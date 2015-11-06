@@ -87,6 +87,8 @@ public class AdministrativZone {
                 } else {
                     this.pagesService.addPages(pageEdit);
                 }
+            } else {
+                this.pagesService.addPages(pageEdit);
             }
         }
         

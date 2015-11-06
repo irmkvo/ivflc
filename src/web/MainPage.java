@@ -17,20 +17,20 @@ public class MainPage {
 
     @Autowired
     UsersService userService;
-    
+
     @Autowired
     MenuService menuService;
 
     @Autowired
     PagesService pagesService;
-    
+
     @RequestMapping("/index")
     public String getPageOnRole(Map<String, Object> map) {
 
         Puser CurrentUser = GetCurrentUser();
-        
+
         map.put("loadContent", "/WEB-INF/views/clients/index.jsp");
-        
+
         map.put("LeftPanel", 1);
         map.put("RightPanel", 0);
 
@@ -50,18 +50,18 @@ public class MainPage {
 
     @RequestMapping("/")
     public String home(Map<String, Object> map) {
-        
+
         map.put("loadContent", "/WEB-INF/views/login.jsp");
-        
+
         return "login";
     }
 
     // GET ADMIN MAIN PAGE
     @RequestMapping("/admin/index")
-    public String getAdministrativPanel(Map<String, Object> map) {                        
-        
+    public String getAdministrativPanel(Map<String, Object> map) {
+
         map.put("loadContent", "/WEB-INF/views/template/default/content.jsp");
-        
+
         map.put("LeftPanel", 1);
         map.put("RightPanel", 0);
 
@@ -87,5 +87,5 @@ public class MainPage {
         }
 
         return userService.getUserbyLogin(username);
-    }    
+    }
 }

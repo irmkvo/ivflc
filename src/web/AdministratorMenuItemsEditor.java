@@ -112,6 +112,8 @@ public class AdministratorMenuItemsEditor {
                 } else {
                     this.menuService.AddMenuItem(menuItemEdit);
                 }
+            } else {
+                this.menuService.AddMenuItem(menuItemEdit);
             }
         }
         
