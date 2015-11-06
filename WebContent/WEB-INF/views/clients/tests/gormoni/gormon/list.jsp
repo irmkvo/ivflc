@@ -46,13 +46,13 @@
                 "language": {
                 "url": "${pageContext.request.contextPath}/resources/template/default/bower_components/datatables/locale/dataTables.russian.lang"},
                 "columnDefs": [{ "className": "hidden-xs", "aTargets": [2] }],
-                "sAjaxSource": '${pageContext.request.contextPath}/analiz-sekreta/json/${modelId}',
+                "sAjaxSource": '${pageContext.request.contextPath}/gormon-gormoni/json/${modelId}',
                             "aoColumns": [
                                 {"mData": "dateConsultation"},
                                     {"mData": "module"},
                                     {"mData": "medecins"},
                                     {"mData": null, "bSortable": false, "mRender": function (o) {
-                                            return '<a href="${pageContext.request.contextPath}/analiz-sekreta/print/' + o.motconsuId + '">' + 'Подробно' + '</a>';
+                                            return '<a href="${pageContext.request.contextPath}/gormon-gormoni/print/' + o.motconsuId + '">' + 'Подробно' + '</a>';
                                             }
                                     }
                                     ]
