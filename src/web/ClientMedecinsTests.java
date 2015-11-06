@@ -416,6 +416,161 @@ public class ClientMedecinsTests {
     
     
     
+      // 1. АНАЛИЗ КАРИОТИП
+    @RequestMapping("/kariotip/{modelid}")
+    public String getKariotip(@PathVariable("modelid") Integer modelId, Map<String, Object> map) {
+        
+        map.put("modelId", modelId);
+        map.put("loadContent", "/WEB-INF/views/clients/tests/kariotip/list.jsp");
+
+        return "index";
+        
+    }
+    // 2. АНАЛИЗ КАРИОТИП
+    @RequestMapping("/kariotip/print/{motconsuid}")
+    public String getAnalizKariotip(@PathVariable("motconsuid") Integer motconsuId, Map<String, Object> map) {
+        
+        Motconsu mtcs = this.motconsuService.getMotconsuById(motconsuId);
+        
+        map.put("GBA", mtcs.getData269());
+        map.put("loadContent", "/WEB-INF/views/clients/tests/kariotip/print.jsp");
+
+        return "index";
+        
+    }
+    // АНАЛИЗ КАРИОТИП JSON
+    // 3. JSON ESB
+    @RequestMapping(method={RequestMethod.POST,RequestMethod.GET} , value="/kariotip/json/{modelid}")
+    public String getAnalizKariotipJSON(@PathVariable("modelid") Integer modelId, Map<String, Object> map) {
+
+        Puser CurrentUser = GetCurrentUser();        
+
+        if (CurrentUser != null) {
+            List<Motconsu> mtcs = this.motconsuService.getMotconsuListByPatientIdAndModel(CurrentUser.getPatientId(), this.modelsService.getModeleById(modelId));          
+            
+            String mtcsDataJson = "";
+            if (mtcs != null) {
+                List<MotconsuPOJO> mtcsPojo = new ArrayList<MotconsuPOJO>();
+                Locale dLocale = new Locale.Builder().setLanguage("ru").setScript("Cyrl").build();
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MMMMM.dd", dLocale);
+                for (int i = 0; i < mtcs.size(); i++) {
+                    if (((Motconsu) mtcs.get(i)).getData269() != null) {
+                        String medecinsNPS = ((Motconsu) mtcs.get(i)).getMedecinsId().getSpecialisation() + " "
+                                + ((Motconsu) mtcs.get(i)).getMedecinsId().getNom() + " "
+                                + ((Motconsu) mtcs.get(i)).getMedecinsId().getPrenom();
+                        mtcsPojo.add(new MotconsuPOJO(
+                                ((Motconsu) mtcs.get(i)).getMotconsuId(),
+                                ((Motconsu) mtcs.get(i)).getModelsId().getModeleName(),
+                                formatter.format(((Motconsu) mtcs.get(i)).getDateConsultation()),
+                                medecinsNPS));
+                    }
+                }
+                ObjectMapper mapper = new ObjectMapper();
+                AaDataMotconsu aa = new AaDataMotconsu();
+                aa.setAaData(mtcsPojo);
+                try {                    
+                    mtcsDataJson = mapper.writeValueAsString(aa);
+                } catch (JsonGenerationException e) {
+                    e.printStackTrace();
+                } catch (JsonMappingException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            
+            map.put("body", mtcsDataJson);
+            
+            return "json";
+        } else {
+            // ЕСЛИ НЕ АВТОРИЗОВАН ПЕРЕНАПРАВИТЬ НА СТРАНИЦУ АВТОРИЗАЦИИ
+            return "login";
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+      // 1. АНАЛИЗ Мазки проба Шуварского
+    @RequestMapping("/mazki-sh/{modelid}")
+    public String getFloraSh(@PathVariable("modelid") Integer modelId, Map<String, Object> map) {
+        
+        map.put("modelId", modelId);
+        map.put("loadContent", "/WEB-INF/views/clients/tests/mazki/shuvar/list.jsp");
+
+        return "index";
+        
+    }
+    // 2. АНАЛИЗ Мазки проба Шуварского
+    @RequestMapping("/mazki-sh/print/{motconsuid}")
+    public String getAnalizFloraSh(@PathVariable("motconsuid") Integer motconsuId, Map<String, Object> map) {
+        
+        Motconsu mtcs = this.motconsuService.getMotconsuById(motconsuId);
+        
+        map.put("GBA", mtcs.getData269());
+        map.put("loadContent", "/WEB-INF/views/clients/tests/mazki/shuvar/print.jsp");
+
+        return "index";
+        
+    }
+    // АНАЛИЗ Мазки проба Шуварского JSON
+    // 3. JSON ESB
+    @RequestMapping(method={RequestMethod.POST,RequestMethod.GET} , value="/mazki-sh/json/{modelid}")
+    public String getAnalizFloraShJSON(@PathVariable("modelid") Integer modelId, Map<String, Object> map) {
+
+        Puser CurrentUser = GetCurrentUser();        
+
+        if (CurrentUser != null) {
+            List<Motconsu> mtcs = this.motconsuService.getMotconsuListByPatientIdAndModel(CurrentUser.getPatientId(), this.modelsService.getModeleById(modelId));          
+            
+            String mtcsDataJson = "";
+            if (mtcs != null) {
+                List<MotconsuPOJO> mtcsPojo = new ArrayList<MotconsuPOJO>();
+                Locale dLocale = new Locale.Builder().setLanguage("ru").setScript("Cyrl").build();
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MMMMM.dd", dLocale);
+                for (int i = 0; i < mtcs.size(); i++) {
+                    if (((Motconsu) mtcs.get(i)).getData269() != null) {
+                        String medecinsNPS = ((Motconsu) mtcs.get(i)).getMedecinsId().getSpecialisation() + " "
+                                + ((Motconsu) mtcs.get(i)).getMedecinsId().getNom() + " "
+                                + ((Motconsu) mtcs.get(i)).getMedecinsId().getPrenom();
+                        mtcsPojo.add(new MotconsuPOJO(
+                                ((Motconsu) mtcs.get(i)).getMotconsuId(),
+                                ((Motconsu) mtcs.get(i)).getModelsId().getModeleName(),
+                                formatter.format(((Motconsu) mtcs.get(i)).getDateConsultation()),
+                                medecinsNPS));
+                    }
+                }
+                ObjectMapper mapper = new ObjectMapper();
+                AaDataMotconsu aa = new AaDataMotconsu();
+                aa.setAaData(mtcsPojo);
+                try {                    
+                    mtcsDataJson = mapper.writeValueAsString(aa);
+                } catch (JsonGenerationException e) {
+                    e.printStackTrace();
+                } catch (JsonMappingException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            
+            map.put("body", mtcsDataJson);
+            
+            return "json";
+        } else {
+            // ЕСЛИ НЕ АВТОРИЗОВАН ПЕРЕНАПРАВИТЬ НА СТРАНИЦУ АВТОРИЗАЦИИ
+            return "login";
+        }
+    }
+    
+    
+    
+    
+    
+    
     // GET CURRENT USER FOR INDEX PAGE INFO
     private Puser GetCurrentUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
