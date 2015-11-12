@@ -11,7 +11,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Общий анализ крови</h1>
+        <h1 class="page-header">Общий анализ мочи</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -19,91 +19,118 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Анализ выполнен на анализаторе "Swelab Alfa 3-diff"
+                Анализ выполнен на анализаторе 
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <div class="table-responsive">
-                    <table class="table table-striped table-bordered table-hover" width="100%">
-                        <thead>
-                            <tr>
-                                <th rowspan="2">Показатель</th>
-                                <th rowspan="2">Значение</th>
-                                <th rowspan="2">Ед.измр.</th>
-                                <th colspan="2">Ед.измр.</th>
+                    <div class="col-lg-6">
+                        <table class="table table-striped table-bordered table-hover" width="100%">
+
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Физико-химические свойства</th>
+                                </tr>
+                                <tr>
+                                    <th>Показатель</th>
+                                    <th>Значение</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Количество</td>
+                                    <td>${GBA.kolihestvo}</td>
+                                </tr> 
+                                <tr>
+                                    <td>Цвет</td>
+                                    <td>${GBA.cvet}</td>
+                                </tr> 
+                                <tr>
+                                    <td>Относительная<br>плотность</td>
+                                    <td>${GBA.otnositelNaqPlotnost}</td>
+                                </tr>
+                                <tr>
+                                    <td>Прозрачность</td>
+                                    <td>${GBA.prozrahnost}</td>
+                                </tr>
+                                <tr>
+                                    <td>pH</td>
+                                    <td>${GBA.reakciq}</td>
+                                </tr>
+                                <tr>
+                                    <td>Белок</td>
+                                    <td>${GBA.belok}</td>
+                                </tr>
+                                <tr>
+                                    <td>Глюкоза</td>
+                                    <td>${GBA.glykoza}</td>
+                                </tr>
+                                <tr>
+                                    <td>Билирубин</td>
+                                    <td>${GBA.blirubin}</td>
+                                </tr>
+                                <tr>
+                                    <td>Уробилиноиды</td>
+                                    <td>${GBA.urobilinoid}</td>
+                                </tr>
+                                <tr>
+                                    <td>Кетон</td>
+                                    <td>${GBA.keton}</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>  
+                    <div class="col-lg-6">
+                        <table class="table table-striped table-bordered table-hover" width="100%">
+
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Микроскопия осадка</th>
+                                </tr>
+                                <tr>
+                                    <th>Показатель</th>
+                                    <th>Значение</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><th colspan="2">Эпителий</th></tr>
+                                <tr>
+                                    <td>Плоский</td>
+                                    <td>${GBA.poloskiEpitelij}</td>
+                                </tr> 
+                                <tr>
+                                    <td>Переходный</td>
+                                    <td>${GBA.epitelijPereOdnJ}</td>
+                                </tr> 
+                                <tr><th colspan="1">Лейкоциты</th><td>${GBA.lejkocit}</td></tr>
+                                <tr>
+                                <tr><th colspan="2">Эритроциты</th></tr>
+                            <td>Неизмененны</td>        
+                            <td>${GBA.eritrocit}</td>
                             </tr>
                             <tr>
-                                <th>Муж.</th>
-                                <th>Жен.</th>
+                                <td>Измененные</td>
+                                <td>${GBA.eritrocitIzmenennE}</td>
                             </tr>
-                        </thead>
-                        <tbody>
+
+                            <tr><th colspan="2">Цилиндры</th></tr>
                             <tr>
-                                <td>Эритроциты</td>
-                                <td>${GBA.eritrocit}</td>
-                                <td>10 12/л</td>
-                                <td>4,0-5,0</td>
-                                <td>3,9-4,7</td>
-                            </tr> 
-                            <tr>
-                                <td>Гемоглобин</td>
-                                <td>${GBA.gemoglobin}</td>
-                                <td></td>
-                                <td>130,0-160,0</td>
-                                <td>120,0-140,0</td>
+                                <td>Гиалиновые</td>
+                                <td>${GBA.cilindr}</td>
                             </tr>
                             <tr>
-                                <td>Цветной показатель</td>
-                                <td>${GBA.cvetnojPokazatel}</td>
-                                <td></td>
-                                <td colspan="2">0,85-1,05</td>
+                                <td>Зернистые</td>
+                                <td>${GBA.cilindrZernistE}</td>
                             </tr>
-                            <tr>
-                                <td>Лейкоциты</td>
-                                <td>${GBA.lejkocit}</td>
-                                <td>10 9/л</td>
-                                <td colspan="2">4,0-9,0</td>
-                            </tr>
-                            <tr>
-                                <td>Гранулоциты</td>
-                                <td>${GBA.granulocit}</td>
-                                <td>%</td>
-                                <td colspan="2">48-82</td>
-                            </tr>
-                            <tr>
-                                <td>Моноциты</td>
-                                <td>${GBA.monocit}</td>
-                                <td>%</td>
-                                <td colspan="2">2-9(0,09-0,60)</td>
-                            </tr>
-                            <tr>
-                                <td>Лимфоциты</td>
-                                <td>${GBA.limfocit}</td>
-                                <td>%</td>
-                                <td colspan="2">18-40(1,20-3,00)</td>
-                            </tr>
-                            <tr>
-                                <td>Тромбоциты</td>
-                                <td>${GBA.trombocT}</td>
-                                <td>10 9/л</td>
-                                <td colspan="2">180-320</td>
-                            </tr>
-                            <tr>
-                                <td>СОЭ</td>
-                                <td>${GBA.soe}</td>
-                                <td>мм/час</td>
-                                <td>2-10</td>
-                                <td>2-15</td>
-                            </tr>
-                            <tr>
-                                <td>Гематокритное число</td>
-                                <td>${GBA.gemotokritnoeHislo}</td>
-                                <td>%</td>
-                                <td>40-48</td>
-                                <td>36-42</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                            <tr><th colspan="1">Слизь</th><td>${GBA.sliz}</td></tr>
+                            <tr><th colspan="1">Соли</th><td>${GBA.coli}</td></tr>
+                            <tr><th colspan="1">Бактерии</th><td>${GBA.bakterii}</td></tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+
                 </div>
                 <!-- /.table-responsive -->
             </div>
