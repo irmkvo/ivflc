@@ -99,6 +99,8 @@ public class Puser implements Serializable {
     
     private Integer plSubId;
     
+    private Integer plAgendId;
+    
     @Basic(optional = true)
     private String conpanyName;
     
@@ -372,6 +374,14 @@ public class Puser implements Serializable {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
         return hash;
+    }
+
+    public Integer getPlAgendId() {
+        return plAgendId;
+    }
+
+    public void setPlAgendId(Integer plAgendId) {
+        this.plAgendId = plAgendId;
     }
 
     @Override

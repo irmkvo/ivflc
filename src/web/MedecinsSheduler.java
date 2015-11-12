@@ -37,10 +37,9 @@ public class MedecinsSheduler {
         
         map.put("UserData", CurrentUser);
         
-        map.put("loadContent", "/WEB-INF/views/schedule/admin/schedule.jsp");
+        map.put("PLDays", this.planningService.getPLDAYByAgentID(CurrentUser.getPlAgendId()));
         
-        map.put("LeftPanel", 1);
-        map.put("RightPanel", 0);
+        map.put("loadContent", "/WEB-INF/views/doctor/schedule/schedule.jsp");
         
         return "index";
     }

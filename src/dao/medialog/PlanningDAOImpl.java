@@ -69,7 +69,7 @@ public class PlanningDAOImpl implements PlanningDAO{
 
     @Override
     public List<PlDay> getPLDAYByAgentID(Integer agentId) {
-        return sessionFactory.getCurrentSession().createQuery("from PlDay WHERE plAgendId = :plAgendId").setParameter("plAgendId", agentId).list();
+        return sessionFactory.getCurrentSession().createQuery("from PlDay WHERE plAgendId = :plAgendId ORDER BY dayOfWeek").setParameter("plAgendId", agentId).list();
     }
 
     @Override

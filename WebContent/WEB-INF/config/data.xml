@@ -115,6 +115,29 @@
                 <value>domain.medialog.Data364</value>
                 <value>domain.medialog.Data372</value>
                 <value>domain.medialog.Data436</value>
+                <value>domain.medialog.PlAgend</value>
+                <value>domain.medialog.PlConflReport</value>
+                <value>domain.medialog.PlDay</value>
+                <value>domain.medialog.PlExGr</value>
+                <value>domain.medialog.PlExam</value>
+                <value>domain.medialog.PlExamOrg</value>
+                <value>domain.medialog.PlExamProf</value>
+                <value>domain.medialog.PlExcl</value>
+                <value>domain.medialog.PlExrol</value>
+                <value>domain.medialog.PlExt</value>
+                <value>domain.medialog.PlGener</value>
+                <value>domain.medialog.PlGridReport</value>
+                <value>domain.medialog.PlInt</value>
+                <value>domain.medialog.PlLeg</value>
+                <value>domain.medialog.PlLink</value>
+                <value>domain.medialog.PlModality</value>
+                <value>domain.medialog.PlParam</value>
+                <value>domain.medialog.PlPatgr</value>
+                <value>domain.medialog.PlRole</value>
+                <value>domain.medialog.PlSalle</value>
+                <value>domain.medialog.PlSubj</value>
+                <value>domain.medialog.PlSurol</value>
+                <value>domain.medialog.Planning</value>
            </list>
         </property>
 <!--        <property name="packagesToScan" value="domain"/>-->

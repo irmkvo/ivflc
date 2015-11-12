@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author kvo
  */
-@Service("patientsService")
+@Service("planningService")
 @Transactional("mssqlT")
 public class PlanningServiceImpl implements PlanningService{
 
