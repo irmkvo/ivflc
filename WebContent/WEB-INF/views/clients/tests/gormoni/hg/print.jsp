@@ -11,15 +11,15 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Общий анализ крови</h1>
+        <h1 class="page-header">Гормон ХГЧ</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
 <div class="row">   
-    <div class="col-lg-12">
+    <div class="col-lg-8">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Анализ выполнен на анализаторе "Swelab Alfa 3-diff"
+                Анализ выполнен на анализаторе 
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
@@ -27,80 +27,51 @@
                     <table class="table table-striped table-bordered table-hover" width="100%">
                         <thead>
                             <tr>
-                                <th rowspan="2">Показатель</th>
                                 <th rowspan="2">Значение</th>
-                                <th rowspan="2">Ед.измр.</th>
-                                <th colspan="2">Ед.измр.</th>
+                                <th rowspan="2">Ед. измерения</th>
+                                <th rowspan="2">Значение нормы<br> 0-5 МЕ/л</th>
+                                <th colspan="2">Нормы для беременных</th>
                             </tr>
                             <tr>
-                                <th>Муж.</th>
-                                <th>Жен.</th>
+                                <th>срок беременности</th>
+                                <th>кол-во ХГЧ</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Эритроциты</td>
-                                <td>${GBA.eritrocit}</td>
-                                <td>10 12/л</td>
-                                <td>4,0-5,0</td>
-                                <td>3,9-4,7</td>
+                                <td rowspan="8">200</td>
+                                <td rowspan="8">МЕ/л</td>
+                                <td rowspan="8">Пограничное <br>значение 5-10 МЕ/л</td>
+                                <td >1 нед.</td>
+                                <td>до 50</td>
                             </tr> 
                             <tr>
-                                <td>Гемоглобин</td>
-                                <td>${GBA.gemoglobin}</td>
-                                <td></td>
-                                <td>130,0-160,0</td>
-                                <td>120,0-140,0</td>
+                                <td>2 нед.</td>
+                                <td>до 400</td>
                             </tr>
                             <tr>
-                                <td>Цветной показатель</td>
-                                <td>${GBA.cvetnojPokazatel}</td>
-                                <td></td>
-                                <td colspan="2">0,85-1,05</td>
+                                <td>3 нед.</td>
+                                <td>1000-4000</td>
                             </tr>
                             <tr>
-                                <td>Лейкоциты</td>
-                                <td>${GBA.lejkocit}</td>
-                                <td>10 9/л</td>
-                                <td colspan="2">4,0-9,0</td>
+                                <td>4 нед.</td>
+                                <td>1000-20000</td>
                             </tr>
                             <tr>
-                                <td>Гранулоциты</td>
-                                <td>${GBA.granulocit}</td>
-                                <td>%</td>
-                                <td colspan="2">48-82</td>
+                                <td>5-8 нед.</td>
+                                <td>40000-130000</td>
                             </tr>
                             <tr>
-                                <td>Моноциты</td>
-                                <td>${GBA.monocit}</td>
-                                <td>%</td>
-                                <td colspan="2">2-9(0,09-0,60)</td>
+                                <td>9-12 нед.</td>
+                                <td>40000-200000</td>
                             </tr>
                             <tr>
-                                <td>Лимфоциты</td>
-                                <td>${GBA.limfocit}</td>
-                                <td>%</td>
-                                <td colspan="2">18-40(1,20-3,00)</td>
+                                <td>13-24 нед.</td>
+                                <td>7000-120000</td>
                             </tr>
                             <tr>
-                                <td>Тромбоциты</td>
-                                <td>${GBA.trombocT}</td>
-                                <td>10 9/л</td>
-                                <td colspan="2">180-320</td>
-                            </tr>
-                            <tr>
-                                <td>СОЭ</td>
-                                <td>${GBA.soe}</td>
-                                <td>мм/час</td>
-                                <td>2-10</td>
-                                <td>2-15</td>
-                            </tr>
-                            <tr>
-                                <td>Гематокритное число</td>
-                                <td>${GBA.gemotokritnoeHislo}</td>
-                                <td>%</td>
-                                <td>40-48</td>
-                                <td>36-42</td>
+                                <td>25-40 нед.</td>
+                                <td>1000-80000</td>
                             </tr>
                         </tbody>
                     </table>
