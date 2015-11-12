@@ -97,6 +97,8 @@ public class Puser implements Serializable {
     @Basic(optional = true)
     private Integer patientId;
     
+    private Integer plSubId;
+    
     @Basic(optional = true)
     private String conpanyName;
     
@@ -355,6 +357,14 @@ public class Puser implements Serializable {
 
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public Integer getPlSubId() {
+        return plSubId;
+    }
+
+    public void setPlSubId(Integer plSubId) {
+        this.plSubId = plSubId;
     }
     
     @Override

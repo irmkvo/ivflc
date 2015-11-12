@@ -6,7 +6,6 @@
 package dao.medialog;
 
 import domain.medialog.Patients;
-import domain.postgres.Menu;
 import java.util.List;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
