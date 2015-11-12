@@ -1,7 +1,7 @@
 <%-- 
     Document   : print
     Created on : Oct 8, 2015, 8:17:00 PM
-    Author     : kvo
+    Author     : swat
 --%>
 
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
@@ -11,7 +11,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Общий анализ крови</h1>
+        <h1 class="page-header">Гормоны</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -19,7 +19,8 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Анализ выполнен на анализаторе "Swelab Alfa 3-diff"
+                Анализ выполнен на анализаторе  <%= new java.util.Date() %>
+                
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
@@ -30,78 +31,171 @@
                                 <th rowspan="2">Показатель</th>
                                 <th rowspan="2">Значение</th>
                                 <th rowspan="2">Ед.измр.</th>
-                                <th colspan="2">Ед.измр.</th>
+                                <th colspan="3">Нормы</th>
                             </tr>
                             <tr>
                                 <th>Муж.</th>
                                 <th>Жен.</th>
+                                <th>Беременные</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Эритроциты</td>
-                                <td>${GBA.eritrocit}</td>
-                                <td>10 12/л</td>
-                                <td>4,0-5,0</td>
-                                <td>3,9-4,7</td>
+                                <td>Пролактин</td>
+                                <td>${GG.prolaktin1}</td>
+                                <td>мМЕ/л</td>
+                                <td>73-764</td>
+                                <td>28-636</td>
+                                <td>1тр = 365-9500</td>
                             </tr> 
                             <tr>
-                                <td>Гемоглобин</td>
-                                <td>${GBA.gemoglobin}</td>
+                                <td>ЛГ</td>
+                                <td>${GG.kortizol1}</td>
+                                <td>мМЕ/л</td>
+                                <td> <20 </td>
+                                <td>1-13</td>
                                 <td></td>
-                                <td>130,0-160,0</td>
-                                <td>120,0-140,0</td>
                             </tr>
                             <tr>
-                                <td>Цветной показатель</td>
+                                <td>ФСГ</td>
                                 <td>${GBA.cvetnojPokazatel}</td>
-                                <td></td>
-                                <td colspan="2">0,85-1,05</td>
+                                <td> МЕ/л</td>
+                                <td >2-10</td>
+                                <td >2-10</td>
                             </tr>
                             <tr>
-                                <td>Лейкоциты</td>
+                                <td>Эстрадиол</td>
                                 <td>${GBA.lejkocit}</td>
-                                <td>10 9/л</td>
-                                <td colspan="2">4,0-9,0</td>
+                                <td> пМ/л</td>
+                                <td>47,7-701</td>
+                                <td> 36,7-400</td>
+                                <td> 1тр = 1020-13270</td>
                             </tr>
                             <tr>
-                                <td>Гранулоциты</td>
+                                <td>Прогестерон</td>
                                 <td>${GBA.granulocit}</td>
-                                <td>%</td>
-                                <td colspan="2">48-82</td>
+                                <td>нМ/л</td>
+                                <td>1Ф = 0,2-4,0<br>2Ф = 6-80 </td>
+                                <td>0.32-3.2</td>      
+                                <td>5-16 нед=38-205</td>
                             </tr>
                             <tr>
-                                <td>Моноциты</td>
+                                <td>Тестостерон</td>
                                 <td>${GBA.monocit}</td>
-                                <td>%</td>
-                                <td colspan="2">2-9(0,09-0,60)</td>
+                                <td>нМ/л</td>
+                                <td>0,2-3,0</td>
+                                <td>12-30</td>
+                                <td>0,2-3,0</td>
+
                             </tr>
                             <tr>
-                                <td>Лимфоциты</td>
+                                <td>DHEA-S</td>
                                 <td>${GBA.limfocit}</td>
-                                <td>%</td>
-                                <td colspan="2">18-40(1,20-3,00)</td>
+                                <td>мкг/мл</td>
+                                <td>0,4-2,7</td>
+                                <td>0,6-2,7</td>
+                                <td>0,2-1,2</td>
+
                             </tr>
                             <tr>
-                                <td>Тромбоциты</td>
-                                <td>${GBA.trombocT}</td>
-                                <td>10 9/л</td>
-                                <td colspan="2">180-320</td>
+                                <td>Кортизол</td>
+                                <td>${GG.kortizol1}</td>
+                                <td>нМ/л</td>
+                                <td>138-635</td>
+                                <td>138-635</td>
+                                <td>1тр=163-1230</td>
+
                             </tr>
                             <tr>
-                                <td>СОЭ</td>
+                                <td>Т3 общий</td>
                                 <td>${GBA.soe}</td>
-                                <td>мм/час</td>
-                                <td>2-10</td>
-                                <td>2-15</td>
+                                <td>нМ/л</td>
+                                <td>1-2,5</td>
+                                <td>1-2,5</td>
+                                <td></td>
                             </tr>
                             <tr>
-                                <td>Гематокритное число</td>
+                                <td>Т4 общий</td>
                                 <td>${GBA.gemotokritnoeHislo}</td>
-                                <td>%</td>
-                                <td>40-48</td>
-                                <td>36-42</td>
+                                <td>нМ/л</td>
+                                <td>65-160</td>
+                                <td>65-160</td>
+                                <td></td>
                             </tr>
+                            <tr>
+                                <td>ТТГ</td>
+                                <td>${GBA.gemotokritnoeHislo}</td>
+                                <td>МЕ/л</td>
+                                <td>0,24-4,0</td>
+                                <td>0,24-4,0</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>АтТПО</td>
+                                <td>${GBA.gemotokritnoeHislo}</td>
+                                <td>Ед/мл</td>
+                                <td>0-30</td>
+                                <td>0-30</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>АтТГ-1</td>
+                                <td>${GBA.gemotokritnoeHislo}</td>
+                                <td>Ед/мл</td>
+                                <td>0-100</td>
+                                <td>0-100</td>
+                                <td></td>
+                            </tr>
+                              <tr>
+                                <td>FT3</td>
+                                <td>${GBA.gemotokritnoeHislo}</td>
+                                <td>пг/мл</td>
+                                <td>1,4-4,2</td>
+                                <td>1,4-4,2</td>
+                                <td></td>
+                            </tr>
+                            
+                              <tr>
+                                <td>FT4</td>
+                                <td>${GBA.gemotokritnoeHislo}</td>
+                                <td>нг/дл</td>
+                                <td>0,8-2,0</td>
+                                <td>0,8-2,0</td>
+                                <td></td>
+                            </tr>
+                            
+                              <tr>
+                                <td>СА-125</td>
+                                <td>${GBA.gemotokritnoeHislo}</td>
+                                <td>ЕД/мл</td>
+                                <td>0-40</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+                              <tr>
+                                <td>Антимюллеровский<br>гормон</td>
+                                <td>${GBA.gemotokritnoeHislo}</td>
+                                <td>нг/мл</td>
+                                <td>2,1-7,3<br>
+                                <1,1 -сниж ФРЯ<br>
+                                <0,8 -рез.сниж ФРЯ
+                                </td>
+                                <td>3,6-4,8</td>
+                                <td>2,1-7,3<br>
+                                <1,1 -сниж ФРЯ<br>
+                                <0,8 -рез.сниж ФРЯ
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Свободный<br> тестостерон</td>
+                                <td>${GBA.gemotokritnoeHislo}</td>
+                                <td>пг/мл</td>
+                                <td> <4.1 </td>
+                                <td>4.5-42.0</td>
+                                <td></td>
+                            </tr>
+
                         </tbody>
                     </table>
                 </div>

@@ -55,7 +55,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Электронная медецинская карта</h1>
+        <h1 class="page-header">Электронная медицинская карта</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>

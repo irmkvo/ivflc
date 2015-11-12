@@ -11,7 +11,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Общий анализ крови</h1>
+        <h1 class="page-header">Электролиты</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -30,78 +30,30 @@
                                 <th rowspan="2">Показатель</th>
                                 <th rowspan="2">Значение</th>
                                 <th rowspan="2">Ед.измр.</th>
-                                <th colspan="2">Ед.измр.</th>
+                                <th colspan="2">Нормы</th>
                             </tr>
-                            <tr>
-                                <th>Муж.</th>
-                                <th>Жен.</th>
-                            </tr>
+                            
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Эритроциты</td>
-                                <td>${GBA.eritrocit}</td>
-                                <td>10 12/л</td>
-                                <td>4,0-5,0</td>
-                                <td>3,9-4,7</td>
+                                <td>Калий</td>
+                                <td>${GBA.kalij}</td>
+                                <td>ммоль/л</td>
+                                <td>3,5-5,5</td>
                             </tr> 
                             <tr>
-                                <td>Гемоглобин</td>
-                                <td>${GBA.gemoglobin}</td>
-                                <td></td>
-                                <td>130,0-160,0</td>
-                                <td>120,0-140,0</td>
-                            </tr>
+                                <td>Кальций</td>
+                                <td>${GBA.kalCij}</td>
+                                <td>ммоль/л</td>
+                                <td>2,15-2,70</td>
+                            </tr> 
                             <tr>
-                                <td>Цветной показатель</td>
-                                <td>${GBA.cvetnojPokazatel}</td>
-                                <td></td>
-                                <td colspan="2">0,85-1,05</td>
-                            </tr>
-                            <tr>
-                                <td>Лейкоциты</td>
-                                <td>${GBA.lejkocit}</td>
-                                <td>10 9/л</td>
-                                <td colspan="2">4,0-9,0</td>
-                            </tr>
-                            <tr>
-                                <td>Гранулоциты</td>
-                                <td>${GBA.granulocit}</td>
-                                <td>%</td>
-                                <td colspan="2">48-82</td>
-                            </tr>
-                            <tr>
-                                <td>Моноциты</td>
-                                <td>${GBA.monocit}</td>
-                                <td>%</td>
-                                <td colspan="2">2-9(0,09-0,60)</td>
-                            </tr>
-                            <tr>
-                                <td>Лимфоциты</td>
-                                <td>${GBA.limfocit}</td>
-                                <td>%</td>
-                                <td colspan="2">18-40(1,20-3,00)</td>
-                            </tr>
-                            <tr>
-                                <td>Тромбоциты</td>
-                                <td>${GBA.trombocT}</td>
-                                <td>10 9/л</td>
-                                <td colspan="2">180-320</td>
-                            </tr>
-                            <tr>
-                                <td>СОЭ</td>
-                                <td>${GBA.soe}</td>
-                                <td>мм/час</td>
-                                <td>2-10</td>
-                                <td>2-15</td>
-                            </tr>
-                            <tr>
-                                <td>Гематокритное число</td>
-                                <td>${GBA.gemotokritnoeHislo}</td>
-                                <td>%</td>
-                                <td>40-48</td>
-                                <td>36-42</td>
-                            </tr>
+                                <td>Натрий</td>
+                                <td>${GBA.natrij}</td>
+                                <td>ммоль/л</td>
+                                <td>130-145</td>
+                            </tr> 
+
                         </tbody>
                     </table>
                 </div>

@@ -11,7 +11,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Общий анализ крови</h1>
+        <h1 class="page-header">Гормон инфекции</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -19,7 +19,7 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Анализ выполнен на анализаторе "Swelab Alfa 3-diff"
+                Анализ выполнен на анализаторе 
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
@@ -27,80 +27,115 @@
                     <table class="table table-striped table-bordered table-hover" width="100%">
                         <thead>
                             <tr>
-                                <th rowspan="2">Показатель</th>
-                                <th rowspan="2">Значение</th>
-                                <th rowspan="2">Ед.измр.</th>
-                                <th colspan="2">Ед.измр.</th>
+                                <th rowspan="1">Тип инфекции</th>
+                                <th rowspan="1">Результат</th>
+                                <th rowspan="1">Оптическая плотность<br>образца</th>
+                                <th colspan="1">Критическая величина<br>(cut-off)</th>
                             </tr>
-                            <tr>
-                                <th>Муж.</th>
-                                <th>Жен.</th>
-                            </tr>
+
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Эритроциты</td>
-                                <td>${GBA.eritrocit}</td>
-                                <td>10 12/л</td>
-                                <td>4,0-5,0</td>
-                                <td>3,9-4,7</td>
+                                <td>Токсоплазма lgM</td>
+                                <td>${GBA.mikoplazmaG}</td>
+                                <td>${GBA.mikoplazmaG12}</td>
+                                <td>1</td>
                             </tr> 
                             <tr>
-                                <td>Гемоглобин</td>
-                                <td>${GBA.gemoglobin}</td>
-                                <td></td>
-                                <td>130,0-160,0</td>
-                                <td>120,0-140,0</td>
+                                <td>Токсоплазма lgG</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
+                            </tr> 
+                            <tr>
+                                <td>ВПГ lgM</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
+                            </tr> 
+                            <tr>
+                                <td>ВПГ 1 lgG</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
+                            </tr> 
+                            <tr>
+                                <td>ВПГ 2 lgG</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
+                            </tr> 
+                            <tr>
+                                <td>Краснуха lgM</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
                             </tr>
                             <tr>
-                                <td>Цветной показатель</td>
-                                <td>${GBA.cvetnojPokazatel}</td>
-                                <td></td>
-                                <td colspan="2">0,85-1,05</td>
+                                <td>Краснуха lgG</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
                             </tr>
                             <tr>
-                                <td>Лейкоциты</td>
-                                <td>${GBA.lejkocit}</td>
-                                <td>10 9/л</td>
-                                <td colspan="2">4,0-9,0</td>
+                                <td>Цитомегаловирус lgM</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
                             </tr>
                             <tr>
-                                <td>Гранулоциты</td>
-                                <td>${GBA.granulocit}</td>
-                                <td>%</td>
-                                <td colspan="2">48-82</td>
+                                <td>Цитомегаловирус lgG</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
                             </tr>
                             <tr>
-                                <td>Моноциты</td>
-                                <td>${GBA.monocit}</td>
-                                <td>%</td>
-                                <td colspan="2">2-9(0,09-0,60)</td>
+                                <td>Хламидии lgM</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
                             </tr>
                             <tr>
-                                <td>Лимфоциты</td>
-                                <td>${GBA.limfocit}</td>
-                                <td>%</td>
-                                <td colspan="2">18-40(1,20-3,00)</td>
+                                <td>Хламидии lgG</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
                             </tr>
                             <tr>
-                                <td>Тромбоциты</td>
-                                <td>${GBA.trombocT}</td>
-                                <td>10 9/л</td>
-                                <td colspan="2">180-320</td>
+                                <td>Уреаплазма lgM</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
                             </tr>
                             <tr>
-                                <td>СОЭ</td>
-                                <td>${GBA.soe}</td>
-                                <td>мм/час</td>
-                                <td>2-10</td>
-                                <td>2-15</td>
+                                <td>Уреаплазма lgG</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
                             </tr>
                             <tr>
-                                <td>Гематокритное число</td>
-                                <td>${GBA.gemotokritnoeHislo}</td>
-                                <td>%</td>
-                                <td>40-48</td>
-                                <td>36-42</td>
+                                <td>Микоплазма lgM</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Микоплазма lgG</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Бруцелез lgG</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Листериоз lgG</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
                             </tr>
                         </tbody>
                     </table>

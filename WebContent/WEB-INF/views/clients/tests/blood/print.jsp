@@ -40,7 +40,7 @@
                         <tbody>
                             <tr>
                                 <td>Эритроциты</td>
-                                <td>${GBA.eritrocit}</td>
+                                <td>${GG.eritrocit}</td>
                                 <td>10 12/л</td>
                                 <td>4,0-5,0</td>
                                 <td>3,9-4,7</td>

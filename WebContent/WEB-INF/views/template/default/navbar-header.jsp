@@ -14,6 +14,6 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#">Центр ЭКО</a>
+    <a class="navbar-brand" href="#">IRM Almaty</a>
 </div>
 <!-- /.navbar-header -->
