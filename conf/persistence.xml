@@ -73,6 +73,32 @@
     <class>domain.medialog.Data436</class>
     <class>domain.medialog.Data143</class>
     <class>domain.medialog.Data372</class>
+    <class>domain.medialog.PlParam</class>
+    <class>domain.medialog.PlExt</class>
+    <class>domain.medialog.PlGridReport</class>
+    <class>domain.medialog.PlInt</class>
+    <class>domain.medialog.PlSalle</class>
+    <class>domain.medialog.PlPatgr</class>
+    <class>domain.medialog.PlRole</class>
+    <class>domain.medialog.PlSubj</class>
+    <class>domain.medialog.PlExrol</class>
+    <class>domain.medialog.PlLeg</class>
+    <class>domain.medialog.Plp97</class>
+    <class>domain.medialog.PlConflReport</class>
+    <class>domain.medialog.PlAgend</class>
+    <class>domain.medialog.PlExamProf</class>
+    <class>domain.medialog.PlDay</class>
+    <class>domain.medialog.Planning</class>
+    <class>domain.medialog.PlModality</class>
+    <class>domain.medialog.PlanningUserExt</class>
+    <class>domain.medialog.PlSurol</class>
+    <class>domain.medialog.PlExGr</class>
+    <class>domain.medialog.PlGener</class>
+    <class>domain.medialog.PlExcl</class>
+    <class>domain.medialog.PlanningStatView1</class>
+    <class>domain.medialog.PlLink</class>
+    <class>domain.medialog.PlExamOrg</class>
+    <class>domain.medialog.PlExam</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/ipony"/>
