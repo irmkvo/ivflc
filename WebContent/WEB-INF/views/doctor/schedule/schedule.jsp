@@ -6,10 +6,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
-
 <link href="${pageContext.request.contextPath}/resources/template/default/dist/css/fullcalendar/fullcalendar.css" rel="stylesheet">
 
 <script src="${pageContext.request.contextPath}/resources/template/default/js/fullcalendar/moment.min.js"></script>
@@ -34,21 +30,31 @@
             <div class="panel-body">
                 <div class="dataTable_wrapper">
                     <div id="dataTables_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-                        <table class="table">
-                            <tr>
-                                <c:forEach items="${PLDays}" var="plday">
-                                    <c:if test="${plday.enabled}" >
-                                        <th>${plday.name}</th>
-                                    </c:if>
-                                </c:forEach>
-                            </tr>
-                            <c:forEach items="${PLDays}" var="plday">
-                                <tr>
-                                    <th>${plday.name}</th>
-                                </tr>
-                            </c:forEach>
-                        </table>
-                    </div>                    
+                        <div id='calendar'></div>
+                    </div>
+                    <script type="text/javascript">
+                    $(document).ready(function () {
+                        var date = new Date();
+                        var d = date.getDate();
+                        var m = date.getMonth();
+                        var y = date.getFullYear();
+
+                        $('#calendar').fullCalendar({
+                            header: {
+                            left: 'prev,next today',
+                            center: 'title',
+                            right: 'month,agendaWeek,agendaDay'
+                            },
+                            default: 10,
+                            minTime: '07:00:00',
+                            maxTime: '19:00:00',
+                            slotDuration: '00:02:00',
+                            lang:"ru",
+                            editable: false,
+                            events: '${pageContext.request.contextPath}/med/schedule/json'
+                        });
+                    });
+                    </script>
                 </div>
                 <!-- /.table-responsive -->                
             </div>

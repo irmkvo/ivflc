@@ -29,15 +29,12 @@ public class MainPage {
 
         Puser CurrentUser = GetCurrentUser();
 
-        map.put("loadContent", "/WEB-INF/views/clients/index.jsp");
-
-        map.put("LeftPanel", 1);
-        map.put("RightPanel", 0);
-
         if (CurrentUser != null) {
             if ("ROLE_ADMIN".equals(CurrentUser.getRole().getRoleName())) {
+                map.put("loadContent", "/WEB-INF/views/clients/index.jsp");
                 return "index";
-            } else if ("ROLE_ADMIN".equals(CurrentUser.getRole().getRoleName())) {
+            } else if ("ROLE_DOCTOR".equals(CurrentUser.getRole().getRoleName())) {
+                map.put("loadContent", "/WEB-INF/views/doctor/schedule/schedule.jsp");
                 return "index";
             } else {
                 return "index";
@@ -61,9 +58,6 @@ public class MainPage {
     public String getAdministrativPanel(Map<String, Object> map) {
 
         map.put("loadContent", "/WEB-INF/views/template/default/content.jsp");
-
-        map.put("LeftPanel", 1);
-        map.put("RightPanel", 0);
 
         return "index";
     }
