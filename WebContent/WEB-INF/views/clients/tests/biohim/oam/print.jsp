@@ -9,22 +9,24 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+
 <div class="row">
-    <div class="col-lg-12">
+
+    <div class="col-lg-10">
+
         <h1 class="page-header">Общий анализ мочи</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
-<div class="row">   
-    <div class="col-lg-12">
+<div class="row"> 
+    <%@include file="header1.jsp" %>
+    <div class="col-lg-10">
         <div class="panel panel-default">
-            <div class="panel-heading">
-                Анализ выполнен на анализаторе 
-            </div>
+            
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <div class="table-responsive">
-                    <div class="col-lg-6">
+                    <div class="col-lg-5">
                         <table class="table table-striped table-bordered table-hover" width="100%">
 
                             <thead>
@@ -81,7 +83,7 @@
 
                         </table>
                     </div>  
-                    <div class="col-lg-6">
+                    <div class="col-lg-5">
                         <table class="table table-striped table-bordered table-hover" width="100%">
 
                             <thead>
