@@ -37,105 +37,105 @@
                         <tbody>
                             <tr>
                                 <td>Токсоплазма lgM</td>
-                                <td>${GBA.mikoplazmaG}</td>
-                                <td>${GBA.mikoplazmaG12}</td>
-                                <td>1</td>
+                                <td>${GBA.toksoplazmaIgm}</td>
+                                <td>${GBA.toksoplazmaIgm1}</td>
+                                <td>${GBA.toksoplazmaIgm2}</td>
                             </tr> 
                             <tr>
                                 <td>Токсоплазма lgG</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
+                                <td>${GBA.toksoplazmaIgg}</td>
+                                <td>${GBA.toksoplazmaIgg1}</td>
+                                <td>${GBA.toksoplazmaIgg2}</td>
                             </tr> 
                             <tr>
                                 <td>ВПГ lgM</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
+                                <td>${GBA.vpgIgm}</td>
+                                <td>${GBA.vpgIgm1}</td>
+                                <td>${GBA.vpgIgm2}</td>
                             </tr> 
                             <tr>
                                 <td>ВПГ 1 lgG</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
+                                <td>${GBA.vpgIIgg}</td>
+                                <td>${GBA.vpgIIgg1}</td>
+                                <td>${GBA.vpgIIgg2}</td>
                             </tr> 
                             <tr>
                                 <td>ВПГ 2 lgG</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
+                                <td>${GBA.vpgIiIgg}</td>
+                                <td>${GBA.vpgIiIgg1}</td>
+                                <td>${GBA.vpgIiIgg2}</td>
                             </tr> 
                             <tr>
                                 <td>Краснуха lgM</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
+                                <td>${GBA.krasnuAIgm}</td>
+                                <td>${GBA.krasnuAIgm11}</td>
+                                <td>${GBA.krasnuAIgm1}</td>
                             </tr>
                             <tr>
                                 <td>Краснуха lgG</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
+                                <td>${GBA.krasnuAIgg}</td>
+                                <td>${GBA.krasnuAIgg1}</td>
+                                <td>${GBA.krasnuAIgg2}</td>
                             </tr>
                             <tr>
                                 <td>Цитомегаловирус lgM</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
+                                <td>${GBA.citomegalovirusIgm}</td>
+                                <td>${GBA.citomegalovirusIgm1}</td>
+                                <td>${GBA.citomegalovirusIgm2}</td>
                             </tr>
                             <tr>
                                 <td>Цитомегаловирус lgG</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
+                                <td>${GBA.citomegalovirusIgg}</td>
+                                <td>${GBA.citomegalovirusIgg1}</td>
+                                <td>${GBA.citomegalovirusIgg2}</td>
                             </tr>
                             <tr>
                                 <td>Хламидии lgM</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
+                                <td>${GBA.toOM1}</td>
+                                <td>${GBA.toOM11}</td>
+                                <td>${GBA.toOM2}</td>
                             </tr>
                             <tr>
                                 <td>Хламидии lgG</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
+                                <td>${GBA.toOG1}</td>
+                                <td>${GBA.toOG11}</td>
+                                <td>${GBA.toOG2}</td>
                             </tr>
                             <tr>
                                 <td>Уреаплазма lgM</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
+                                <td>${GBA.vpgM1}</td>
+                                <td>${GBA.vpgM11}</td>
+                                <td>${GBA.vpgM2}</td>
                             </tr>
                             <tr>
                                 <td>Уреаплазма lgG</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
+                                <td>${GBA.ureaplazmaG1}</td>
+                                <td>${GBA.ureaplazmaG11}</td>
+                                <td>${GBA.ureaplazmaG2}</td>
                             </tr>
                             <tr>
                                 <td>Микоплазма lgM</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
+                                <td>${GBA.mikoplazmaM}</td>
+                                <td>${GBA.mikoplazmaM1}</td>
+                                <td>${GBA.mikoplazmaM2}</td>
                             </tr>
                             <tr>
-                                <td>Микоплазма lgG</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
+                               <td>Микоплазма lgM</td>
+                                <td>${GBA.mikoplazmaG}</td>
+                                <td>${GBA.mikoplazmaG1}</td>
+                                <td>${GBA.mikoplazmaG2}</td>
                             </tr>
                             <tr>
                                 <td>Бруцелез lgG</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
+                                <td>${GBA.brucelezG}</td>
+                                <td>${GBA.brucelezG1}</td>
+                                <td>${GBA.brucelezG2}</td>
                             </tr>
                             <tr>
                                 <td>Листериоз lgG</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
+                                <td>${GBA.listereozG}</td>
+                                <td>${GBA.listereozG1}</td>
+                                <td>${GBA.listereozG2}</td>
                             </tr>
                         </tbody>
                     </table>

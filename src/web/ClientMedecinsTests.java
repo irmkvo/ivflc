@@ -53,6 +53,7 @@ public class ClientMedecinsTests {
         map.put("loadContent", "/WEB-INF/views/clients/tests/biohim/oak/list.jsp");
         return "index";
     }
+
     // БИОХИМИЯ - ОБЩИЙ АНАЛИЗ КРОВИ
     @RequestMapping("/biohim-oak/print/{motconsuid}")
     public String getBioOakAnalysis(@PathVariable("motconsuid") Integer motconsuId, Map<String, Object> map) {
@@ -63,6 +64,7 @@ public class ClientMedecinsTests {
 
         return "index";
     }
+
     // БИОХИМИЯ - АНАЛИЗ КРОВИ JSON ESB
     @RequestMapping(method = {RequestMethod.POST, RequestMethod.GET}, value = "/biohim-oak/json/{modelid}")
     public String getBioOakAnalysisJSON(@PathVariable("modelid") Integer modelId, Map<String, Object> map) {
@@ -102,7 +104,7 @@ public class ClientMedecinsTests {
             }
 
             map.put("body", mtcsDataJson);
-            
+
             return "json";
         } else {
             // ЕСЛИ НЕ АВТОРИЗОВАН ПЕРЕНАПРАВИТЬ НА СТРАНИЦУ АВТОРИЗАЦИИ
@@ -117,6 +119,7 @@ public class ClientMedecinsTests {
         map.put("loadContent", "/WEB-INF/views/clients/tests/biohim/kgl/list.jsp");
         return "index";
     }
+
     // БИОХИМИЯ - КОАГУЛОГРАММА
     @RequestMapping("/biohim-kgl/print/{motconsuid}")
     public String getBioKglAnalysis(@PathVariable("motconsuid") Integer motconsuId, Map<String, Object> map) {
@@ -127,9 +130,9 @@ public class ClientMedecinsTests {
 
         return "index";
     }
-      
+
     // БИОХИМИЯ - КОАГУЛОГРАММА JSON ESB
-     @RequestMapping(method = {RequestMethod.POST, RequestMethod.GET}, value = "/biohim-kgl/json/{modelid}")
+    @RequestMapping(method = {RequestMethod.POST, RequestMethod.GET}, value = "/biohim-kgl/json/{modelid}")
     public String getBioKglJSON(@PathVariable("modelid") Integer modelId, Map<String, Object> map) {
 
         Puser CurrentUser = GetCurrentUser();
@@ -176,7 +179,143 @@ public class ClientMedecinsTests {
             return "login";
         }
     }
-    
+
+    /*БИОХИМИЯ - БХК*/
+    @RequestMapping("/biohim-bhk/{modelid}")
+    public String getBioBhk(@PathVariable("modelid") Integer modelId, Map<String, Object> map) {
+        map.put("modelId", modelId);
+        map.put("loadContent", "/WEB-INF/views/clients/tests/biohim/bhk/list.jsp");
+        return "index";
+    }
+
+    // БИОХИМИЯ - БХК
+    @RequestMapping("/biohim-bhk/print/{motconsuid}")
+    public String getBioBhkAnalysis(@PathVariable("motconsuid") Integer motconsuId, Map<String, Object> map) {
+
+        Motconsu mtcs = this.motconsuService.getMotconsuById(motconsuId);
+        map.put("GBA", mtcs.getData330());
+        map.put("loadContent", "/WEB-INF/views/clients/tests/biohim/bhk/print.jsp");
+
+        return "index";
+    }
+
+    // БИОХИМИЯ - БХК JSON ESB
+    @RequestMapping(method = {RequestMethod.POST, RequestMethod.GET}, value = "/biohim-bhk/json/{modelid}")
+    public String getBioBhkJSON(@PathVariable("modelid") Integer modelId, Map<String, Object> map) {
+
+        Puser CurrentUser = GetCurrentUser();
+
+        if (CurrentUser != null) {
+            List<Motconsu> mtcs = this.motconsuService.getMotconsuListByPatientIdAndModel(CurrentUser.getPatientId(), this.modelsService.getModeleById(modelId));
+
+            String mtcsDataJson = "";
+            if (mtcs != null) {
+                List<MotconsuPOJO> mtcsPojo = new ArrayList<MotconsuPOJO>();
+                Locale dLocale = new Locale.Builder().setLanguage("ru").setScript("Cyrl").build();
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MMMMM.dd", dLocale);
+                for (int i = 0; i < mtcs.size(); i++) {
+                    if (((Motconsu) mtcs.get(i)).getData330() != null) {
+                        String medecinsNPS = ((Motconsu) mtcs.get(i)).getMedecinsId().getSpecialisation() + " "
+                                + ((Motconsu) mtcs.get(i)).getMedecinsId().getNom() + " "
+                                + ((Motconsu) mtcs.get(i)).getMedecinsId().getPrenom();
+                        mtcsPojo.add(new MotconsuPOJO(
+                                ((Motconsu) mtcs.get(i)).getMotconsuId(),
+                                ((Motconsu) mtcs.get(i)).getModelsId().getModeleName(),
+                                formatter.format(((Motconsu) mtcs.get(i)).getDateConsultation()),
+                                medecinsNPS));
+                    }
+                }
+                ObjectMapper mapper = new ObjectMapper();
+                AaDataMotconsu aa = new AaDataMotconsu();
+                aa.setAaData(mtcsPojo);
+                try {
+                    mtcsDataJson = mapper.writeValueAsString(aa);
+                } catch (JsonGenerationException e) {
+                    e.printStackTrace();
+                } catch (JsonMappingException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            map.put("body", mtcsDataJson);
+
+            return "json";
+        } else {
+            // ЕСЛИ НЕ АВТОРИЗОВАН ПЕРЕНАПРАВИТЬ НА СТРАНИЦУ АВТОРИЗАЦИИ
+            return "login";
+        }
+    }
+
+    /*БИОХИМИЯ - ПО ЗИМНИЦКОМУ*/
+    @RequestMapping("/biohim-zim/{modelid}")
+    public String getBioZim(@PathVariable("modelid") Integer modelId, Map<String, Object> map) {
+        map.put("modelId", modelId);
+        map.put("loadContent", "/WEB-INF/views/clients/tests/biohim/zim/list.jsp");
+        return "index";
+    }
+
+    // БИОХИМИЯ - ПО ЗИМНИЦКОМУ
+    @RequestMapping("/biohim-zim/print/{motconsuid}")
+    public String getBioZimAnalysis(@PathVariable("motconsuid") Integer motconsuId, Map<String, Object> map) {
+
+        Motconsu mtcs = this.motconsuService.getMotconsuById(motconsuId);
+        map.put("GBA", mtcs.getData329());
+        map.put("loadContent", "/WEB-INF/views/clients/tests/biohim/zim/print.jsp");
+
+        return "index";
+    }
+
+    // БИОХИМИЯ - ПО ЗИМНИЦКОМУ JSON ESB
+    @RequestMapping(method = {RequestMethod.POST, RequestMethod.GET}, value = "/biohim-zim/json/{modelid}")
+    public String getBioZimJSON(@PathVariable("modelid") Integer modelId, Map<String, Object> map) {
+
+        Puser CurrentUser = GetCurrentUser();
+
+        if (CurrentUser != null) {
+            List<Motconsu> mtcs = this.motconsuService.getMotconsuListByPatientIdAndModel(CurrentUser.getPatientId(), this.modelsService.getModeleById(modelId));
+
+            String mtcsDataJson = "";
+            if (mtcs != null) {
+                List<MotconsuPOJO> mtcsPojo = new ArrayList<MotconsuPOJO>();
+                Locale dLocale = new Locale.Builder().setLanguage("ru").setScript("Cyrl").build();
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MMMMM.dd", dLocale);
+                for (int i = 0; i < mtcs.size(); i++) {
+                    if (((Motconsu) mtcs.get(i)).getData329() != null) {
+                        String medecinsNPS = ((Motconsu) mtcs.get(i)).getMedecinsId().getSpecialisation() + " "
+                                + ((Motconsu) mtcs.get(i)).getMedecinsId().getNom() + " "
+                                + ((Motconsu) mtcs.get(i)).getMedecinsId().getPrenom();
+                        mtcsPojo.add(new MotconsuPOJO(
+                                ((Motconsu) mtcs.get(i)).getMotconsuId(),
+                                ((Motconsu) mtcs.get(i)).getModelsId().getModeleName(),
+                                formatter.format(((Motconsu) mtcs.get(i)).getDateConsultation()),
+                                medecinsNPS));
+                    }
+                }
+                ObjectMapper mapper = new ObjectMapper();
+                AaDataMotconsu aa = new AaDataMotconsu();
+                aa.setAaData(mtcsPojo);
+                try {
+                    mtcsDataJson = mapper.writeValueAsString(aa);
+                } catch (JsonGenerationException e) {
+                    e.printStackTrace();
+                } catch (JsonMappingException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            map.put("body", mtcsDataJson);
+
+            return "json";
+        } else {
+            // ЕСЛИ НЕ АВТОРИЗОВАН ПЕРЕНАПРАВИТЬ НА СТРАНИЦУ АВТОРИЗАЦИИ
+            return "login";
+        }
+    }
+
     /*БИОХИМИЯ - НЕЧИПОРЕНКО*/
     @RequestMapping("/biohim-nechip/{modelid}")
     public String getBioNechip(@PathVariable("modelid") Integer modelId, Map<String, Object> map) {
@@ -184,6 +323,7 @@ public class ClientMedecinsTests {
         map.put("loadContent", "/WEB-INF/views/clients/tests/biohim/nechip/list.jsp");
         return "index";
     }
+
     // БИОХИМИЯ - НЕЧИПОРЕНКО
     @RequestMapping("/biohim-nechip/print/{motconsuid}")
     public String getBioNechipAnalysis(@PathVariable("motconsuid") Integer motconsuId, Map<String, Object> map) {
@@ -194,9 +334,9 @@ public class ClientMedecinsTests {
 
         return "index";
     }
-      
+
     // БИОХИМИЯ - НЕЧИПОРЕНКО JSON ESB
-     @RequestMapping(method = {RequestMethod.POST, RequestMethod.GET}, value = "/biohim-nechip/json/{modelid}")
+    @RequestMapping(method = {RequestMethod.POST, RequestMethod.GET}, value = "/biohim-nechip/json/{modelid}")
     public String getBioNechipJSON(@PathVariable("modelid") Integer modelId, Map<String, Object> map) {
 
         Puser CurrentUser = GetCurrentUser();
@@ -243,8 +383,7 @@ public class ClientMedecinsTests {
             return "login";
         }
     }
-    
-    
+
     /*СПЕРМ ЛАБОРАТОРИЯ АНАЛИЗ ПРОСТАТЫ*/
     @RequestMapping("/analiz-sekreta/{modelid}")
     public String getASL(@PathVariable("modelid") Integer modelId, Map<String, Object> map) {

@@ -11,60 +11,37 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Секрет простатной железы</h1>
+        <h1 class="page-header">Кариотип</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
 <div class="row">   
-    <div class="col-lg-12">
+    <div class="col-lg-7">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Секрет простатной железы №${GBA.registrator}
+                
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <div class="table-responsive">
-                    <table class="table table-striped table-bordered table-hover" width="100%">                        
+                    <table class="table table-striped table-bordered table-hover" width="100%">
+
                         <tbody>
                             <tr>
-                                <td>Лейкоциты</td>
-                                <td>${GBA.lejkocit}</td>
+                                <td>Дата исследования</td>
+                                <td>${GBA.dataIssledovaniq}</td>
                             </tr> 
                             <tr>
-                                <td>Эпителиальные клетки</td>
-                                <td>${GBA.epitelialNEKletki}</td>
+                                <td>Материал</td>
+                                <td>${GBA.material}</td>
+                            </tr> 
+                            <tr>
+                                <td>Кариотип</td>
+                                <td>${GBA.kariotip}</td>
                             </tr>
                             <tr>
-                                <td>Слизь</td>
-                                <td>${GBA.sliz}</td>
-                            </tr>
-                            <tr>
-                                <td>Лецитиновые зерны</td>
-                                <td>${GBA.lecitinovEZerna}</td>
-                            </tr>
-                            <tr>
-                                <td>Амилоидные тельца</td>
-                                <td>${GBA.amiloidnETelCa}</td>
-                            </tr>
-                            <tr>
-                                <td>Эритроциты</td>
-                                <td>${GBA.eritrocit}</td>
-                            </tr>
-                            <tr>
-                                <td>Бактерии</td>
-                                <td>${GBA.bakterii}</td>
-                            </tr>
-                            <tr>
-                                <td>Гонококк</td>
-                                <td>${GBA.gonokokk}</td>
-                            </tr>
-                            <tr>
-                                <td>Трихомонады</td>
-                                <td>${GBA.triOmonad}</td>
-                            </tr>
-                            <tr>
-                                <td>Гарднареллы</td>
-                                <td>${GBA.gardnarell}</td>                                
+                                <td>Дополнительное <br> исследование</td>
+                                <td>${GBA.dopolnitelNoeIssledovan}</td>
                             </tr>
                         </tbody>
                     </table>
