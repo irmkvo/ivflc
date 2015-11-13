@@ -6,6 +6,7 @@
 package service.medialog;
 
 import dao.medialog.PlanningDAO;
+import domain.medialog.PlAgend;
 import domain.medialog.PlDay;
 import domain.medialog.PlExcl;
 import domain.medialog.PlSubj;
@@ -100,6 +101,46 @@ public class PlanningServiceImpl implements PlanningService{
     @Override
     public PlSubj getPLSUBJById(Integer Id) {
         return this.planningDAO.getPLSUBJById(Id);
+    }
+
+    @Override
+    public List<PlAgend> getAllPLAGEND() {
+        return this.planningDAO.getAllPLAGEND();
+    }
+
+    @Override
+    public PlAgend getPLAGENDById(Integer Id) {
+        return this.planningDAO.getPLAGENDById(Id);
+    }
+
+    @Override
+    public Planning getPLByMax(Date start, Date end, Integer subId) {
+        return this.planningDAO.getPLByMax(start, end, subId);
+    }
+
+    @Override
+    public Planning getPLByMin(Date start, Date end, Integer subId) {
+        return this.planningDAO.getPLByMin(start, end, subId);
+    }
+
+    @Override
+    public Planning getPLByHeure(Integer heure) {
+        return this.planningDAO.getPLByHeure(heure);
+    }
+
+    @Override
+    public Integer getPLMax(Date start, Date end, Integer subId) {
+        return this.planningDAO.getPLMax(start, end, subId);
+    }
+
+    @Override
+    public Integer getPLMin(Date start, Date end, Integer subId) {
+        return this.planningDAO.getPLMin(start, end, subId);
+    }
+
+    @Override
+    public Integer getPLMinDeure(Date start, Date end, Integer subId) {
+        return this.getPLMinDeure(start, end, subId);
     }
     
 }

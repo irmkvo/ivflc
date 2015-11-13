@@ -45,37 +45,13 @@
                             center: 'title',
                             right: 'month,agendaWeek,agendaDay'
                             },
+                            default: 10,
+                            minTime: '07:00:00',
+                            maxTime: '19:00:00',
+                            slotDuration: '00:02:00',
                             lang:"ru",
-                            editable: true,
-                            events: [
-				{
-					title: 'Полумисков В.В.',
-					start: '2015-10-10'
-				},
-				{
-					title: 'Анализ крови',
-					start: '2015-10-18',
-					end: '2015-10-19'
-				},
-				{
-					title: 'Анализ',
-					start: '2015-10-29T16:10:00'
-				},
-				{
-					title: 'Анализ',
-					start: '2015-10-16T16:20:00'
-				},
-				{
-					title: 'Школа ЛАМАС',
-					start: '2015-10-01',
-					end: '2015-10-05'
-				},
-				{
-					title: 'Школа ЭКО',
-					start: '2015-10-22T10:30:00',
-					end: '2015-10-22T12:30:00'
-				}
-			]
+                            editable: false,
+                            events: '${pageContext.request.contextPath}/med/schedule/json'
                         });
                     });
                     </script>

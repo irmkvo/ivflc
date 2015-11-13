@@ -1,5 +1,6 @@
 package dao.medialog;
 
+import domain.medialog.PlAgend;
 import domain.medialog.PlDay;
 import domain.medialog.PlExcl;
 import domain.medialog.PlSubj;
@@ -34,7 +35,7 @@ public class PlanningDAOImpl implements PlanningDAO{
 
     @Override
     public List<Planning> getPLByWeekAndSub(Date start, Date end, Integer subId) {
-        return sessionFactory.getCurrentSession().createQuery("from Planning WHERE plSubjId = :plSubjId AND dateCons BETWEEN :start AND :end ORDER BY dateCons, heure").setParameter("plSubjId", subId).setParameter("start", start).setParameter("end", end).list();
+        return sessionFactory.getCurrentSession().createQuery("from Planning WHERE plSubjId = :plSubjId AND (dateCons >= :start AND dateCons <= :end) ORDER BY dateCons, heure").setParameter("plSubjId", subId).setParameter("start", start).setParameter("end", end).list();
     }
 
     @Override
@@ -96,5 +97,47 @@ public class PlanningDAOImpl implements PlanningDAO{
     public PlSubj getPLSUBJById(Integer Id) {
         return (PlSubj)sessionFactory.getCurrentSession().createQuery("from PlSubj WHERE plSubjId = :plSubjId").setParameter("plSubjId", Id).uniqueResult();
     }
+
+    @Override
+    public List<PlAgend> getAllPLAGEND() {
+        return sessionFactory.getCurrentSession().createQuery("from PlAgend").list();
+    }
+
+    @Override
+    public PlAgend getPLAGENDById(Integer Id) {
+        return (PlAgend)sessionFactory.getCurrentSession().createQuery("from PlAgend WHERE plAgendId = :plAgendId").setParameter("plAgendId", Id).uniqueResult();
+    }
+
+    @Override
+    public Planning getPLByMax(Date start, Date end, Integer subId) {
+        return (Planning)sessionFactory.getCurrentSession().createQuery("from Planning WHERE plSubjId = :plSubjId AND dateCons BETWEEN :start AND :end AND heure = (SELECT MAX(heure) FROM Planning WHERE plSubjId = :plSubjId AND dateCons BETWEEN :start AND :end)").setParameter("plSubjId", subId).setParameter("start", start).setParameter("end", end).setMaxResults(1).uniqueResult();
+    }
+
+    @Override
+    public Planning getPLByMin(Date start, Date end, Integer subId) {
+        return (Planning)sessionFactory.getCurrentSession().createQuery("from Planning WHERE plSubjId = :plSubjId AND dateCons BETWEEN :start AND :end AND heure = (SELECT MIN(heure) FROM Planning WHERE plSubjId = :plSubjId AND dateCons BETWEEN :start AND :end)").setParameter("plSubjId", subId).setParameter("start", start).setParameter("end", end).setMaxResults(1).uniqueResult();
+    }
+
+    @Override
+    public Planning getPLByHeure(Integer heure) {
+        return (Planning)sessionFactory.getCurrentSession().createQuery("from Planning WHERE heure = :heure").setParameter("heure", heure).uniqueResult();
+    }
+
+    @Override
+    public Integer getPLMax(Date start, Date end, Integer subId) {
+        return (Integer)sessionFactory.getCurrentSession().createQuery("SELECT MAX(heure) FROM Planning WHERE plSubjId = :plSubjId AND dateCons BETWEEN :start AND :end").setParameter("plSubjId", subId).setParameter("start", start).setParameter("end", end).uniqueResult();
+    }
+
+    @Override
+    public Integer getPLMin(Date start, Date end, Integer subId) {
+        return (Integer)sessionFactory.getCurrentSession().createQuery("SELECT MIN(heure) FROM Planning WHERE plSubjId = :plSubjId AND dateCons BETWEEN :start AND :end").setParameter("plSubjId", subId).setParameter("start", start).setParameter("end", end).uniqueResult();
+    }
+
+    @Override
+    public Integer getPLMinDeure(Date start, Date end, Integer subId) {
+        return (Integer)sessionFactory.getCurrentSession().createQuery("SELECT MIN(duree) FROM Planning WHERE plSubjId = :plSubjId AND dateCons BETWEEN :start AND :end").setParameter("plSubjId", subId).setParameter("start", start).setParameter("end", end).uniqueResult();
+    }
+    
+    
     
 }

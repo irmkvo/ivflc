@@ -5,6 +5,7 @@
  */
 package service.medialog;
 
+import domain.medialog.PlAgend;
 import domain.medialog.PlDay;
 import domain.medialog.PlExcl;
 import domain.medialog.PlSubj;
@@ -24,6 +25,16 @@ public interface PlanningService {
     public List<Planning> getPLByPatientsID(Integer patId);
     public Planning getPLByID(Integer Id);
     
+    public Planning getPLByMax(Date start, Date end, Integer subId);
+    public Planning getPLByMin(Date start, Date end, Integer subId);
+    
+    public Integer getPLMax(Date start, Date end, Integer subId);
+    public Integer getPLMin(Date start, Date end, Integer subId);
+    
+    public Integer getPLMinDeure(Date start, Date end, Integer subId);
+    
+    public Planning getPLByHeure(Integer heure);
+    
     public List<PlExcl> getAllPLEXCL();
     public List<PlExcl> getPLEXCLByOwnerID(Integer ownId); // OWNER ID IS A PL_SUB_ID
     public PlExcl getPLEXCLByID(Integer ID);
@@ -36,4 +47,7 @@ public interface PlanningService {
     
     public List<PlSubj> getAllPLSUBJ();
     public PlSubj getPLSUBJById(Integer Id);
+    
+    public List<PlAgend> getAllPLAGEND();
+    public PlAgend getPLAGENDById(Integer Id);
 }
