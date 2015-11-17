@@ -15,11 +15,12 @@
     </div>
     <!-- /.col-lg-12 -->
 </div>
-<div class="row">   
-    <div class="col-lg-12">
+<div class="row"> 
+    <jsp:include page="/WEB-INF/views/clients/tests/test_header.jsp"></jsp:include>
+    <div class="col-lg-10">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Анализ выполнен на анализаторе  <%= new java.util.Date() %>
+                Анализ выполнен на анализаторе 
                 
             </div>
             <!-- /.panel-heading -->

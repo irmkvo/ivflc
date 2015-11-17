@@ -15,7 +15,8 @@
     </div>
     <!-- /.col-lg-12 -->
 </div>
-<div class="row">   
+<div class="row"> 
+    <jsp:include page="/WEB-INF/views/clients/tests/test_header.jsp"></jsp:include>
     <div class="col-lg-8">
         <div class="panel panel-default">
             <div class="panel-heading">

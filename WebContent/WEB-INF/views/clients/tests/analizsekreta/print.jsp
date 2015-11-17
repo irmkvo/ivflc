@@ -10,6 +10,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <div class="row">
+    <jsp:include page="/WEB-INF/views/clients/tests/test_header.jsp"></jsp:include>
     <div class="col-lg-12">
         <h1 class="page-header">Секрет простатной железы</h1>
     </div>

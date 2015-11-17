@@ -13,13 +13,13 @@
 <div class="row">
 
     <div class="col-lg-10">
-
         <h1 class="page-header">Общий анализ мочи</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
+
 <div class="row"> 
-    <%@include file="header1.jsp" %>
+    <jsp:include page="/WEB-INF/views/clients/tests/test_header.jsp"></jsp:include>
     <div class="col-lg-10">
         <div class="panel panel-default">
             
