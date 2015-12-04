@@ -20,7 +20,7 @@ import javax.xml.parsers.*;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.w3c.dom.Document;
 import org.xml.sax.*;
-import pojo.VideoArchive;
+import video.api.objects.Records;
 
 public class API {
 
@@ -700,9 +700,9 @@ public class API {
         return newXMLdoc;
     }
 
-    public List<VideoArchive> getRecordingsObj(String meetingID) {
+    public List<Records> getRecordingsObj(String meetingID) {
         //recordID,name,description,starttime,published,playback,length
-        List<VideoArchive> recordings = new ArrayList<VideoArchive>();
+        List<Records> recordings = new ArrayList<Records>();
 
         try {
             Document doc = null;
@@ -757,12 +757,12 @@ public class API {
                         }
                     }
                     
-                    VideoArchive record = new VideoArchive();
+                    Records record = new Records();
                     
                     record.setRecordID(recordID);
                     record.setName(name);
                     record.setDescription(description);
-                    record.setStartTime(starttime);
+                    record.setStarttime(starttime);
                     record.setPublished(published);
                     record.setPlayback(playback);
                     record.setLength(length);

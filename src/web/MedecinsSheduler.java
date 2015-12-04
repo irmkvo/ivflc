@@ -16,11 +16,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static javassist.CtMethod.ConstParameter.string;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -115,6 +113,7 @@ public class MedecinsSheduler {
             plj.setTitle(pls.get(i).getNom() + " " + pls.get(i).getPrenom());
             plj.setStart(generateDate(pls.get(i).getDateCons(), pls.get(i).getHeure()));
             plj.setEnd(generateEndDate(pls.get(i).getDateCons(), pls.get(i).getHeure(), pls.get(i).getDuree()));
+            plj.setUrl("http://my.ivf.kz/med/patients/info/" + pls.get(i).getPatientsId());
             plj.setDescription(pls.get(i).getCommentaire());
             
             pljs.add(plj);

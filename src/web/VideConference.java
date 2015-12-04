@@ -29,6 +29,7 @@ import pojo.VideoArchive;
 import service.postgres.BroadcastService;
 import service.postgres.UsersService;
 import video.api.API;
+import video.api.objects.Records;
 
 /**
  *
@@ -95,7 +96,7 @@ public class VideConference {
         
         API broadcastAPI = new API();
          
-        List<VideoArchive> records = broadcastAPI.getRecordingsObj(meetingId);
+        List<Records> records = broadcastAPI.getRecordingsObj(meetingId);
         
         map.put("loadContent", "/WEB-INF/views/video/admin/videoarchivelist.jsp");
         

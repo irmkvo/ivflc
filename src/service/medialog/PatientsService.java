@@ -15,6 +15,16 @@ import java.util.List;
 public interface PatientsService {
 
     public List<Patients> GetPatientsList(); //Получить список Пациентов 
+    
+    public List<Patients> GetPatientsListByPage(int page, int limitResultsPerPage); //Получить список Пациентов с пагинацией
+    
+    public List<Patients> GetPatientsListByPageAndSearchParam(int page, int limitResultsPerPage, String searchParam); //Получить список Пациентов с пагинацией
+    
+    public Integer GetPatientsCountBySearch(String searchParam); //Получить список Пациентов с пагинацией
+    
+    public Integer GetPatientsPageCount(int limitResultsPerPage); //Получить список Пациентов с пагинацией
+    
+    public Integer GetPatientsCount(); //Получить список Пациентов с пагинацией
 
     public Patients GetPatientByIIN(String IIN); //Получить Пациента по ИИН 
 }

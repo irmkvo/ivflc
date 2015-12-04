@@ -49,6 +49,10 @@
                             <form:select path="role" items="${userRoles}" itemValue="id" class="form-control">
                             </form:select>
                             
+                            <label for="brdc">Ведет вебинар:</label>
+                            <form:select path="brdc" items="${brdcList}" itemValue="id" class="form-control">
+                            </form:select>
+                            
                             <label for="specialization">Специализация:</label>
                             <form:select path="specialization" items="${specializations}" itemValue="id" class="form-control">
                             </form:select>                            

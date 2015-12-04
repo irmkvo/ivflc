@@ -62,7 +62,7 @@ public class MotconsuData {
                             ((Motconsu)mtcs.get(i)).getMotconsuId(), 
                             ((Motconsu)mtcs.get(i)).getModelsId().getModeleName(), 
                             formatter.format(((Motconsu)mtcs.get(i)).getDateConsultation()), 
-                            medecinsNPS));
+                            medecinsNPS, ""));
                 }
                 ObjectMapper mapper = new ObjectMapper();
                 AaDataMotconsu aa = new AaDataMotconsu();

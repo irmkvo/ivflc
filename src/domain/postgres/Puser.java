@@ -79,6 +79,10 @@ public class Puser implements Serializable {
     @JoinColumn(name = "city_id")
     private Citys city;
     
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "brdc_id")
+    private Broadcasts brdc;
+    
     @Basic(optional = true)
     private String zipCode;
     
@@ -368,6 +372,15 @@ public class Puser implements Serializable {
     public void setPlSubId(Integer plSubId) {
         this.plSubId = plSubId;
     }
+
+    public Broadcasts getBrdc() {
+        return brdc;
+    }
+
+    public void setBrdc(Broadcasts brdc) {
+        this.brdc = brdc;
+    }
+    
     
     @Override
     public int hashCode() {

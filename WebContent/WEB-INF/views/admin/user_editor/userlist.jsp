@@ -47,7 +47,7 @@
                                         <button type="button" class="btn btn-danger btn-xs btn-block" onClick="window.location = '${pageContext.request.contextPath}/admin/usershow/delete/${users.id}'" >
                                             <spring:message code="label.delete" />
                                         </button> 
-                                        <button type="button" class="btn btn-success btn-xs btn-block" onClick="window.location = '${pageContext.request.contextPath}/admin/useredit/edit/${users.id}'" >
+                                        <button type="button" class="btn btn-success btn-xs btn-block" onClick="window.location = '${pageContext.request.contextPath}/admin/user_editor/${users.id}'" >
                                             Редактировать
                                         </button>                            
                                     </td>

@@ -43,13 +43,24 @@
             var myTable = $('#dataTables').dataTable({
                 "responsive": true,
                 "bProcessing": true,
+                "bServerSide": true,
+                "sort": "position",
+                "bStateSave": false,
+                "iDisplayLength": 50,
+                "iDisplayStart": 0,
+                "fnDrawCallback": function () {
+                    //Get page numer on client. Please note: number start from 0 So
+                    //for the first page you will see 0 second page 1 third page 2...
+                    //Un-comment below alert to see page number
+                        //alert("Current page number: "+this.fnPagingInfo().iPage);    
+                },
                 "language": {
                 "url": "${pageContext.request.contextPath}/resources/template/default/bower_components/datatables/locale/dataTables.russian.lang"},
                 "columnDefs": [{ "className": "hidden-xs", "aTargets": [2] }],
                 "sAjaxSource": '${pageContext.request.contextPath}/med/patients/json',
                 "fnServerData": fnServerObjectToArray(['patId', 'fio', 'bDate', 'type'])
             });
-            $("#dataTables tbody").on('dblclick', 'tr',function(event){
+            $("#dataTables tbody").on('click', 'tr',function(event){
                 var id = myTable.fnGetData(this)[0];
                 window.location = '${pageContext.request.contextPath}/med/patients/info/' + id;
                 console.log(id);
@@ -74,7 +85,7 @@
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <div class="dataTable_wrapper">
-                    <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables" width="100%">
+                    <table class="table table-striped table-bordered table-hover dataTable no-footer" style="cursor:pointer" id="dataTables" width="100%">
                         <thead>
                             <tr>
                                 <th>Номер ЭМК</th>

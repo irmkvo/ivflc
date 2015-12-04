@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -61,13 +62,31 @@ public class MedecinsPatients {
     }
     // JSON
     @RequestMapping(value="/med/patients/json", method={RequestMethod.POST,RequestMethod.GET})
-    public String getPatientsJSON(Map<String, Object> map){
+    public String getPatientsJSON(HttpServletRequest request, Map<String, Object> map){
         
+        Integer iDisplayStart = 0;
+        String searchParameter = request.getParameter("sSearch");
+        Integer pageDisplayLength = Integer.valueOf(request.getParameter("iDisplayLength"));
+        
+        Integer pageNumber = 0;
+        if (null != request.getParameter("iDisplayStart")){
+                iDisplayStart = Integer.valueOf(request.getParameter("iDisplayStart"));
+    		pageNumber = (iDisplayStart/10)+1;	
+        }
+      
         Puser CurrentUser = GetCurrentUser();
         
         map.put("UserData", CurrentUser);
         
-        List<Patients> pts = this.patientsService.GetPatientsList();
+        Integer patientsCount = 0;
+        List<Patients> pts = new ArrayList<Patients>();
+        if(searchParameter.isEmpty()){
+            pts = this.patientsService.GetPatientsListByPage(pageNumber, pageDisplayLength);
+            patientsCount = this.patientsService.GetPatientsCount();
+        } else {
+            pts = this.patientsService.GetPatientsListByPageAndSearchParam(pageNumber, pageDisplayLength, searchParameter);
+            patientsCount = this.patientsService.GetPatientsCountBySearch(searchParameter);
+        }
         List<PatientsPOJO> patPojo = new ArrayList<PatientsPOJO>();
         
         for(int i = 0; i < pts.size(); i++){
@@ -96,6 +115,9 @@ public class MedecinsPatients {
         }
         
         AaDataPatients aaData = new AaDataPatients();
+        aaData.setiTotalDisplayRecords(patientsCount);
+        aaData.setiTotalRecords(patientsCount);
+//        aaData.setsColumns("");
         aaData.setAaData(patPojo);        
                 
         ObjectMapper mapper = new ObjectMapper();
@@ -142,11 +164,30 @@ public class MedecinsPatients {
                     String medecinsNPS = ((Motconsu)mtcs.get(i)).getMedecinsId().getSpecialisation() + " " + 
                             ((Motconsu)mtcs.get(i)).getMedecinsId().getNom() + " " + 
                             ((Motconsu)mtcs.get(i)).getMedecinsId().getPrenom();
+                    String url = "";
+                    switch(((Motconsu)mtcs.get(i)).getModelsId().getModelsID()){
+                        case 180: 
+                            url = "/med/patients/tests/180/" + ((Motconsu)mtcs.get(i)).getMotconsuId();
+                            break;
+                        case 181:
+                            url = "/med/patients/tests/181/" + ((Motconsu) mtcs.get(i)).getMotconsuId();
+                            break;
+                        case 222:
+                            url = "/med/patients/tests/222/" + ((Motconsu) mtcs.get(i)).getMotconsuId();
+                            break;
+                        case 257:
+                            url = "/med/patients/tests/257/" + ((Motconsu) mtcs.get(i)).getMotconsuId();
+                            break;
+                        default: url = "";
+                            break;
+                        
+                    }
+                    
                     mtcsPojo.add(new MotconsuPOJO(
                             ((Motconsu)mtcs.get(i)).getMotconsuId(), 
                             ((Motconsu)mtcs.get(i)).getModelsId().getModeleName(), 
                             formatter.format(((Motconsu)mtcs.get(i)).getDateConsultation()), 
-                            medecinsNPS));
+                            medecinsNPS, url));
                 }
                 ObjectMapper mapper = new ObjectMapper();
                 AaDataMotconsu aa = new AaDataMotconsu();

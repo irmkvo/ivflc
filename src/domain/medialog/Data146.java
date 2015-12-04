@@ -35,99 +35,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "DATA146")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Data146.findAll", query = "SELECT d FROM Data146 d"),
-    @NamedQuery(name = "Data146.findByData146Id", query = "SELECT d FROM Data146 d WHERE d.data146Id = :data146Id"),
-    @NamedQuery(name = "Data146.findByPatientsId", query = "SELECT d FROM Data146 d WHERE d.patientsId = :patientsId"),
-    @NamedQuery(name = "Data146.findByDateConsultation", query = "SELECT d FROM Data146 d WHERE d.dateConsultation = :dateConsultation"),
-    @NamedQuery(name = "Data146.findByMotconsuId", query = "SELECT d FROM Data146 d WHERE d.motconsuId = :motconsuId"),
-    @NamedQuery(name = "Data146.findByVedenieBeremennosti1", query = "SELECT d FROM Data146 d WHERE d.vedenieBeremennosti1 = :vedenieBeremennosti1"),
-    @NamedQuery(name = "Data146.findByVedenieBeremennosti", query = "SELECT d FROM Data146 d WHERE d.vedenieBeremennosti = :vedenieBeremennosti"),
-    @NamedQuery(name = "Data146.findByFt4", query = "SELECT d FROM Data146 d WHERE d.ft4 = :ft4"),
-    @NamedQuery(name = "Data146.findByFt3", query = "SELECT d FROM Data146 d WHERE d.ft3 = :ft3"),
-    @NamedQuery(name = "Data146.findBySa1251", query = "SELECT d FROM Data146 d WHERE d.sa1251 = :sa1251"),
-    @NamedQuery(name = "Data146.findByKortizol1", query = "SELECT d FROM Data146 d WHERE d.kortizol1 = :kortizol1"),
-    @NamedQuery(name = "Data146.findByTestosteron1", query = "SELECT d FROM Data146 d WHERE d.testosteron1 = :testosteron1"),
-    @NamedQuery(name = "Data146.findByDgeaS", query = "SELECT d FROM Data146 d WHERE d.dgeaS = :dgeaS"),
-    @NamedQuery(name = "Data146.findByEstradiol1", query = "SELECT d FROM Data146 d WHERE d.estradiol1 = :estradiol1"),
-    @NamedQuery(name = "Data146.findByProgesteron1", query = "SELECT d FROM Data146 d WHERE d.progesteron1 = :progesteron1"),
-    @NamedQuery(name = "Data146.findByFsg1", query = "SELECT d FROM Data146 d WHERE d.fsg1 = :fsg1"),
-    @NamedQuery(name = "Data146.findByLg1", query = "SELECT d FROM Data146 d WHERE d.lg1 = :lg1"),
-    @NamedQuery(name = "Data146.findByProlaktin1", query = "SELECT d FROM Data146 d WHERE d.prolaktin1 = :prolaktin1"),
-    @NamedQuery(name = "Data146.findByAtKTg1", query = "SELECT d FROM Data146 d WHERE d.atKTg1 = :atKTg1"),
-    @NamedQuery(name = "Data146.findByAtKTpo", query = "SELECT d FROM Data146 d WHERE d.atKTpo = :atKTpo"),
-    @NamedQuery(name = "Data146.findByT4SvobodnJ1", query = "SELECT d FROM Data146 d WHERE d.t4SvobodnJ1 = :t4SvobodnJ1"),
-    @NamedQuery(name = "Data146.findByT4Obhij1", query = "SELECT d FROM Data146 d WHERE d.t4Obhij1 = :t4Obhij1"),
-    @NamedQuery(name = "Data146.findByT3SvobodnJ1", query = "SELECT d FROM Data146 d WHERE d.t3SvobodnJ1 = :t3SvobodnJ1"),
-    @NamedQuery(name = "Data146.findByT3Obhij1", query = "SELECT d FROM Data146 d WHERE d.t3Obhij1 = :t3Obhij1"),
-    @NamedQuery(name = "Data146.findByTtg1", query = "SELECT d FROM Data146 d WHERE d.ttg1 = :ttg1"),
-    @NamedQuery(name = "Data146.findByAsa1", query = "SELECT d FROM Data146 d WHERE d.asa1 = :asa1"),
-    @NamedQuery(name = "Data146.findByAntiMyllervskijGormon1", query = "SELECT d FROM Data146 d WHERE d.antiMyllervskijGormon1 = :antiMyllervskijGormon1"),
-    @NamedQuery(name = "Data146.findBySvobodnJTestosteron1", query = "SELECT d FROM Data146 d WHERE d.svobodnJTestosteron1 = :svobodnJTestosteron1"),
-    @NamedQuery(name = "Data146.findBySvobodnJTestosteron", query = "SELECT d FROM Data146 d WHERE d.svobodnJTestosteron = :svobodnJTestosteron"),
-    @NamedQuery(name = "Data146.findByAntiMyllervskijGormon", query = "SELECT d FROM Data146 d WHERE d.antiMyllervskijGormon = :antiMyllervskijGormon"),
-    @NamedQuery(name = "Data146.findByFBeremen", query = "SELECT d FROM Data146 d WHERE d.fBeremen = :fBeremen"),
-    @NamedQuery(name = "Data146.findByFAnaliza", query = "SELECT d FROM Data146 d WHERE d.fAnaliza = :fAnaliza"),
-    @NamedQuery(name = "Data146.findByDiagnoz", query = "SELECT d FROM Data146 d WHERE d.diagnoz = :diagnoz"),
-    @NamedQuery(name = "Data146.findByAsa", query = "SELECT d FROM Data146 d WHERE d.asa = :asa"),
-    @NamedQuery(name = "Data146.findByLehahijVrah", query = "SELECT d FROM Data146 d WHERE d.lehahijVrah = :lehahijVrah"),
-    @NamedQuery(name = "Data146.findByDataZabora", query = "SELECT d FROM Data146 d WHERE d.dataZabora = :dataZabora"),
-    @NamedQuery(name = "Data146.findByDataOtpravleniq", query = "SELECT d FROM Data146 d WHERE d.dataOtpravleniq = :dataOtpravleniq"),
-    @NamedQuery(name = "Data146.findByTtg", query = "SELECT d FROM Data146 d WHERE d.ttg = :ttg"),
-    @NamedQuery(name = "Data146.findByT3Obhij", query = "SELECT d FROM Data146 d WHERE d.t3Obhij = :t3Obhij"),
-    @NamedQuery(name = "Data146.findByT3SvobodnJ", query = "SELECT d FROM Data146 d WHERE d.t3SvobodnJ = :t3SvobodnJ"),
-    @NamedQuery(name = "Data146.findByT4Obhij", query = "SELECT d FROM Data146 d WHERE d.t4Obhij = :t4Obhij"),
-    @NamedQuery(name = "Data146.findByT4SvobodnJ", query = "SELECT d FROM Data146 d WHERE d.t4SvobodnJ = :t4SvobodnJ"),
-    @NamedQuery(name = "Data146.findByTiroksinsvqzGlobulin", query = "SELECT d FROM Data146 d WHERE d.tiroksinsvqzGlobulin = :tiroksinsvqzGlobulin"),
-    @NamedQuery(name = "Data146.findByTiroksinsvqzSposobnost", query = "SELECT d FROM Data146 d WHERE d.tiroksinsvqzSposobnost = :tiroksinsvqzSposobnost"),
-    @NamedQuery(name = "Data146.findByTireoglobulin", query = "SELECT d FROM Data146 d WHERE d.tireoglobulin = :tireoglobulin"),
-    @NamedQuery(name = "Data146.findByATKHitovidnojGeleze", query = "SELECT d FROM Data146 d WHERE d.aTKHitovidnojGeleze = :aTKHitovidnojGeleze"),
-    @NamedQuery(name = "Data146.findByAtKTg", query = "SELECT d FROM Data146 d WHERE d.atKTg = :atKTg"),
-    @NamedQuery(name = "Data146.findByDenCikla", query = "SELECT d FROM Data146 d WHERE d.denCikla = :denCikla"),
-    @NamedQuery(name = "Data146.findByProlaktin", query = "SELECT d FROM Data146 d WHERE d.prolaktin = :prolaktin"),
-    @NamedQuery(name = "Data146.findByLg", query = "SELECT d FROM Data146 d WHERE d.lg = :lg"),
-    @NamedQuery(name = "Data146.findByFsg", query = "SELECT d FROM Data146 d WHERE d.fsg = :fsg"),
-    @NamedQuery(name = "Data146.findByProgesteron", query = "SELECT d FROM Data146 d WHERE d.progesteron = :progesteron"),
-    @NamedQuery(name = "Data146.findByOhProgesteron", query = "SELECT d FROM Data146 d WHERE d.ohProgesteron = :ohProgesteron"),
-    @NamedQuery(name = "Data146.findByTestosteron", query = "SELECT d FROM Data146 d WHERE d.testosteron = :testosteron"),
-    @NamedQuery(name = "Data146.findByTestosteronSvobodnJ", query = "SELECT d FROM Data146 d WHERE d.testosteronSvobodnJ = :testosteronSvobodnJ"),
-    @NamedQuery(name = "Data146.findByEstradiol", query = "SELECT d FROM Data146 d WHERE d.estradiol = :estradiol"),
-    @NamedQuery(name = "Data146.findByFGh", query = "SELECT d FROM Data146 d WHERE d.fGh = :fGh"),
-    @NamedQuery(name = "Data146.findByDegidroepiandrosteron", query = "SELECT d FROM Data146 d WHERE d.degidroepiandrosteron = :degidroepiandrosteron"),
-    @NamedQuery(name = "Data146.findByGomocistezin", query = "SELECT d FROM Data146 d WHERE d.gomocistezin = :gomocistezin"),
-    @NamedQuery(name = "Data146.findByShbg", query = "SELECT d FROM Data146 d WHERE d.shbg = :shbg"),
-    @NamedQuery(name = "Data146.findByAktg", query = "SELECT d FROM Data146 d WHERE d.aktg = :aktg"),
-    @NamedQuery(name = "Data146.findByAdrenalinVMohe", query = "SELECT d FROM Data146 d WHERE d.adrenalinVMohe = :adrenalinVMohe"),
-    @NamedQuery(name = "Data146.findByNorsurenalinVMohe", query = "SELECT d FROM Data146 d WHERE d.norsurenalinVMohe = :norsurenalinVMohe"),
-    @NamedQuery(name = "Data146.findByF17Oks", query = "SELECT d FROM Data146 d WHERE d.f17Oks = :f17Oks"),
-    @NamedQuery(name = "Data146.findByF17Ks", query = "SELECT d FROM Data146 d WHERE d.f17Ks = :f17Ks"),
-    @NamedQuery(name = "Data146.findByKortizol", query = "SELECT d FROM Data146 d WHERE d.kortizol = :kortizol"),
-    @NamedQuery(name = "Data146.findBySvobodnJKortizolMohi", query = "SELECT d FROM Data146 d WHERE d.svobodnJKortizolMohi = :svobodnJKortizolMohi"),
-    @NamedQuery(name = "Data146.findByInsulin", query = "SELECT d FROM Data146 d WHERE d.insulin = :insulin"),
-    @NamedQuery(name = "Data146.findByKalCitonin", query = "SELECT d FROM Data146 d WHERE d.kalCitonin = :kalCitonin"),
-    @NamedQuery(name = "Data146.findByOsteokalCin", query = "SELECT d FROM Data146 d WHERE d.osteokalCin = :osteokalCin"),
-    @NamedQuery(name = "Data146.findByAlDosteron", query = "SELECT d FROM Data146 d WHERE d.alDosteron = :alDosteron"),
-    @NamedQuery(name = "Data146.findByParatgormon", query = "SELECT d FROM Data146 d WHERE d.paratgormon = :paratgormon"),
-    @NamedQuery(name = "Data146.findBySomatropnJGormon", query = "SELECT d FROM Data146 d WHERE d.somatropnJGormon = :somatropnJGormon"),
-    @NamedQuery(name = "Data146.findByCPeptid", query = "SELECT d FROM Data146 d WHERE d.cPeptid = :cPeptid"),
-    @NamedQuery(name = "Data146.findByPsa", query = "SELECT d FROM Data146 d WHERE d.psa = :psa"),
-    @NamedQuery(name = "Data146.findByPsaSvobodnJ", query = "SELECT d FROM Data146 d WHERE d.psaSvobodnJ = :psaSvobodnJ"),
-    @NamedQuery(name = "Data146.findByPsaSvqzannJ", query = "SELECT d FROM Data146 d WHERE d.psaSvqzannJ = :psaSvqzannJ"),
-    @NamedQuery(name = "Data146.findByPsaPsaSv", query = "SELECT d FROM Data146 d WHERE d.psaPsaSv = :psaPsaSv"),
-    @NamedQuery(name = "Data146.findBySa153", query = "SELECT d FROM Data146 d WHERE d.sa153 = :sa153"),
-    @NamedQuery(name = "Data146.findBySa199", query = "SELECT d FROM Data146 d WHERE d.sa199 = :sa199"),
-    @NamedQuery(name = "Data146.findBySa724", query = "SELECT d FROM Data146 d WHERE d.sa724 = :sa724"),
-    @NamedQuery(name = "Data146.findBySa125", query = "SELECT d FROM Data146 d WHERE d.sa125 = :sa125"),
-    @NamedQuery(name = "Data146.findByAfp", query = "SELECT d FROM Data146 d WHERE d.afp = :afp"),
-    @NamedQuery(name = "Data146.findByRea", query = "SELECT d FROM Data146 d WHERE d.rea = :rea"),
-    @NamedQuery(name = "Data146.findByLaboratoriq", query = "SELECT d FROM Data146 d WHERE d.laboratoriq = :laboratoriq"),
-    @NamedQuery(name = "Data146.findByVrahLaborant", query = "SELECT d FROM Data146 d WHERE d.vrahLaborant = :vrahLaborant"),
-    @NamedQuery(name = "Data146.findByRegistrator", query = "SELECT d FROM Data146 d WHERE d.registrator = :registrator"),
-    @NamedQuery(name = "Data146.findByOtpravitNapohtu", query = "SELECT d FROM Data146 d WHERE d.otpravitNapohtu = :otpravitNapohtu"),
-    @NamedQuery(name = "Data146.findByKrnCreateDate", query = "SELECT d FROM Data146 d WHERE d.krnCreateDate = :krnCreateDate"),
-    @NamedQuery(name = "Data146.findByKrnCreateUserId", query = "SELECT d FROM Data146 d WHERE d.krnCreateUserId = :krnCreateUserId"),
-    @NamedQuery(name = "Data146.findByKrnModifyDate", query = "SELECT d FROM Data146 d WHERE d.krnModifyDate = :krnModifyDate"),
-    @NamedQuery(name = "Data146.findByKrnModifyUserId", query = "SELECT d FROM Data146 d WHERE d.krnModifyUserId = :krnModifyUserId")})
 public class Data146 implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -244,7 +151,7 @@ public class Data146 implements Serializable {
     private String tireoglobulin;
     @Size(max = 49)
     @Column(name = "A_T_K_HITOVIDNOJ_GELEZE")
-    private String aTKHitovidnojGeleze;
+    private String aTKHG;
     @Size(max = 49)
     @Column(name = "AT_K_TG")
     private String atKTg;
@@ -735,12 +642,12 @@ public class Data146 implements Serializable {
         this.tireoglobulin = tireoglobulin;
     }
 
-    public String getATKHitovidnojGeleze() {
-        return aTKHitovidnojGeleze;
+    public String getaTKHG() {
+        return aTKHG;
     }
 
-    public void setATKHitovidnojGeleze(String aTKHitovidnojGeleze) {
-        this.aTKHitovidnojGeleze = aTKHitovidnojGeleze;
+    public void setaTKHG(String aTKHitovidnojGeleze) {
+        this.aTKHG = aTKHitovidnojGeleze;
     }
 
     public String getAtKTg() {

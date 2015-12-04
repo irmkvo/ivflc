@@ -33,4 +33,54 @@ public class PatientsDAOImpl implements PatientsDAO {
         return (Patients) sessionFactory.getCurrentSession().createQuery("from Patients where IIN = :IIN").setParameter("IIN", IIN).uniqueResult();
     }
 
+    @Override
+    public List<Patients> GetPatientsListByPage(int page, int limitResultsPerPage) {
+//        CallableStatement callStmt = .prepareCall(buf.toString(), ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+//        Query q = sessionFactory.getCurrentSession().createQuery(
+//                "from Patients ORDER BY patientsId ASC");
+//        q.setFirstResult(page * limitResultsPerPage); 
+//        q.setMaxResults(limitResultsPerPage);
+        return sessionFactory.getCurrentSession().createQuery("from Patients ORDER BY patientsId ASC").setFirstResult(page * limitResultsPerPage).setMaxResults(limitResultsPerPage).list();
+    }
+
+    @Override
+    public Integer GetPatientsPageCount(int limitResultsPerPage) {
+        Integer countRows = (Integer) ((Long)sessionFactory.getCurrentSession().createQuery("SELECT COUNT(*) from Patients").uniqueResult()).intValue();
+        return countRows/limitResultsPerPage;
+    }
+
+    @Override
+    public Integer GetPatientsCount() {
+        return (Integer) ((Long)sessionFactory.getCurrentSession().createQuery("SELECT COUNT(*) from Patients").uniqueResult()).intValue();
+    }
+
+    @Override
+    public List<Patients> GetPatientsListByPageAndSearchParam(int page, int limitResultsPerPage, String searchParam) {
+        String[] srf = searchParam.split(" ");
+        String whereParam = "";
+        for(int i = 0; i < srf.length; i++){
+            if(i == 0){
+                whereParam = " nom LIKE '%" + srf[i] + "%' OR prenom LIKE '%" + srf[i] + "%' OR patronyme LIKE '%" + srf[i] + "%' ";
+            } else {
+                whereParam += " OR nom LIKE '%" + srf[i] + "%' OR prenom LIKE '%" + srf[i] + "%' OR patronyme LIKE '%" + srf[i] + "%' ";
+            }
+        }
+        
+        return sessionFactory.getCurrentSession().createQuery("from Patients WHERE " + whereParam + " ORDER BY patientsId ASC").setMaxResults(limitResultsPerPage).list();
+    }
+
+    @Override
+    public Integer GetPatientsCountBySearch(String searchParam) {
+        String[] srf = searchParam.split(" ");
+        String whereParam = "";
+        for(int i = 0; i < srf.length; i++){
+            if(i == 0){
+                whereParam = " nom LIKE '%" + srf[i] + "%' OR prenom LIKE '%" + srf[i] + "%' OR patronyme LIKE '%" + srf[i] + "%' ";
+            } else {
+                whereParam += " OR nom LIKE '%" + srf[i] + "%' OR prenom LIKE '%" + srf[i] + "%' OR patronyme LIKE '%" + srf[i] + "%' ";
+            }
+        }
+        return (Integer) ((Long)sessionFactory.getCurrentSession().createQuery("SELECT COUNT(*) from Patients WHERE " + whereParam + "").uniqueResult()).intValue();
+    }
+
 }

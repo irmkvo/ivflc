@@ -13,6 +13,8 @@ public class PlJson {
     private String title;
     private String start;
     private String end;
+    private String url;
+    private String color;
     private String description;
     
     public PlJson() {
@@ -40,6 +42,22 @@ public class PlJson {
 
     public void setEnd(String end) {
         this.end = end;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public String getDescription() {

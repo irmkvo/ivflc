@@ -32,5 +32,30 @@ public class PatientsServiceImpl implements PatientsService{
     public Patients GetPatientByIIN(String IIN) {
         return patientsDAO.GetPatientByIIN(IIN);
     }
+
+    @Override
+    public List<Patients> GetPatientsListByPage(int page, int limitResultsPerPage) {
+        return this.patientsDAO.GetPatientsListByPage(page, limitResultsPerPage);
+    }
+
+    @Override
+    public Integer GetPatientsPageCount(int limitResultsPerPage) {
+        return this.patientsDAO.GetPatientsPageCount(limitResultsPerPage);
+    }
+
+    @Override
+    public Integer GetPatientsCount() {
+        return this.patientsDAO.GetPatientsCount();
+    }
+
+    @Override
+    public List<Patients> GetPatientsListByPageAndSearchParam(int page, int limitResultsPerPage, String searchParam) {
+        return this.patientsDAO.GetPatientsListByPageAndSearchParam(page, limitResultsPerPage, searchParam);
+    }
+
+    @Override
+    public Integer GetPatientsCountBySearch(String searchParam) {
+        return this.patientsDAO.GetPatientsCountBySearch(searchParam);
+    }
     
 }

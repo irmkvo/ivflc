@@ -169,6 +169,11 @@ public class Broadcasts implements Serializable{
         this.meetingID = meetingID;
     }
 
+    @Override
+    public String toString() {
+        return this.title; //To change body of generated methods, choose Tools | Templates.
+    }
+
     
         
 }

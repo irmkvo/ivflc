@@ -5,8 +5,6 @@
  */
 package pojo;
 
-import java.util.Date;
-
 /**
  *
  * @author kvo
@@ -17,12 +15,14 @@ public class MotconsuPOJO {
     private String module;
     private String dateConsultation;
     private String medecins;
+    private String url;
 
-    public MotconsuPOJO(Integer motconsuId, String module, String dateConsultation, String medecins) {
+    public MotconsuPOJO(Integer motconsuId, String module, String dateConsultation, String medecins, String url) {
         this.motconsuId = motconsuId;
         this.module = module;
         this.dateConsultation = dateConsultation;
         this.medecins = medecins;
+        this.url = url;
     }
 
     public MotconsuPOJO() {
@@ -59,6 +59,13 @@ public class MotconsuPOJO {
     public void setMedecins(String medecins) {
         this.medecins = medecins;
     }
-    
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
     
 }

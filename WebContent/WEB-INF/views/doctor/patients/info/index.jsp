@@ -40,16 +40,24 @@
         }
 
         $(document).ready(function () {
-            $('#dataTables').dataTable({
+            var myTable = $('#dataTables').dataTable({
                 "responsive": true,
                 "bProcessing": true,
                 "language": {
                 "url": "${pageContext.request.contextPath}/resources/template/default/bower_components/datatables/locale/dataTables.russian.lang"},
-                "columnDefs": [{ "className": "hidden-xs", "aTargets": [2] }],
+                "columnDefs": [{ "className": "hidden-lg", "aTargets": [3] }],
                 "sAjaxSource": '${pageContext.request.contextPath}/med/getmotconsu/${patId}',
-                "fnServerData": fnServerObjectToArray(['dateConsultation', 'module', 'medecins'])
+                "fnServerData": fnServerObjectToArray(['dateConsultation', 'module', 'medecins', 'url'])
+            });
+            $("#dataTables tbody").on('click', 'tr',function(event){
+                var url = myTable.fnGetData(this)[3];
+                if(url != ""){
+                    window.location = '${pageContext.request.contextPath}' + url;
+                    console.log(url);
+                }
             });
         });
+        
             
 </script>
 
@@ -69,12 +77,13 @@
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <div class="dataTable_wrapper">
-                    <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables" width="100%">
+                    <table class="table table-striped table-bordered table-hover dataTable no-footer" style="cursor:pointer" id="dataTables" width="100%">
                         <thead>
                             <tr>
                                 <th>Дата приема</th>
                                 <th>Описание</th>
                                 <th class="hidden-xs">Врач</th>
+                                <th class="hidden-lg hidden-md hidden-sm hidden-xs">URL</th>
                             </tr>
                         </thead>
                         <tbody>
