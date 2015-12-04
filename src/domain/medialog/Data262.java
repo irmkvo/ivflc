@@ -33,28 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "DATA262")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Data262.findAll", query = "SELECT d FROM Data262 d"),
-    @NamedQuery(name = "Data262.findByData262Id", query = "SELECT d FROM Data262 d WHERE d.data262Id = :data262Id"),
-    @NamedQuery(name = "Data262.findByPatientsId", query = "SELECT d FROM Data262 d WHERE d.patientsId = :patientsId"),
-    @NamedQuery(name = "Data262.findByDateConsultation", query = "SELECT d FROM Data262 d WHERE d.dateConsultation = :dateConsultation"),
-    @NamedQuery(name = "Data262.findByMotconsuId", query = "SELECT d FROM Data262 d WHERE d.motconsuId = :motconsuId"),
-    @NamedQuery(name = "Data262.findByVedenieBeremennosti2", query = "SELECT d FROM Data262 d WHERE d.vedenieBeremennosti2 = :vedenieBeremennosti2"),
-    @NamedQuery(name = "Data262.findByVedenieBeremennosti", query = "SELECT d FROM Data262 d WHERE d.vedenieBeremennosti = :vedenieBeremennosti"),
-    @NamedQuery(name = "Data262.findByNomer", query = "SELECT d FROM Data262 d WHERE d.nomer = :nomer"),
-    @NamedQuery(name = "Data262.findByHek", query = "SELECT d FROM Data262 d WHERE d.hek = :hek"),
-    @NamedQuery(name = "Data262.findByLehahijVrah", query = "SELECT d FROM Data262 d WHERE d.lehahijVrah = :lehahijVrah"),
-    @NamedQuery(name = "Data262.findByDataZabra", query = "SELECT d FROM Data262 d WHERE d.dataZabra = :dataZabra"),
-    @NamedQuery(name = "Data262.findByDataOtpravleniq", query = "SELECT d FROM Data262 d WHERE d.dataOtpravleniq = :dataOtpravleniq"),
-    @NamedQuery(name = "Data262.findByFGh", query = "SELECT d FROM Data262 d WHERE d.fGh = :fGh"),
-    @NamedQuery(name = "Data262.findByLabratoriq", query = "SELECT d FROM Data262 d WHERE d.labratoriq = :labratoriq"),
-    @NamedQuery(name = "Data262.findByVrahLaborant", query = "SELECT d FROM Data262 d WHERE d.vrahLaborant = :vrahLaborant"),
-    @NamedQuery(name = "Data262.findByRegistrator", query = "SELECT d FROM Data262 d WHERE d.registrator = :registrator"),
-    @NamedQuery(name = "Data262.findByOtpravitNapohtu", query = "SELECT d FROM Data262 d WHERE d.otpravitNapohtu = :otpravitNapohtu"),
-    @NamedQuery(name = "Data262.findByKrnCreateDate", query = "SELECT d FROM Data262 d WHERE d.krnCreateDate = :krnCreateDate"),
-    @NamedQuery(name = "Data262.findByKrnCreateUserId", query = "SELECT d FROM Data262 d WHERE d.krnCreateUserId = :krnCreateUserId"),
-    @NamedQuery(name = "Data262.findByKrnModifyDate", query = "SELECT d FROM Data262 d WHERE d.krnModifyDate = :krnModifyDate"),
-    @NamedQuery(name = "Data262.findByKrnModifyUserId", query = "SELECT d FROM Data262 d WHERE d.krnModifyUserId = :krnModifyUserId")})
+
 public class Data262 implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -97,7 +76,7 @@ public class Data262 implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataOtpravleniq;
     @Column(name = "F_GH")
-    private BigDecimal fGh;
+    private BigDecimal fgh;
     @Lob
     @Size(max = 2147483647)
     @Column(name = "KOMMENTARIJ")
@@ -225,12 +204,12 @@ public class Data262 implements Serializable {
         this.dataOtpravleniq = dataOtpravleniq;
     }
 
-    public BigDecimal getFGh() {
-        return fGh;
+    public BigDecimal getFgh() {
+        return fgh;
     }
 
-    public void setFGh(BigDecimal fGh) {
-        this.fGh = fGh;
+    public void setFgh(BigDecimal fgh) {
+        this.fgh = fgh;
     }
 
     public String getKommentarij() {
