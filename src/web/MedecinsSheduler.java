@@ -114,6 +114,22 @@ public class MedecinsSheduler {
             plj.setStart(generateDate(pls.get(i).getDateCons(), pls.get(i).getHeure()));
             plj.setEnd(generateEndDate(pls.get(i).getDateCons(), pls.get(i).getHeure(), pls.get(i).getDuree()));
             plj.setUrl("http://my.ivf.kz/med/patients/info/" + pls.get(i).getPatientsId());
+            switch (pls.get(i).getColor()) {
+                case 641787:
+                    plj.setColor("#FFD700"); // GOLD
+                    break;
+                case 8454016:
+                    plj.setColor("#32CD32"); // LIME GREEN
+                    break;
+                case 5526697:
+                    plj.setColor("#F4A460"); // SANDY BROWN
+                    break;
+                case 8388608:
+                    plj.setColor("#0000FF"); // BLUE
+                    break;
+                default:
+                    plj.setColor("#5196B8"); // LIGHT BLUE
+            }
             plj.setDescription(pls.get(i).getCommentaire());
             
             pljs.add(plj);

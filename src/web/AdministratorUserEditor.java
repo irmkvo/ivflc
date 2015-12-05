@@ -6,8 +6,6 @@
 package web;
 
 import domain.postgres.Broadcasts;
-import domain.postgres.Menu;
-import domain.postgres.Pages;
 import domain.postgres.Puser;
 import domain.postgres.Roles;
 import java.beans.PropertyEditorSupport;

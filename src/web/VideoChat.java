@@ -25,7 +25,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import pojo.VideoArchive;
 import service.postgres.BroadcastService;
 import service.postgres.UsersService;
 import video.api.API;
@@ -42,7 +41,7 @@ public class VideoChat {
 
     @Autowired
     BroadcastService broadcastService;
-
+    
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         CustomDateEditor editor = new CustomDateEditor(new SimpleDateFormat("yyyy/MM/dd HH:mm"), true);

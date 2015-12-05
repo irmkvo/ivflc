@@ -38,4 +38,11 @@
         <put-attribute name="content" value="/WEB-INF/views/video/broadcast/login.jsp" />
     </definition>
     
+    <definition name="404" extends="blank-template">
+        <put-attribute name="content" value="/WEB-INF/views/error/404.jsp" />
+    </definition>
+    
+    <definition name="403" extends="blank-template">
+        <put-attribute name="content" value="/WEB-INF/views/error/403.jsp" />
+    </definition>
 </tiles-definitions>

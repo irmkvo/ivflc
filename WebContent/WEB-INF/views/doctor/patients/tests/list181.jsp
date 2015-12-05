@@ -239,7 +239,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td rowspan="8">200</td>
+                                <td rowspan="8">${DATAS181_2.fgh}</td>
                                 <td rowspan="8">МЕ/л</td>
                                 <td rowspan="8">Пограничное <br>значение 5-10 МЕ/л</td>
                                 <td >1 нед.</td>

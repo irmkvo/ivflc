@@ -45,7 +45,7 @@ public class ClientMedecinsTests {
 
     @Autowired
     ModelsService modelsService;
-
+    
     /*БИОХИМИЯ - ОБЩИЙ АНАЛИЗ КРОВИ*/
     @RequestMapping("/biohim-oak/{modelid}")
     public String getBioOak(@PathVariable("modelid") Integer modelId, Map<String, Object> map) {

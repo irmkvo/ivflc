@@ -6,7 +6,6 @@
 package web;
 
 import domain.postgres.Pages;
-import domain.postgres.Puser;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +33,7 @@ public class AdministrativZone {
     @Autowired
     PagesService pagesService;   
 
+    
     // ADMINISTRATOR METHODS
     // ADMIN PANEL
     @RequestMapping("/admin/administrator")

@@ -18,7 +18,7 @@ public class UserController {
 
     @Autowired
     UsersService userService;
-
+    
     private Puser getCurrentUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (null == auth) {

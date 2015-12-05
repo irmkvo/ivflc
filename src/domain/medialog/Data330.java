@@ -31,55 +31,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "DATA330")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Data330.findAll", query = "SELECT d FROM Data330 d"),
-    @NamedQuery(name = "Data330.findByData330Id", query = "SELECT d FROM Data330 d WHERE d.data330Id = :data330Id"),
-    @NamedQuery(name = "Data330.findByPatientsId", query = "SELECT d FROM Data330 d WHERE d.patientsId = :patientsId"),
-    @NamedQuery(name = "Data330.findByDateConsultation", query = "SELECT d FROM Data330 d WHERE d.dateConsultation = :dateConsultation"),
-    @NamedQuery(name = "Data330.findByMotconsuId", query = "SELECT d FROM Data330 d WHERE d.motconsuId = :motconsuId"),
-    @NamedQuery(name = "Data330.findByBioImiq8Pokazatelej", query = "SELECT d FROM Data330 d WHERE d.bioImiq8Pokazatelej = :bioImiq8Pokazatelej"),
-    @NamedQuery(name = "Data330.findByMohevina1", query = "SELECT d FROM Data330 d WHERE d.mohevina1 = :mohevina1"),
-    @NamedQuery(name = "Data330.findByObhijBelok1", query = "SELECT d FROM Data330 d WHERE d.obhijBelok1 = :obhijBelok1"),
-    @NamedQuery(name = "Data330.findByFOlesterin1", query = "SELECT d FROM Data330 d WHERE d.fOlesterin1 = :fOlesterin1"),
-    @NamedQuery(name = "Data330.findByKreatinin1", query = "SELECT d FROM Data330 d WHERE d.kreatinin1 = :kreatinin1"),
-    @NamedQuery(name = "Data330.findByAsat1", query = "SELECT d FROM Data330 d WHERE d.asat1 = :asat1"),
-    @NamedQuery(name = "Data330.findByAlat1", query = "SELECT d FROM Data330 d WHERE d.alat1 = :alat1"),
-    @NamedQuery(name = "Data330.findByBilirubinObhij1", query = "SELECT d FROM Data330 d WHERE d.bilirubinObhij1 = :bilirubinObhij1"),
-    @NamedQuery(name = "Data330.findByAlBumin1", query = "SELECT d FROM Data330 d WHERE d.alBumin1 = :alBumin1"),
-    @NamedQuery(name = "Data330.findByMohevaqKislota1", query = "SELECT d FROM Data330 d WHERE d.mohevaqKislota1 = :mohevaqKislota1"),
-    @NamedQuery(name = "Data330.findByBilirubinPrqmoj1", query = "SELECT d FROM Data330 d WHERE d.bilirubinPrqmoj1 = :bilirubinPrqmoj1"),
-    @NamedQuery(name = "Data330.findByGlykoza1", query = "SELECT d FROM Data330 d WHERE d.glykoza1 = :glykoza1"),
-    @NamedQuery(name = "Data330.findByBilirubinNeprqmoj1", query = "SELECT d FROM Data330 d WHERE d.bilirubinNeprqmoj1 = :bilirubinNeprqmoj1"),
-    @NamedQuery(name = "Data330.findByHelohnaqFosfotaza1", query = "SELECT d FROM Data330 d WHERE d.helohnaqFosfotaza1 = :helohnaqFosfotaza1"),
-    @NamedQuery(name = "Data330.findByTriglicerid1", query = "SELECT d FROM Data330 d WHERE d.triglicerid1 = :triglicerid1"),
-    @NamedQuery(name = "Data330.findByGgt1", query = "SELECT d FROM Data330 d WHERE d.ggt1 = :ggt1"),
-    @NamedQuery(name = "Data330.findBySVorotohnoeGelezo1", query = "SELECT d FROM Data330 d WHERE d.sVorotohnoeGelezo1 = :sVorotohnoeGelezo1"),
-    @NamedQuery(name = "Data330.findBySVorotohnoeGelezo", query = "SELECT d FROM Data330 d WHERE d.sVorotohnoeGelezo = :sVorotohnoeGelezo"),
-    @NamedQuery(name = "Data330.findByGgt", query = "SELECT d FROM Data330 d WHERE d.ggt = :ggt"),
-    @NamedQuery(name = "Data330.findByTriglicerid", query = "SELECT d FROM Data330 d WHERE d.triglicerid = :triglicerid"),
-    @NamedQuery(name = "Data330.findByHelohnaqFosfotaza", query = "SELECT d FROM Data330 d WHERE d.helohnaqFosfotaza = :helohnaqFosfotaza"),
-    @NamedQuery(name = "Data330.findByBilirubinNeprqmoj", query = "SELECT d FROM Data330 d WHERE d.bilirubinNeprqmoj = :bilirubinNeprqmoj"),
-    @NamedQuery(name = "Data330.findByBilirubinPrqmoj", query = "SELECT d FROM Data330 d WHERE d.bilirubinPrqmoj = :bilirubinPrqmoj"),
-    @NamedQuery(name = "Data330.findByMohevaqKislota", query = "SELECT d FROM Data330 d WHERE d.mohevaqKislota = :mohevaqKislota"),
-    @NamedQuery(name = "Data330.findByAlBumin", query = "SELECT d FROM Data330 d WHERE d.alBumin = :alBumin"),
-    @NamedQuery(name = "Data330.findByHek", query = "SELECT d FROM Data330 d WHERE d.hek = :hek"),
-    @NamedQuery(name = "Data330.findByNomer", query = "SELECT d FROM Data330 d WHERE d.nomer = :nomer"),
-    @NamedQuery(name = "Data330.findByFOlesterin", query = "SELECT d FROM Data330 d WHERE d.fOlesterin = :fOlesterin"),
-    @NamedQuery(name = "Data330.findByBilirubinObhij", query = "SELECT d FROM Data330 d WHERE d.bilirubinObhij = :bilirubinObhij"),
-    @NamedQuery(name = "Data330.findByAsat", query = "SELECT d FROM Data330 d WHERE d.asat = :asat"),
-    @NamedQuery(name = "Data330.findByAlat", query = "SELECT d FROM Data330 d WHERE d.alat = :alat"),
-    @NamedQuery(name = "Data330.findByGlykoza", query = "SELECT d FROM Data330 d WHERE d.glykoza = :glykoza"),
-    @NamedQuery(name = "Data330.findByMohevina", query = "SELECT d FROM Data330 d WHERE d.mohevina = :mohevina"),
-    @NamedQuery(name = "Data330.findByKreatinin", query = "SELECT d FROM Data330 d WHERE d.kreatinin = :kreatinin"),
-    @NamedQuery(name = "Data330.findByObhijBelok", query = "SELECT d FROM Data330 d WHERE d.obhijBelok = :obhijBelok"),
-    @NamedQuery(name = "Data330.findByData", query = "SELECT d FROM Data330 d WHERE d.data = :data"),
-    @NamedQuery(name = "Data330.findByVrahLaborant", query = "SELECT d FROM Data330 d WHERE d.vrahLaborant = :vrahLaborant"),
-    @NamedQuery(name = "Data330.findByLehahijVrah", query = "SELECT d FROM Data330 d WHERE d.lehahijVrah = :lehahijVrah"),
-    @NamedQuery(name = "Data330.findByOtpravitNapohtu", query = "SELECT d FROM Data330 d WHERE d.otpravitNapohtu = :otpravitNapohtu"),
-    @NamedQuery(name = "Data330.findByKrnCreateDate", query = "SELECT d FROM Data330 d WHERE d.krnCreateDate = :krnCreateDate"),
-    @NamedQuery(name = "Data330.findByKrnCreateUserId", query = "SELECT d FROM Data330 d WHERE d.krnCreateUserId = :krnCreateUserId"),
-    @NamedQuery(name = "Data330.findByKrnModifyDate", query = "SELECT d FROM Data330 d WHERE d.krnModifyDate = :krnModifyDate"),
-    @NamedQuery(name = "Data330.findByKrnModifyUserId", query = "SELECT d FROM Data330 d WHERE d.krnModifyUserId = :krnModifyUserId")})
 public class Data330 implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -138,7 +89,7 @@ public class Data330 implements Serializable {
     private Boolean sVorotohnoeGelezo1;
     @Size(max = 4)
     @Column(name = "S_VOROTOHNOE_GELEZO")
-    private String sVorotohnoeGelezo;
+    private String svorotohnoeGelezo;
     @Size(max = 4)
     @Column(name = "GGT")
     private String ggt;
@@ -168,7 +119,7 @@ public class Data330 implements Serializable {
     private String nomer;
     @Size(max = 4)
     @Column(name = "F_OLESTERIN")
-    private String fOlesterin;
+    private String folesterin;
     @Size(max = 4)
     @Column(name = "BILIRUBIN_OBHIJ")
     private String bilirubinObhij;
@@ -393,12 +344,12 @@ public class Data330 implements Serializable {
         this.sVorotohnoeGelezo1 = sVorotohnoeGelezo1;
     }
 
-    public String getSVorotohnoeGelezo() {
-        return sVorotohnoeGelezo;
+    public String getSvorotohnoeGelezo() {
+        return svorotohnoeGelezo;
     }
 
-    public void setSVorotohnoeGelezo(String sVorotohnoeGelezo) {
-        this.sVorotohnoeGelezo = sVorotohnoeGelezo;
+    public void setSvorotohnoeGelezo(String svorotohnoeGelezo) {
+        this.svorotohnoeGelezo = svorotohnoeGelezo;
     }
 
     public String getGgt() {
@@ -473,12 +424,12 @@ public class Data330 implements Serializable {
         this.nomer = nomer;
     }
 
-    public String getFOlesterin() {
-        return fOlesterin;
+    public String getFolesterin() {
+        return folesterin;
     }
 
-    public void setFOlesterin(String fOlesterin) {
-        this.fOlesterin = fOlesterin;
+    public void setFolesterin(String folesterin) {
+        this.folesterin = folesterin;
     }
 
     public String getBilirubinObhij() {

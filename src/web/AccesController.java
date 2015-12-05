@@ -12,10 +12,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class AccesController {
-    
+  
     @RequestMapping(value="/error403", method= RequestMethod.GET)
     public String getError403(Map<String, Object> map){
-    return "error403";
+    
+        map.put("loadContent", "/WEB-INF/views/error/403.jsp");
+        
+        return "index";
     }
     
 }

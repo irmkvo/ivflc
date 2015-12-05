@@ -15,9 +15,9 @@
                 
                 <intercept-url pattern="/**" access="hasAnyRole('ROLE_CLIENT', 'ROLE_ADMIN','ROLE_DOCTOR','ROLE_ANONYMOUS')" />
                 <intercept-url pattern="/video/**" access="hasAnyRole('ROLE_CLIENT', 'ROLE_ADMIN','ROLE_DOCTOR','ROLE_ANONYMOUS')" />
-                <intercept-url pattern="/admin/**" access="hasAnyRole('ROLE_CLIENT', 'ROLE_ADMIN','ROLE_DOCTOR','ROLE_ANONYMOUS')" />
-                <intercept-url pattern="/clients/**" access="hasAnyRole('ROLE_CLIENT')" />
-                <intercept-url pattern="/med/**" access="hasAnyRole('ROLE_DOCTOR')" />
+                <intercept-url pattern="/admin/**" access="hasAnyRole('ROLE_ADMIN')" />
+                <intercept-url pattern="/clients/**" access="hasAnyRole('ROLE_CLIENT','ROLE_ADMIN')" />
+                <intercept-url pattern="/med/**" access="hasAnyRole('ROLE_DOCTOR','ROLE_ADMIN')" />
                 <form-login login-page="/login" default-target-url="/index" authentication-failure-url="/login" />
                 <logout logout-url="/j_spring_security_logout" logout-success-url="/" />
 		              

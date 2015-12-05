@@ -51,12 +51,12 @@ public class MedecinsTests {
 
         Puser CurrentUser = GetCurrentUser();
 
-//        if (CurrentUser != null) {
+        if (CurrentUser != null) {
             Motconsu mtcs = this.motconsuService.getMotconsuById(motconsuId);
             map.put("DATAS180_1", mtcs.getData143());
             map.put("DATAS180_2", mtcs.getData144());
             map.put("DATAS180_3", mtcs.getData327());
-//        }
+        }
         
         map.put("loadContent", "/WEB-INF/views/doctor/patients/tests/list180.jsp");
         
