@@ -9,9 +9,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>404</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-    </body>
+    <center><image src="http://irm.kz/wp-content/themes/irm-template/assets/images/logo2.png" class="img-responsive" alt="" /></center>
+    <center><h1><font color="#f47e7e">Ой!</font> <font color="#4aaaa5">Страница не существует.</font> <font color="#8fd187">Попробуйте вернутся на <a href="my.ivf.kz">ГЛАВНУЮ</a>.</font></h1></center>
+    <center><h1>404</h1></center>
+</body>
 </html>

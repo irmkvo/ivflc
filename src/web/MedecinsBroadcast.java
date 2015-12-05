@@ -5,14 +5,11 @@
  */
 package web;
 
-import domain.medialog.Motconsu;
 import domain.postgres.Broadcasts;
 import domain.postgres.Puser;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
@@ -22,18 +19,13 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import pojo.AaDataMotconsu;
 import pojo.AaDataRecords;
-import pojo.MotconsuPOJO;
 import service.postgres.BroadcastService;
 import service.postgres.UsersService;
 import video.api.API;
 import video.api.objects.Records;
-import web.exceptions.ResourceNotFoundException;
 
 /**
  *
