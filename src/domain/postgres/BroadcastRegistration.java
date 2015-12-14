@@ -51,6 +51,8 @@ public class BroadcastRegistration implements Serializable {
     
     private String description;
     
+    private Boolean block;
+    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "brdc_id")
     private Broadcasts brdc;
@@ -157,6 +159,14 @@ public class BroadcastRegistration implements Serializable {
 
     public void setBrdc(Broadcasts brdc) {
         this.brdc = brdc;
+    }
+
+    public Boolean getBlock() {
+        return block;
+    }
+
+    public void setBlock(Boolean block) {
+        this.block = block;
     }
     
     

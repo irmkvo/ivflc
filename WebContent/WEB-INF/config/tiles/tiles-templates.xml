@@ -38,4 +38,7 @@
         <put-attribute name="content" value="/WEB-INF/views/video/broadcast/login.jsp" />
     </definition>
 
+    <definition name="meeting/registration" extends="blank-template">
+        <put-attribute name="content" value="/WEB-INF/views/video/broadcast/registration.jsp" />
+    </definition>
 </tiles-definitions>

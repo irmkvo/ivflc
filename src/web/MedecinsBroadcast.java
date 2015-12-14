@@ -5,6 +5,7 @@
  */
 package web;
 
+import domain.postgres.BroadcastRegistration;
 import domain.postgres.Broadcasts;
 import domain.postgres.Puser;
 import java.io.IOException;
@@ -21,6 +22,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import pojo.AaDataBrdcUsers;
 import pojo.AaDataRecords;
 import service.postgres.BroadcastService;
 import service.postgres.UsersService;
@@ -76,6 +78,40 @@ public class MedecinsBroadcast {
         ObjectMapper mapper = new ObjectMapper();
         AaDataRecords aa = new AaDataRecords();
         aa.setAaData(brdc);
+        try {
+            resultDataJson = mapper.writeValueAsString(aa);
+        } catch (JsonGenerationException e) {
+            e.printStackTrace();
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        map.put("body", resultDataJson);
+
+        return "json";
+    }
+    
+    @RequestMapping(value="/med/broadcast/user/json", method={RequestMethod.POST,RequestMethod.GET})
+    public String getDocMedconfUserJSON(Map<String, Object> map){
+        
+        Puser CurrentUser = GetCurrentUser();
+        
+        API broadcastAPI = new API();
+        
+        List<BroadcastRegistration> brdcRegs = CurrentUser.getBrdc().getBrdcReg();
+
+        String resultDataJson = "";
+        
+        for(int i = 0; i < brdcRegs.size(); i++){
+            brdcRegs.get(i).setFname(brdcRegs.get(i).getLname() + " " + brdcRegs.get(i).getFname() + " " + brdcRegs.get(i).getMname());
+            brdcRegs.get(i).setBrdc(null);
+        }
+        
+        ObjectMapper mapper = new ObjectMapper();
+        AaDataBrdcUsers aa = new AaDataBrdcUsers();
+        aa.setAaData(brdcRegs);
         try {
             resultDataJson = mapper.writeValueAsString(aa);
         } catch (JsonGenerationException e) {

@@ -68,6 +68,8 @@
                 <value>domain.postgres.MenuItem</value>
                 <value>domain.postgres.Pages</value>
                 <value>domain.postgres.Broadcasts</value>
+                <value>domain.postgres.BroadcastRegistration</value>
+                <value>domain.postgres.BroadcastRecords</value>
            </list>
         </property>
 <!--        <property name="packagesToScan" value="domain"/>-->

@@ -13,7 +13,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" />        
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min4.css" />        
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/2.css" type="text/css" media="screen" title="default" />
 
         <style type="text/css">
@@ -52,9 +52,9 @@
                             <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">
                                 <spring:message code="label.logining" />
                             </button>
-                            <div>
-                                <a href="${pageContext.request.contextPath}/registration"><spring:message code="label.registration" /></a> или <a href="#">Восстановление пароля</a>
-                            </div>
+                            <!--<div>-->
+                                <!--<a href="${pageContext.request.contextPath}/registration"><spring:message code="label.registration" /></a> или <a href="#">Восстановление пароля</a>-->
+                            <!--</div>-->
 
                         </form>
 

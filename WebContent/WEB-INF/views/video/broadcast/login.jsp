@@ -14,7 +14,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" />        
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min4.css" />        
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/2.css" type="text/css" media="screen" title="default" />
 
         <style type="text/css">
@@ -250,7 +250,7 @@
                         <c:if test="${status == 0}">
                             <div class="broadcast-login">
                                 <H2>
-                                    До начала трансляции осталось:
+                                    До начала трансляции:
                                 </H2>
                                 <div class="countdown-container" id="broadcast-login">
                                 </div>
@@ -273,79 +273,100 @@
                         </div>
                     </script>
                     <script type="text/javascript">
-                            $(window).on('load', function () {
-                                _.templateSettings = {
-                                    interpolate: /\<\@\=(.+?)\@\>/g,
-                                    evaluate: /\<\@([\s\S]+?)\@\>/g,
-                                    escape: /\<\@\-(.+?)\@\>/g
-                                };
+                        $(window).on('load', function () {
+                            _.templateSettings = {
+                                interpolate: /\<\@\=(.+?)\@\>/g,
+                                evaluate: /\<\@([\s\S]+?)\@\>/g,
+                                escape: /\<\@\-(.+?)\@\>/g
+                            };
 
-                                var labels = ['weeks', 'days', 'hours', 'minutes', 'seconds'],
-                                        nextYear = '${brdcDate}', //(new Date().getFullYear() + 1) + '/01/01 18:00:00',
-                                        template = _.template($('#broadcast-login-template').html()),
-                                        currDate = '00:00:00:00:00',
-                                        nextDate = '00:00:00:00:00',
-                                        parser = /([0-9]{2})/gi,
-                                        $example = $('#broadcast-login');
-                                // Parse countdown string to an object
-                                function strfobj(str) {
-                                    var parsed = str.match(parser),
-                                            obj = {};
-                                    labels.forEach(function (label, i) {
-                                        obj[label] = parsed[i]
-                                    });
-                                    return obj;
-                                }
-                                // Return the time components that diffs
-                                function diff(obj1, obj2) {
-                                    var diff = [];
-                                    labels.forEach(function (key) {
-                                        if (obj1[key] !== obj2[key]) {
-                                            diff.push(key);
-                                        }
-                                    });
-                                    return diff;
-                                }
-                                // Build the layout
-                                var initData = strfobj(currDate);
+                            var labels = ['weeks', 'days', 'hours', 'minutes', 'seconds'],
+                                    nextYear = '${brdcDate}', //(new Date().getFullYear() + 1) + '/01/01 18:00:00',
+                                    template = _.template($('#broadcast-login-template').html()),
+                                    currDate = '00:00:00:00:00',
+                                    nextDate = '00:00:00:00:00',
+                                    parser = /([0-9]{2})/gi,
+                                    $example = $('#broadcast-login');
+                            // Parse countdown string to an object
+                            function strfobj(str) {
+                                var parsed = str.match(parser),
+                                        obj = {};
                                 labels.forEach(function (label, i) {
-                                    $example.append(template({
-                                        curr: initData[label],
-                                        next: initData[label],
-                                        label: label
-                                    }));
+                                    obj[label] = parsed[i]
                                 });
-                                // Starts the countdown
-                                $example.countdown(nextYear, function (event) {
-                                    var newDate = event.strftime('%w:%d:%H:%M:%S'),
-                                            data;
-                                    if (newDate !== nextDate) {
-                                        currDate = nextDate;
-                                        nextDate = newDate;
-                                        // Setup the data
-                                        data = {
-                                            'curr': strfobj(currDate),
-                                            'next': strfobj(nextDate)
-                                        };
-                                        // Apply the new values to each node that changed
-                                        diff(data.curr, data.next).forEach(function (label) {
-                                            var selector = '.%s'.replace(/%s/, label),
-                                                    $node = $example.find(selector);
-                                            // Update the node
-                                            $node.removeClass('flip');
-                                            $node.find('.curr').text(data.curr[label]);
-                                            $node.find('.next').text(data.next[label]);
-                                            // Wait for a repaint to then flip
-                                            _.delay(function ($node) {
-                                                $node.addClass('flip');
-                                            }, 50, $node);
-                                        });
+                                return obj;
+                            }
+                            // Return the time components that diffs
+                            function diff(obj1, obj2) {
+                                var diff = [];
+                                labels.forEach(function (key) {
+                                    if (obj1[key] !== obj2[key]) {
+                                        diff.push(key);
                                     }
                                 });
+                                return diff;
+                            }
+                            // Build the layout
+                            var initData = strfobj(currDate);
+                            labels.forEach(function (label, i) {
+                                $example.append(template({
+                                    curr: initData[label],
+                                    next: initData[label],
+                                    label: label
+                                }));
                             });
+                            // Starts the countdown
+                            $example.countdown(nextYear, function (event) {
+                                var newDate = event.strftime('%w:%d:%H:%M:%S'),
+                                        data;
+                                if (newDate !== nextDate) {
+                                    currDate = nextDate;
+                                    nextDate = newDate;
+                                    // Setup the data
+                                    data = {
+                                        'curr': strfobj(currDate),
+                                        'next': strfobj(nextDate)
+                                    };
+                                    // Apply the new values to each node that changed
+                                    diff(data.curr, data.next).forEach(function (label) {
+                                        var selector = '.%s'.replace(/%s/, label),
+                                                $node = $example.find(selector);
+                                        // Update the node
+                                        $node.removeClass('flip');
+                                        $node.find('.curr').text(data.curr[label]);
+                                        $node.find('.next').text(data.next[label]);
+                                        // Wait for a repaint to then flip
+                                        _.delay(function ($node) {
+                                            $node.addClass('flip');
+                                        }, 50, $node);
+                                    });
+                                }
+                            });
+                        });
                     </script>   
-                </c:if>
+                </c:if>                
+            </div>            
+            <!-- /.row -->
+            <div class="row">   
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Информация
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                ${brdcInfo}                                            
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-6 -->
             </div>
+            <!-- /.row -->
             <p>
                 <br>
                 <br>

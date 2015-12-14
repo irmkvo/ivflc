@@ -59,7 +59,7 @@ public class VideoController {
         if (brdc != null) {
             String status = broadcastAPI.isMeetingRunning(meetingId);
 
-            if (status.equalsIgnoreCase("true")) {
+            if (status.equalsIgnoreCase("true")) {                
                 map.put("status", 1);
                 map.put("meetingId", meetingId);
             } else {
@@ -67,6 +67,7 @@ public class VideoController {
                 String strDate = sdf.format(brdc.getStartDate());
                 map.put("brdcDate", strDate);
             }
+            map.put("brdcInfo", brdc.getDescription());
         } else {
             map.put("status", 3);
         }

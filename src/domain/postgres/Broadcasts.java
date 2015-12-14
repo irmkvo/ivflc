@@ -3,12 +3,15 @@ package domain.postgres;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -54,6 +57,12 @@ public class Broadcasts implements Serializable{
     private String loginURL;
     @Column(name = "meetingID")
     private String meetingID;
+    
+    @OneToMany(mappedBy = "brdc", fetch = FetchType.LAZY)
+    private List<BroadcastRegistration> brdcReg;
+    
+    @OneToMany(mappedBy = "brdc", fetch = FetchType.LAZY)
+    private List<BroadcastRecords> brdcRec;
     
     public Broadcasts() {
     }
@@ -168,6 +177,14 @@ public class Broadcasts implements Serializable{
     public void setMeetingID(String meetingID) {
         this.meetingID = meetingID;
     }
+
+    public List<BroadcastRegistration> getBrdcReg() {
+        return brdcReg;
+    }
+
+    public void setBrdcReg(List<BroadcastRegistration> brdcReg) {
+        this.brdcReg = brdcReg;
+    }    
 
     @Override
     public String toString() {
