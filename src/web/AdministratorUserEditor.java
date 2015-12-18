@@ -97,6 +97,7 @@ public class AdministratorUserEditor {
     public String getUsersEditSave(@ModelAttribute(value = "userObj") Puser userObj, Map<String, Object> map) {
                 
         if (userObj.getId() == null) {
+            userObj.setUserPassword(this.userService.createHash(userObj.getUserPassword()));
             this.userService.addUser(userObj);
         } else {
             this.userService.updateUser(userObj);
