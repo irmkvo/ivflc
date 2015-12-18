@@ -16,7 +16,9 @@ import org.springframework.security.core.GrantedAuthority;
  */
 public interface UsersService {
 
-    public void addOrUpdateUser(Puser user);
+    public void addUser(Puser user);
+    
+    public void updateUser(Puser user);
 
     public Puser getUser(Integer id);
 

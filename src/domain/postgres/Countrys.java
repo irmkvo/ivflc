@@ -45,10 +45,7 @@ public class Countrys implements Serializable {
 
     @OneToMany(mappedBy = "country", fetch = FetchType.LAZY)
     private List<CountryCity> citys;
-    
-    @OneToMany(mappedBy = "country", fetch = FetchType.LAZY)
-    private List<Puser> users;
-    
+   
     public Countrys() {
     }
 
@@ -86,14 +83,6 @@ public class Countrys implements Serializable {
 
     public void setCitys(List<CountryCity> citys) {
         this.citys = citys;
-    }
-
-    public List<Puser> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<Puser> users) {
-        this.users = users;
     }
 
     @Override

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package web;
 
 import domain.postgres.Broadcasts;
@@ -57,7 +52,7 @@ public class AdministratorUserEditor {
             public void setAsText(String text) {
                 setValue(broadcastService.getBroadcastByID(Integer.parseInt(text)));
             }
-        });        
+        });  
     }
     
     // USERS EDITOR ============================================================
@@ -101,13 +96,17 @@ public class AdministratorUserEditor {
     @RequestMapping("/admin/user_editor/save")
     public String getUsersEditSave(@ModelAttribute(value = "userObj") Puser userObj, Map<String, Object> map) {
                 
+        if (userObj.getId() == null) {
+            this.userService.addUser(userObj);
+        } else {
+            this.userService.updateUser(userObj);
+        }
+
         List<Puser> userList = this.userService.listUser();
-        
+
         map.put("userList", userList);
-        
         map.put("loadContent", "/WEB-INF/views/admin/user_editor/userlist.jsp");
-        
-        return "index";
-        
+
+        return "index";       
     }
 }

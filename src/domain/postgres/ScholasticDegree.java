@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package domain.postgres;
 
 import domain.postgres.Puser;
@@ -42,9 +37,6 @@ public class ScholasticDegree implements Serializable {
     @Size(max = 2147483647)
     @Column(name = "description")
     private String description;
-
-    @OneToMany(mappedBy = "scholastic_degree", fetch = FetchType.LAZY)
-    private List<Puser> users;
     
     public ScholasticDegree() {
     }
@@ -75,14 +67,6 @@ public class ScholasticDegree implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public List<Puser> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<Puser> users) {
-        this.users = users;
     }
 
     @Override

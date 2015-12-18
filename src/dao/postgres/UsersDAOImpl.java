@@ -25,10 +25,15 @@ public class UsersDAOImpl implements UsersDAO {
     private SessionFactory sessionFactory;
     // РАБОТА С ПОЛЬЗОВАТЕЛЯМИ
     @Override
-    public void addOrUpdateUser(Puser user) {
-        sessionFactory.getCurrentSession().saveOrUpdate(user);
+    public void addUser(Puser user) {
+        sessionFactory.getCurrentSession().save(user);
     }
 
+    @Override
+    public void updateUser(Puser user) {
+        sessionFactory.getCurrentSession().update(user);
+    }
+    
     @Override
     public Puser getUser(Integer id) {
         return (Puser) sessionFactory.getCurrentSession().createQuery("from Puser where id = :id").setParameter("id", id).uniqueResult();

@@ -35,8 +35,13 @@ public class UsersServiceImpl implements UserDetailsService, UsersService {
     UsersDAO userDAO;  
 
     @Override
-    public void addOrUpdateUser(Puser user) {
-        userDAO.addOrUpdateUser(user);
+    public void addUser(Puser user) {
+        userDAO.addUser(user);
+    }
+    
+    @Override
+    public void updateUser(Puser user) {
+        userDAO.updateUser(user);
     }
 
     @Override

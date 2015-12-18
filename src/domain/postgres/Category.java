@@ -5,7 +5,6 @@
  */
 package domain.postgres;
 
-import domain.postgres.Puser;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -15,8 +14,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
@@ -42,9 +39,6 @@ public class Category implements Serializable {
     @Size(max = 2147483647)
     @Column(name = "description")
     private String description;
-
-    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
-    private List<Puser> users;
     
     public Category() {
     }
@@ -75,14 +69,6 @@ public class Category implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public List<Puser> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<Puser> users) {
-        this.users = users;
     }
 
     @Override

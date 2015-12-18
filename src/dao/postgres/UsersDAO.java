@@ -14,7 +14,9 @@ import java.util.List;
 public interface UsersDAO {
     // РАБОТА С ПОЛЬЗОВАТЕЛЯМИ
     
-    public void addOrUpdateUser(Puser user);    // Добавить нового пользователя
+    public void addUser(Puser user);    // Добавить нового пользователя
+    
+    public void updateUser(Puser user);    // Добавить нового пользователя
     
     public Puser getUser(Integer id);   // Получить пользователя по ID
 

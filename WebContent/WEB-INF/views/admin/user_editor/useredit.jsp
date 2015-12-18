@@ -51,50 +51,11 @@
                             
                             <label for="brdc">Ведет вебинар:</label>
                             <form:select path="brdc" items="${brdcList}" itemValue="id" class="form-control">
-                            </form:select>
-                            
-                            <label for="specialization">Специализация:</label>
-                            <form:select path="specialization" items="${specializations}" itemValue="id" class="form-control">
                             </form:select>                            
-                            <label for="experience">Опыт:</label>
-                            <form:input path="experience" class="form-control"></form:input>                            
-                            <label for="scholastic_degree">scholastic_degree:</label>
-                            <form:select path="scholastic_degree" items="${scholastic_degrees}" itemValue="id" class="form-control">
-                            </form:select>                            
-                            <label for="dissertation_topic">Диссертация:</label>
-                            <form:input path="dissertation_topic" class="form-control"></form:input>                            
-                            <label for="rank">Ранг:</label>    
-                            <form:input path="rank" class="form-control"></form:input>                            
-                            <label for="category">Категория:</label>
-                            <form:select path="category" items="${categorys}" itemValue="id" class="form-control">
-                            </form:select> 
-                            
-                            <label for="country">Страна:</label>
-                            <form:select path="country" items="${countrys}" itemValue="id" class="form-control">
-                            </form:select>                            
-                            <label for="city">Город:</label>
-                            <form:select path="city" items="${citys}" itemValue="id" class="form-control">
-                            </form:select>
-                            <label for="zipCode">Индекс:</label>    
-                            <form:input path="zipCode" class="form-control"></form:input>                            
-                            <label for="address">Адрес:</label>    
-                            <form:input path="address" class="form-control"></form:input>                            
-                            <label for="phone">Телефон:</label>    
-                            <form:input path="rank" class="form-control"></form:input>
-                            
-                            <label for="skype">skype:</label>    
-                            <form:input path="skype" class="form-control"></form:input>                            
-                            <label for="site">Страница:</label>    
-                            <form:input path="site" class="form-control"></form:input>
-                            
+                                                        
                             <label for="patientId">Номер ЭМК:</label>    
                             <form:input path="patientId" class="form-control"></form:input>
-                            
-                            <label for="conpanyName">Компания:</label>    
-                            <form:input path="conpanyName" class="form-control"></form:input>                            
-                            <label for="post">Должность:</label>    
-                            <form:input path="post" class="form-control"></form:input>
-                            
+                                                        
                             <div class="checkbox">
                                     <label>
                                     <form:checkbox path="accountNonExpired" />

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package domain.postgres;
 
 import java.io.Serializable;
@@ -49,67 +45,20 @@ public class Puser implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id")
     private Roles role;
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "specialization_id")
-    private Specialization specialization;
 
-    @Basic(optional = true)
-    private String experience;
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "scholastic_degree_id")
-    private ScholasticDegree scholastic_degree;
-    
-    @Basic(optional = true)
-    private String dissertation_topic;
-    
-    @Basic(optional = true)
-    private String rank;
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id")
-    private Category category;
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "country_id")
-    private Countrys country;
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "city_id")
-    private Citys city;
-    
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "brdc_id")
     private Broadcasts brdc;
     
     @Basic(optional = true)
-    private String zipCode;
-    
-    @Basic(optional = true)
-    private String address;
-    
-    @Basic(optional = true)
     private String phone;
-    
-    @Basic(optional = true)
-    private String skype;
-    
-    @Basic(optional = true)
-    private String site;
-    
+  
     @Basic(optional = true)
     private Integer patientId;
     
     private Integer plSubId;
     
     private Integer plAgendId;
-    
-    @Basic(optional = true)
-    private String conpanyName;
-    
-    @Basic(optional = true)
-    private String post;
     
     private Boolean accountNonExpired = true;
     private Boolean accountNonLocked = true;
@@ -204,87 +153,7 @@ public class Puser implements Serializable {
     public void setRole(Roles role) {
         this.role = role;
     }
-
-    public Specialization getSpecialization() {
-        return specialization;
-    }
-
-    public void setSpecialization(Specialization specialization) {
-        this.specialization = specialization;
-    }
-
-    public String getExperience() {
-        return experience;
-    }
-
-    public void setExperience(String experience) {
-        this.experience = experience;
-    }
-
-    public ScholasticDegree getScholastic_degree() {
-        return scholastic_degree;
-    }
-
-    public void setScholastic_degree(ScholasticDegree scholastic_degree) {
-        this.scholastic_degree = scholastic_degree;
-    }
-
-    public String getDissertation_topic() {
-        return dissertation_topic;
-    }
-
-    public void setDissertation_topic(String dissertation_topic) {
-        this.dissertation_topic = dissertation_topic;
-    }
-
-    public String getRank() {
-        return rank;
-    }
-
-    public void setRank(String rank) {
-        this.rank = rank;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public Countrys getCountry() {
-        return country;
-    }
-
-    public void setCountry(Countrys country) {
-        this.country = country;
-    }
-
-    public Citys getCity() {
-        return city;
-    }
-
-    public void setCity(Citys city) {
-        this.city = city;
-    }
-
-    public String getZipCode() {
-        return zipCode;
-    }
-
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
+    
     public String getPhone() {
         return phone;
     }
@@ -292,23 +161,7 @@ public class Puser implements Serializable {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-
-    public String getSkype() {
-        return skype;
-    }
-
-    public void setSkype(String skype) {
-        this.skype = skype;
-    }
-
-    public String getSite() {
-        return site;
-    }
-
-    public void setSite(String site) {
-        this.site = site;
-    }
-
+    
     public Integer getPatientId() {
         return patientId;
     }
@@ -316,23 +169,7 @@ public class Puser implements Serializable {
     public void setPatientId(Integer patientId) {
         this.patientId = patientId;
     }
-
-    public String getConpanyName() {
-        return conpanyName;
-    }
-
-    public void setConpanyName(String conpanyName) {
-        this.conpanyName = conpanyName;
-    }
-
-    public String getPost() {
-        return post;
-    }
-
-    public void setPost(String post) {
-        this.post = post;
-    }
-
+    
     public Boolean getAccountNonExpired() {
         return accountNonExpired;
     }

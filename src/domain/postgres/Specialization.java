@@ -42,9 +42,6 @@ public class Specialization implements Serializable {
     @Size(max = 2147483647)
     @Column(name = "description")
     private String description;
-
-    @OneToMany(mappedBy = "specialization", fetch = FetchType.LAZY)
-    private List<Puser> users;
     
     public Specialization() {
     }
@@ -76,14 +73,6 @@ public class Specialization implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public List<Puser> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<Puser> users) {
-        this.users = users;
-    }    
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
