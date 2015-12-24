@@ -2,7 +2,10 @@ package web;
 
 import domain.postgres.Broadcasts;
 import domain.postgres.Puser;
+import domain.postgres.Roles;
+import java.beans.PropertyEditorSupport;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -43,6 +46,17 @@ public class VideoController {
     public void initBinder(WebDataBinder binder) {
         CustomDateEditor editor = new CustomDateEditor(new SimpleDateFormat("yyyy/MM/dd HH:mm"), true);
         binder.registerCustomEditor(Date.class, editor);
+        
+        binder.registerCustomEditor(Puser.class, new PropertyEditorSupport() {
+            @Override
+            public void setAsText(String text) {
+                if(Integer.parseInt(text) == 0){
+                   setValue(null); 
+                } else {
+                    setValue(userService.getUser(Integer.parseInt(text)));
+                }
+            }
+        });
     }
 
     // GET BROADCAST LOGIN PAGE
@@ -113,16 +127,19 @@ public class VideoController {
         Puser CurrentUser = GetCurrentUser();
 
         List<Broadcasts> brdc = broadcastService.getBroadcasts();
-
+        List<Broadcasts> brdcTwo = new ArrayList<Broadcasts>();
         API broadcastAPI = new API();
 
         for (Broadcasts brdcTemp : brdc) {
-            brdcTemp.setJoinURL(broadcastAPI.getJoinURLViewer(CurrentUser.getUserLogin(), brdcTemp.getMeetingID()));
+            if(brdcTemp.getPersonal()) {
+                brdcTemp.setJoinURL(broadcastAPI.getJoinURLViewer(CurrentUser.getUserLogin(), brdcTemp.getMeetingID()));
+                brdcTwo.add(brdcTemp);
+            }
         }
 
         map.put("loadContent", "/WEB-INF/views/video/broadcast/broadcast_list.jsp");
              
-        map.put("brdcList", brdc);
+        map.put("brdcList", brdcTwo);
         map.put("UserData", CurrentUser);
         
         return "index";
@@ -201,6 +218,7 @@ public class VideoController {
             map.put("broadcast", brdc);
         } else {
             brdc = new Broadcasts();
+            brdc.setPersonal(true);
             brdc.setCreationDate(new Date());
             brdc.setStartDate(new Date());
             brdc.setEndDate(new Date());
@@ -208,6 +226,7 @@ public class VideoController {
             map.put("broadcast", brdc);
         }
 
+        map.put("userList", this.userService.listUser());
         map.put("loadContent", "/WEB-INF/views/video/admin/createBroadcast.jsp");
         
         return "index";

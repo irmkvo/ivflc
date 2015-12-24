@@ -20,6 +20,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import pojo.AaDataBrdcUsers;
@@ -125,6 +126,47 @@ public class MedecinsBroadcast {
         map.put("body", resultDataJson);
 
         return "json";
+    }
+    
+    @RequestMapping(value="/med/video/personalvideo", method= RequestMethod.GET)
+    public String getDocPersonalVideo(Map<String, Object> map){
+        
+        Puser CurrentUser = GetCurrentUser();
+        
+        List<Broadcasts> brdc = this.broadcastService.getBroadcastByUserId(CurrentUser);
+        
+        API broadcastAPI = new API();
+        
+        for(int i = 0; i < brdc.size(); i++){
+            brdc.get(i).setJoinURL(broadcastAPI.getJoinURLViewer(CurrentUser.getUserLogin(), brdc.get(i).getMeetingID()));
+        }       
+        
+        map.put("brdcList", brdc);
+        map.put("UserData", CurrentUser);
+                     
+        map.put("loadContent", "/WEB-INF/views/doctor/personalvideo/webconf_list.jsp");
+        
+        return "index";
+    }
+    
+    @RequestMapping(value="/med/video/personalvideo/{meetingId}", method={RequestMethod.POST,RequestMethod.GET})
+    public String getDocPersonalVideoArchiv(@PathVariable("meetingId") String meetingId, Map<String, Object> map){
+        
+        Puser CurrentUser = GetCurrentUser();
+        
+        API broadcastAPI = new API();
+        
+        Broadcasts brdcTemp = this.broadcastService.getBroadcastByMeetingID(meetingId);
+        
+        List<Records> brdc = broadcastAPI.getRecordingsObj(brdcTemp.getMeetingID());
+
+        map.put("confName", brdcTemp.getMeetingID());
+        map.put("confPat", brdcTemp.getPatientId());
+        map.put("confDesc", brdcTemp.getDescription());
+        map.put("brdcArchive", brdc);
+        map.put("loadContent", "/WEB-INF/views/doctor/personalvideo/webconf_archive_list.jsp");
+        
+        return "index";
     }
     
     // GET CURRENT USER FOR INDEX PAGE INFO

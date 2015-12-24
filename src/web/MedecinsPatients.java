@@ -178,7 +178,7 @@ public class MedecinsPatients {
                         case 257:
                             url = "/med/patients/tests/257/" + ((Motconsu) mtcs.get(i)).getMotconsuId();
                             break;
-                        default: url = "";
+                        default: url = "/#";
                             break;
                         
                     }

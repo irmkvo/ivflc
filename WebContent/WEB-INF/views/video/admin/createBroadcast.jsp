@@ -49,11 +49,26 @@
                             <form:input path="title" class="form-control"></form:input>
                             <label for="meetingID"> <spring:message code="label.meetingID" />:</label>
                             <form:input path="meetingID" class="form-control"></form:input>
+                            
+                            <div class="checkbox">
+                                <label>
+                                    <form:checkbox path="personal" />
+                                    Трансляция
+                                </label>
+                            </div>
+                            <label for="user">Пользователь:</label>
+                            <form:select path="user" items="${userList}" itemValue="id" class="form-control">
+                                <form:option value="0" label="--- Выбрать ---"/>
+                            </form:select>
+                            <label for="patientId"> Номер ЭМК:</label>
+                            <form:input path="patientId" class="form-control"></form:input>
+                            
                             <label for="description"> <spring:message code="label.description" />:</label>
                             <form:textarea id="editor1" path="description" class="form-control"/>
                             <label for="creationDate"> <spring:message code="label.date" />:</label>
                             <form:input id="datetime" path="creationDate" class="form-control"></form:input>
                             <label for="startDate"> <spring:message code="label.startdate" />:</label>
+                            
                             <form:input id="datetime2" path="startDate" class="form-control"></form:input>
                             <form:hidden path="endDate" class="inp-form" />
                             <form:hidden path="startURL" class="inp-form" />

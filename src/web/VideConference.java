@@ -8,6 +8,7 @@ package web;
 import domain.postgres.Broadcasts;
 import domain.postgres.Puser;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -56,16 +57,20 @@ public class VideConference {
         Puser CurrentUser = GetCurrentUser();
 
         List<Broadcasts> brdc = broadcastService.getBroadcasts();
-
+        List<Broadcasts> brdcTwo = new ArrayList<Broadcasts>(); 
+        
         API broadcastAPI = new API();
 
         for (Broadcasts brdcTemp : brdc) {
-            brdcTemp.setJoinURL(broadcastAPI.getJoinURLViewer(CurrentUser.getUserLogin(), brdcTemp.getMeetingID()));
+            if (!brdcTemp.getPersonal()) {
+                brdcTemp.setJoinURL(broadcastAPI.getJoinURLViewer(CurrentUser.getUserLogin(), brdcTemp.getMeetingID()));
+                brdcTwo.add(brdcTemp);
+            }
         }
 
         map.put("loadContent", "/WEB-INF/views/video/webinar/webconf_list.jsp");
              
-        map.put("brdcList", brdc);
+        map.put("brdcList", brdcTwo);
         map.put("UserData", CurrentUser);
         
         return "index";
@@ -144,6 +149,7 @@ public class VideConference {
             map.put("broadcast", brdc);
         } else {
             brdc = new Broadcasts();
+            brdc.setPersonal(false);
             brdc.setCreationDate(new Date());
             brdc.setStartDate(new Date());
             brdc.setEndDate(new Date());
@@ -151,6 +157,7 @@ public class VideConference {
             map.put("broadcast", brdc);
         }
 
+        map.put("userList", this.userService.listUser());
         map.put("loadContent", "/WEB-INF/views/video/admin/createBroadcast.jsp");
         
         return "index";

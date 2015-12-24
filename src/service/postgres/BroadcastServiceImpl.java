@@ -7,6 +7,7 @@ package service.postgres;
 
 import dao.postgres.BroadcastDAO;
 import domain.postgres.Broadcasts;
+import domain.postgres.Puser;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,6 +52,11 @@ public class BroadcastServiceImpl implements BroadcastService {
     @Override
     public void deleteBroadcastByID(Broadcasts brdc) {
         this.broadcastDAO.deleteBroadcastByID(brdc);
+    }
+
+    @Override
+    public List<Broadcasts> getBroadcastByUserId(Puser ID) {
+        return this.broadcastDAO.getBroadcastByUserId(ID);
     }
     
 }

@@ -6,6 +6,7 @@
 package dao.postgres;
 
 import domain.postgres.Broadcasts;
+import domain.postgres.Puser;
 import java.util.List;
 
 /**
@@ -23,6 +24,8 @@ public interface BroadcastDAO {
     public Broadcasts getBroadcastByID(Integer ID);
     
     public Broadcasts getBroadcastByMeetingID(String meetingID);
+    
+    public List<Broadcasts> getBroadcastByUserId(Puser ID);
     
     public void deleteBroadcastByID(Broadcasts brdc);
 }

@@ -6,6 +6,7 @@
 package dao.postgres;
 
 import domain.postgres.Broadcasts;
+import domain.postgres.Puser;
 import java.util.List;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +52,11 @@ public class BroadcastDAOImpl implements BroadcastDAO {
     @Override
     public void deleteBroadcastByID(Broadcasts brdc) {
         sessionFactory.getCurrentSession().delete(brdc);
+    }
+
+    @Override
+    public List<Broadcasts> getBroadcastByUserId(Puser ID) {
+        return sessionFactory.getCurrentSession().createQuery("from Broadcasts where user = :id").setParameter("id", ID).list();
     }
     
 }

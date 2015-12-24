@@ -7,6 +7,8 @@ package service.postgres;
 
 import dao.postgres.BroadcastRegistrationDAO;
 import domain.postgres.BroadcastRegistration;
+import domain.postgres.Broadcasts;
+import domain.postgres.Puser;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,6 +48,6 @@ public class BroadcastRegistrationServiceImpl implements BroadcastRegistrationSe
     @Override
     public void updateBrdcUser(BroadcastRegistration brdc) {
         this.brdcDAO.updateBrdcUser(brdc);
-    }
-    
+   }
+
 }

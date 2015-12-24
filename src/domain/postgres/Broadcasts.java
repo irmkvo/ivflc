@@ -11,6 +11,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -37,6 +39,15 @@ public class Broadcasts implements Serializable{
     private String author;
     @Column(name = "title")
     private String title;
+    
+    @Column(name = "personal")
+    private Boolean personal;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private Puser user;
+    @Column(name = "patient_id")
+    private Integer patientId;
+    
     @Column(name = "description")
     private String description;
     @Column(name = "creationDate")
@@ -185,6 +196,38 @@ public class Broadcasts implements Serializable{
     public void setBrdcReg(List<BroadcastRegistration> brdcReg) {
         this.brdcReg = brdcReg;
     }    
+
+    public Boolean getPersonal() {
+        return personal;
+    }
+
+    public void setPersonal(Boolean personal) {
+        this.personal = personal;
+    }
+
+    public List<BroadcastRecords> getBrdcRec() {
+        return brdcRec;
+    }
+
+    public void setBrdcRec(List<BroadcastRecords> brdcRec) {
+        this.brdcRec = brdcRec;
+    }
+
+    public Puser getUser() {
+        return user;
+    }
+
+    public void setUser(Puser user) {
+        this.user = user;
+    }
+
+    public Integer getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(Integer patientId) {
+        this.patientId = patientId;
+    }
 
     @Override
     public String toString() {

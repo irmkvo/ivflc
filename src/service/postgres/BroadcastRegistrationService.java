@@ -6,6 +6,8 @@
 package service.postgres;
 
 import domain.postgres.BroadcastRegistration;
+import domain.postgres.Broadcasts;
+import domain.postgres.Puser;
 import java.util.List;
 
 /**
